@@ -1,0 +1,70 @@
+<?php
+require_once ('Conexion.php');
+
+
+Class ARTEFACTO {
+
+	private $id;
+	private $nombre;
+	private $consumo;
+
+
+	function __construct ( $id ) {
+
+		if ( $id != null ) {
+			$link = new Conexion ( );
+			$sql = "SELECT * FROM ARTEFACTO WHERE ART_ID = '$id'";
+			$result = $link->getObj( $sql );
+			$this->id 		= $result[0]->ART_ID;
+			$this->nombre 	= $result[0]->ART_NOMBRE;
+			$this->consumo	= $result[0]->ART_CONSUMO;
+			
+		} else {
+			$this->id 		= null;
+			$this->nombre 	= null;
+			$this->consumo	= null;
+
+		}
+	}
+
+	public function registrar ( $id , $nombre , $consumo) {
+		$sql="INSERT INTO ARTEFACTO ( ART_ID , ART_NOMBRE , ART_CONSUMO) VALUES ('$id','$nombre','$consumo')";
+		$link = new Conexion ( );
+		return $link->query( $sql );
+	}
+
+	public function modificar ( $id , $nombre , $consumo ) {
+
+		$sql="UPDATE ARTEFACTO SET ART_NOMBRE = '$nombre' , ART_CONSUMO = '$consumo'  WHERE ART_ID = '$id'";
+		$link = new Conexion ( );
+		return $link->query( $sql );
+	}
+
+	public function eliminar( ) {
+		$sql="DELETE FROM ARTEFACTO WHERE ART_ID = '$this->id'";
+		$link = new Conexion ( );
+		return $link->query( $sql );
+	}
+
+	public function getListado ( ) {
+		$sql = "SELECT * FROM ARTEFACTO ORDER BY ART_NOMBRE";
+		$link = new Conexion ( );
+		$array = $link->getObj( $sql );
+		return $array;
+	}
+
+	public function getId( ) {
+		return $this->id;
+	}
+
+	public function getNombre( ) {
+		return $this->nombre;
+	}
+
+	public function getConsumo( ) {
+		return $this->consumo;
+	}
+
+
+}
+?>
