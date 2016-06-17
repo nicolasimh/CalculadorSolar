@@ -7,4 +7,5 @@
 
     define('RUTA','/calculador/');
     define('TITULO','Calculadora Solar');
+    define('RUTA_MENU','/calculador/_menu.php');
 ?>

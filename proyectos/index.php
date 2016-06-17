@@ -1,5 +1,5 @@
 <?php
-	require_once ("config.php");
+	require_once ("../config.php");
 ?>
 
 <!DOCTYPE html>
@@ -12,26 +12,16 @@
 	<style type="text/css" href="<?php echo RUTA;?>css/bootstrap-theme.min.css"></style>
 	<style type="text/css" href="<?php echo RUTA;?>css/normalize.css"></style>
 	<link href="<?php echo RUTA;?>css/bootstrap.min.css" rel="stylesheet">
-	<link href="<?php echo RUTA;?>css/main.css" rel="stylesheet">
 </head>
 <body>
-	<nav class="navbar navbar-fixed-top navbar-inverse">
-     	<?php include ("_menu.php");?>
+	<nav class="navbar navbar-fixed-top navbar-inverse" id="menu">
+     	<?php include("../_menu.php");?>
     </nav>
 
-    <div class="container" id="main">
-    	<div>
-    		<ul>
-    			<li><a class="btn btn-warning" href="">Mis proyectos</a></li>
-    			<li><a class="btn btn-primary" href="">Calculadora</a></li>
-    		</ul>
+    <div class="container">
+    	<div class="row row-offcanvas row-offcanvas-right">
     	</div>
-    	<div>
-    		<ul>
-    			<li><a class="btn btn-warning">Cotización</a></li>
-    			<li><a class="btn btn-success" href="">Proveedores</a></li>
-    		</ul>
-    	</div>
+
     </div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
