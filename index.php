@@ -8,9 +8,7 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<style type="text/css" href="<?php echo RUTA;?>css/bootstrap.min.css"></style>
-	<style type="text/css" href="<?php echo RUTA;?>css/bootstrap-theme.min.css"></style>
-	<style type="text/css" href="<?php echo RUTA;?>css/normalize.css"></style>
+	<link type="text/css" href="<?php echo RUTA;?>css/normalize.css">
 	<link href="<?php echo RUTA;?>css/bootstrap.min.css" rel="stylesheet">
 	<link href="<?php echo RUTA;?>css/main.css" rel="stylesheet">
 </head>
