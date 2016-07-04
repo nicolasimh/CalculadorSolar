@@ -21,15 +21,15 @@
 
     <div class="container" id="main">
     	<div>
-    		<ul>
-    			<li><a class="btn btn-warning" href="">Mis proyectos</a></li>
-    			<li><a class="btn btn-primary" href="">Calculadora</a></li>
+    		<ul class="clearfix">
+    			<li><a class="btn btn-info" href=""><span class="glyphicon glyphicon-globe"></span><br><br> Mis proyectos</a></li>
+    			<li><a class="btn btn-danger" href=""><span class="glyphicon glyphicon-leaf"></span><br><br>Calculadora</a></li>
     		</ul>
     	</div>
-    	<div>
-    		<ul>
-    			<li><a class="btn btn-warning">Cotización</a></li>
-    			<li><a class="btn btn-success" href="">Proveedores</a></li>
+    	<div >
+    		<ul class= "clearfix">
+    			<li><a class="btn btn-warning"><span class="glyphicon glyphicon-thumbs-up"></span><br><br> Cotización</a></li>
+    			<li><a class="btn btn-success" href=""><span class="glyphicon glyphicon-grain"></span><br><br>Productos</a></li>
     		</ul>
     	</div>
     </div>

@@ -38,7 +38,7 @@ Class INFORME {
 
 	public function modificar ( $id , $nombre , $url ) {
 
-		$sql="UPDATE INFORME SET INF_NOMBRE = '$nombre' , INF_URL = '$URÇ'  WHERE INF_ID = '$id'";
+		$sql="UPDATE INFORME SET INF_NOMBRE = '$nombre' , INF_URL = '$URL'  WHERE INF_ID = '$id'";
 		$link = new Conexion ( );
 		return $link->query( $sql );
 	}
