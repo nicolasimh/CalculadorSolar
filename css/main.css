@@ -1,3 +1,5 @@
+
+
 .navbar-brand{
 	color:white !important;
 }
@@ -10,6 +12,19 @@
 #main div ul li a {height: 270px;width: 270px;padding-top: 50px;font-weight: bold;letter-spacing: 4px;}
 #main div ul li a span{font-size: 120px;}
 
-#wrapper{margin-top: 70px;margin-left: 10px;}
+#wrapper{margin-top: 70px;padding-left:10px; padding-right: 10px}
 
-#body-wrapper {background-color: #444}
+#body-wrapper {height: 100%;}
+#option-wrapper{padding: 0px;margin-bottom: 20px;padding-left: 10px}
+
+@media only screen and (max-width: 992px) {
+    #menu .container{width: 100%; }
+}
+@media only screen and (max-width: 782px) and (min-width: 768px){
+    .navbar-brand{display: none}
+}
+@media only screen and (max-width: 992px) {
+	#body-wrapper{width: 100%}
+    #option-wrapper{width: 100%; padding-left: 0px}
+}
+
