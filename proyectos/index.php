@@ -26,6 +26,28 @@
 			</ul>
 		</div>
 		<div class="col-md-9 pull-left" id="body-wrapper">
+			<h3 id="tituloPag">Listado de Proyectos</h3>
+			<a href="Busqueda Avanzada"></a>
+			<form class="form-inline" id="ordenForm">
+				<div class="form-group">
+					<label for="ordenarPor">Ordenar por: </label>
+					<select class="form-control input-sm" id="ordenarPor">
+						<option>Seleccione</option>
+						<option value="0">Código</option>
+						<option value="1">Nombre</option>
+						<option value="2">Cliente</option>
+						<option value="3">Estado</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="exampleInputName2">Tipo: </label>
+					<select class="form-control input-sm" id="ordenarPor">
+						<option>Seleccione</option>
+						<option value="0">Ascendente</option>
+						<option value="1">Descentente</option>
+					</select>
+				</div>
+			</form>
 			<table class="table table-hover">
 				<thead>
 					<th>Cod</th>
