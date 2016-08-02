@@ -58,7 +58,7 @@
   				<div class="form-group">
     				<label for="telefono" class="col-sm-2 control-label">Telefono</label>
     					<div class="col-sm-4">
-							<input type="text" class="form-control" id="telefono" maxlength="11" placeholder="Ejemplo: 56966256263" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;">
+							<input type="text" class="form-control" id="telefono" maxlength="11" placeholder="Ejemplo: 56966256263" onKeypress="soloNumeros(event)">
     					</div>
   				</div>
   				<div class="form-group">
@@ -84,6 +84,7 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="<?php echo RUTA;?>js/bootstrap.min.js"></script>
+  <script src="<?php echo RUTA;?>js/functions.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 		
