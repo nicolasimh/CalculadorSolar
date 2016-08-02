@@ -48,6 +48,25 @@
 						<textarea id="descripcion" class="form-control" maxlength="100" ></textarea>
 					</div>
 				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label" for="precioCompra">* Precio Compra</label>
+					<div class="input-group col-sm-5">
+						<div class="input-group-addon">$</div>
+						<input id="precioCompra" class="form-control" required="required" type="number"/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label" for="precioVenta">* Precio Venta</label>
+					<div class="input-group col-sm-5">
+						<div class="input-group-addon">$</div>
+						<input id="precioVenta" class="form-control" required="required" type="number"/>
+					</div>
+				</div>
+				<div class="form-group">
+    				<div class="col-sm-offset-2 col-sm-10">
+    					<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+    				</div>
+  				</div>
 			</form>
 		</div>
 	</div>
