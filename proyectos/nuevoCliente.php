@@ -58,7 +58,7 @@
   				<div class="form-group">
     				<label for="telefono" class="col-sm-2 control-label">Telefono</label>
     					<div class="col-sm-4">
-							<input type="number" class="form-control" id="telefono" min="10000000000" max="99999999999" placeholder="Ejemplo: 56966256263">
+							<input type="text" class="form-control" id="telefono" maxlength="11" placeholder="Ejemplo: 56966256263" onKeypress="if (event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;">
     					</div>
   				</div>
   				<div class="form-group">
@@ -89,5 +89,6 @@
 		
 		});
 	</script>
+
 </body>
 </html>
