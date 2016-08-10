@@ -23,48 +23,61 @@
 		</div>
 		<div class="col-md-9 pull-left" id="body-wrapper">
 			<h3 id="tituloPag">Ingresar Producto</h3>
-			<form class="form-horizontal">
+			<form class="form-horizontal" method="post" action="../controller/productoController.php">
 				<div class="form-group has-feedback">
 					<label class="col-sm-2 control-label" for="nombre">* Nombre</label>
 					<div class="col-sm-8">
-						<input id="nombre" type="text" class="form-control" maxlength="30" required="required" />
+						<input id="nombre" name="nombre" type="text" class="form-control" maxlength="30" required="required" />
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="marca">* Marca</label>
 					<div class="col-sm-8">
-						<input id="marca" type="text" class="form-control" maxlength="30" required="required"/>
+						<input id="marca" name="marca" type="text" class="form-control" maxlength="30" required="required"/>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="modelo">Modelo</label>
 					<div class="col-sm-8">
-						<input id="modelo" type="text" class="form-control" maxlength="30" />
+						<input id="modelo" name="modelo" type="text" class="form-control" maxlength="30" />
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="descripcion">Descripcion</label>
 					<div class="col-sm-8">
-						<textarea id="descripcion" class="form-control" maxlength="100" ></textarea>
+						<textarea id="descripcion" name="descripcion" class="form-control" maxlength="100" ></textarea>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="precioCompra">* Precio Compra</label>
 					<div class="input-group col-sm-5">
 						<div class="input-group-addon">$</div>
-						<input id="precioCompra" class="form-control" required="required" type="number"/>
+						<input id="precioCompra" name="precioCompra" min="0" class="form-control" required="required" type="number"/>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="precioVenta">* Precio Venta</label>
 					<div class="input-group col-sm-5">
 						<div class="input-group-addon">$</div>
-						<input id="precioVenta" class="form-control" required="required" type="number"/>
+						<input id="precioVenta" name="precioVenta" min="0" class="form-control" required="required" type="number"/>
 					</div>
 				</div>
 				<div class="form-group">
+					<label class="col-sm-2 control-label">Tipo</label>
+					<div class="btn-group" data-toggle="buttons">
+  						<label id="bateria" class="btn btn-default"><input type="radio" > Bateria</label>
+  						<label id="inversor" class="btn btn-default"><input type="radio" > Inversor</label>
+  						<label id="panel" class="btn btn-default"><input type="radio" > Panel</label>
+					</div>
+
+				</div>
+				<div id="formTipoProducto">
+					
+				</div>
+				<div class="form-group">
     				<div class="col-sm-offset-2 col-sm-10">
-    					<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+    				<input type="text" name="event" value="nuevo" class="hide">
+    					<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk" ></span> Guardar</button>
     				</div>
   				</div>
 			</form>
@@ -74,7 +87,19 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="<?php echo RUTA;?>js/bootstrap.min.js"></script>
 	<script type="text/javascript">
-		
+		$(document).ready(function ( ) {
+			$("#bateria").click(function(){
+				$("#formTipoProducto").append().load("productoBateria.php");
+			})
+
+			$("#inversor").click(function(){
+				$("#formTipoProducto").append().load("productoInversor.php");
+			})
+
+			$("#panel").click(function(){ 
+				$("#formTipoProducto").append().load("productoPanel.php");
+			})
+		})
 	</script>
 </body>
 </html>

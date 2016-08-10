@@ -36,8 +36,9 @@ Class PRODUCTO {
 		}
 	}
 
-	public function registrar ( $id , $nombre , $marca , $modelo, $descripcion , $preciocompra, $precioventa) {
-		$sql="INSERT INTO PRODUCTO ( PROD_ID , PROD_NOMBRE , PROD_MARCA , PROD_MODELO, PROD_DESCRIPCION , PROD_PRECIOCOMPRA, PROD_PRECIOVENTA ) VALUES ('$id','$nombre','$marca','$modelo','$descripcion','$preciocompra','$precioventa')";
+	public function registrar ( $nombre , $marca , $modelo, $descripcion , $preciocompra, $precioventa) {
+		$sql="INSERT INTO PRODUCTO ( PROD_NOMBRE , PROD_MARCA , PROD_MODELO, PROD_DESCRIPCION , PROD_PRECIOCOSTO, PROD_PRECIOVENTA ) VALUES ('$nombre','$marca','$modelo','$descripcion',$preciocompra,$precioventa)";
+		echo $sql;
 		$link = new Conexion ( );
 		return $link->query( $sql );
 	}
