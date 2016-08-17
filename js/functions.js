@@ -3,3 +3,9 @@ function soloNumeros( event ) {
 		event.returnValue = false;
 
 }
+
+function preguntaEliminacion( event ){ 
+    if ( ! confirm('¿Estas seguro que deseas eliminar este registro?')){ 
+       event.preventDefault();
+    } 
+} 

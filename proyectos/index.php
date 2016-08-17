@@ -19,14 +19,7 @@
 
     <div class="clearfix" id="wrapper">
     	<div class="col-md-3 pull-right" id="option-wrapper">
-			<ul class="nav nav-pills nav-stacked">
-				<li role="presentation" class="tituloMenuLateral">Mantenedor de Proyectos</li>
-				<li role="presentation"><a href="#">Nuevo Proyecto</a></li>
- 				<li role="presentation" class="active"><a href="index.php">Listado de Proyectos</a></li>
- 				<li role="presentation" class="tituloMenuLateral">Mantenedor de Clientes</li>			
- 				<li role="presentation"><a href="nuevoCliente.php">Nuevo Cliente</a></li>
- 				<li role="presentation"><a href="listadoClientes.php">Listado de  Clientes</a></li>
-			</ul>
+			<?php include("../menu-lateral-1.php"); ?>
 		</div>
 		<div class="col-md-9 pull-left" id="body-wrapper">
 			<h3 id="tituloPag">Listado de Proyectos</h3>

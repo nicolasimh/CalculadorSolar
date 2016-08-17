@@ -56,7 +56,7 @@ Class CLIENTE {
 	}
 
 	public function getListado ( ) {
-		$sql = "SELECT * FROM CLIENTE ORDER BY CL_NOMBREFANTASIA";
+		$sql = "SELECT * FROM CLIENTE ORDER BY CL_RAZONSOCIAL";
 		$link = new Conexion ( );
 		$array = $link->getObj( $sql );
 		return $array;

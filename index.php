@@ -27,7 +27,7 @@
     	<div >
     		<ul class= "clearfix">
     			<li><a class="btn btn-warning"><span class="glyphicon glyphicon-thumbs-up"></span><br><br> Cotización</a></li>
-    			<li><a class="btn btn-success" href=""><span class="glyphicon glyphicon-grain"></span><br><br>Productos</a></li>
+    			<li><a class="btn btn-success" href=""><span class="glyphicon glyphicon-grain"></span><br><br>Configuración</a></li>
     		</ul>
     	</div>
     </div>
