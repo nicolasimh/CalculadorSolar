@@ -47,7 +47,7 @@ Class ARTEFACTO {
 	}
 
 	public function getListado ( ) {
-		$sql = "SELECT * FROM ARTEFACTO ORDER BY ART_NOMBRE";
+		$sql = "SELECT * FROM ARTEFACTO ORDER BY ART_ID";
 		$link = new Conexion ( );
 		$array = $link->getObj( $sql );
 		return $array;
