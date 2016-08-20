@@ -58,9 +58,6 @@
 					<th>RUT</th>
 					<th>Nombre</th>
 					<th>Apellido</th>
-					<th>Usuario</th>
-					<th>Email</th>
-					<th>Clave</th>
 					<th>Tipo</th>
 					<th>Estado</th>
 					<th></th>
@@ -76,9 +73,6 @@
 						<td><?php echo $row->USU_RUT; ?></td>
 						<td><?php echo $row->USU_NOMBRE; ?></td>
 						<td><?php echo $row->USU_APELLIDO; ?></td>
-						<td><?php echo $row->USU_USUARIO; ?></td>
-						<td><?php echo $row->USU_EMAIL; ?></td>
-						<td><?php echo $row->USU_CLAVE; ?></td>
 						<td><?php echo $row->USU_TIPO; ?></td>
 						<td><?php echo $row->USU_ESTADO; ?></td>	
 

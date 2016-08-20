@@ -22,7 +22,7 @@ Class USUARIO {
 			$this->rut 		= $result[0]->USU_RUT;
 			$this->nombre 	= $result[0]->USU_NOMBRE;
 			$this->apellido	= $result[0]->USU_APELLIDO;
-			$this->usuario	= $result[0]->USU_USUARIO
+			$this->usuario	= $result[0]->USU_USUARIO;
 			$this->email 	= $result[0]->USU_EMAIL;
 			$this->clave 	= $result[0]->USU_CLAVE;
 			$this->tipo		= $result[0]->USU_TIPO;

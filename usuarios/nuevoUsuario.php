@@ -22,8 +22,8 @@
         <?php include("../menu-lateral-1.php"); ?>
 		</div>
 		<div class="col-md-9 pull-left" id="body-wrapper">
-			<h3 id="tituloPag">Nuevo Cliente</h3>
-			<form class="form-horizontal" action="../controller/clienteController.php" method="post">
+			<h3 id="tituloPag">Nuevo Usuario</h3>
+			<form class="form-horizontal" action="../controller/usuarioController.php" method="post">
   				<div class="form-group">
     				<label for="rut" class="col-sm-2 control-label">RUT</label>
     					<div class="col-sm-4">
@@ -31,33 +31,21 @@
     					</div>
   				</div>
   				<div class="form-group">
-    				<label for="razonSocial" class="col-sm-2 control-label">Razón Social</label>
+    				<label for="nombre" class="col-sm-2 control-label">Nombre</label>
     					<div class="col-sm-10">
-							<input type="text" class="form-control" id="razonSocial" maxlength="50" name="razonsocial">
+							<input type="text" class="form-control" id="nombre" maxlength="40" name="nombre">
     					</div>
   				</div>
   				<div class="form-group">
-    				<label for="nombre" class="col-sm-2 control-label">Nombre Corto</label>
+    				<label for="apellido" class="col-sm-2 control-label">Apellido</label>
     					<div class="col-sm-10">
-							<input type="text" class="form-control" id="nombre" maxlength="40" name="nombrefantasia">
+							<input type="text" class="form-control" id="apellido" maxlength="40" name="apellido">
     					</div>
   				</div>
   				<div class="form-group">
-    				<label for="direccion" class="col-sm-2 control-label">Dirección</label>
+    				<label for="usuario" class="col-sm-2 control-label">Usuario</label>
     					<div class="col-sm-10">
-							<input type="text" class="form-control" id="direccion" maxlength="100" name="direccion">
-    					</div>
-  				</div>
-  				<div class="form-group">
-    				<label for="telefono" class="col-sm-2 control-label">Telefono</label>
-    					<div class="col-sm-4">
-							<input type="text" class="form-control" id="telefono" maxlength="11" placeholder="Ejemplo: 56966256263" onKeypress="soloNumeros(event)" name="telefono">
-    					</div>
-  				</div>
-  				<div class="form-group">
-    				<label for="contacto" class="col-sm-2 control-label">Contacto</label>
-    					<div class="col-sm-10">
-							<input type="text" class="form-control" id="contacto" maxlength="50" name="contacto">
+							<input type="text" class="form-control" id="usuario" maxlength="20" name="usuario">
     					</div>
   				</div>
   				<div class="form-group">
@@ -66,6 +54,24 @@
 							<input type="email" class="form-control" id="email" maxlength="50" name="email">
     					</div>
   				</div>
+          <div class="form-group">
+            <label for="clave" class="col-sm-2 control-label">Clave</label>
+              <div class="col-sm-10">
+              <input type="password" class="form-control" id="clave" maxlength="20" name="clave">
+              </div>
+          </div>
+          <div class="form-group">
+            <label for="tipo" class="col-sm-2 control-label">Tipo</label>
+              <div class="col-sm-10">
+              <input type="text" class="form-control" id="tipo" maxlength="35" name="tipo">
+              </div>
+          </div>
+          <div class="form-group">
+            <label for="estado" class="col-sm-2 control-label">Estado</label>
+              <div class="col-sm-10">
+              <input type="int" class="form-control" id="estado" name="estado">
+              </div>
+          </div>
   				<div class="form-group">
     				<div class="col-sm-offset-2 col-sm-10">
       					<input class="hide" name="accion" value="new">
