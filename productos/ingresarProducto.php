@@ -74,12 +74,6 @@
 				<div id="formTipoProducto">
 					
 				</div>
-				<div class="form-group">
-    				<div class="col-sm-offset-2 col-sm-10">
-    				<input type="text" name="event" value="nuevo" class="hide">
-    					<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk" ></span> Guardar</button>
-    				</div>
-  				</div>
 			</form>
 		</div>
 	</div>
