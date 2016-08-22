@@ -5,6 +5,9 @@
 	<li role="presentation" class="tituloMenuLateral">Mantenedor de Clientes</li>			
 	<li role="presentation"><a href="../clientes/nuevoCliente.php">Nuevo Cliente</a></li>
 	<li role="presentation"><a href="../clientes/index.php">Listado de  Clientes</a></li>
+	<li role="presentation" class="tituloMenuLateral">Mantenedor de Productos</li>			
+	<li role="presentation"><a href="../productos/nuevoProducto.php">Nuevo Producto</a></li>
+	<li role="presentation"><a href="../productos/index.php">Listado de  Productos</a></li>
 	<li role="presentation" class="tituloMenuLateral">Mantenedor de Artefactos</li>			
 	<li role="presentation"><a href="../artefactos/nuevoArtefacto.php">Nuevo Artefacto</a></li>
 	<li role="presentation"><a href="../artefactos/index.php">Listado de  Artefactos</a></li>

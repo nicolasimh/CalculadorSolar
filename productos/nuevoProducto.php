@@ -16,14 +16,14 @@
 	<nav class="navbar navbar-fixed-top navbar-inverse" id="menu">
      	<?php include("../_menu.php");?>
     </nav>
-
     <div class="clearfix" id="wrapper">
     	<div class="col-md-3 pull-right" id="option-wrapper">
-    	<?php include ("_submenu.php");?>
+    		<?php include("../menu-lateral-1.php"); ?>
 		</div>
 		<div class="col-md-9 pull-left" id="body-wrapper">
 			<h3 id="tituloPag">Ingresar Producto</h3>
 			<form class="form-horizontal" method="post" action="../controller/productoController.php">
+				<input type="text" name="event" value="new" class="hide">
 				<div class="form-group has-feedback">
 					<label class="col-sm-2 control-label" for="nombre">* Nombre</label>
 					<div class="col-sm-8">

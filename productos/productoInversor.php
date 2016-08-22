@@ -34,7 +34,7 @@
 </div>
 <div class="form-group">
 	<div class="col-sm-offset-2 col-sm-10">
-	<input type="text" name="event" value="nuevoInversor" class="hide">
+	<input type="text" name="tipoProducto" value="nuevoInversor" class="hide">
 		<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk" ></span> Guardar</button>
 	</div>
 </div>

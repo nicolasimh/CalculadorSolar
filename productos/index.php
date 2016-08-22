@@ -1,7 +1,7 @@
 <?php
 	require_once ("../config.php");
+	require_once ("../models/Producto.php");
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -19,7 +19,7 @@
 
     <div class="clearfix" id="wrapper">
     	<div class="col-md-3 pull-right" id="option-wrapper">
-    	<?php include ("_submenu.php");?>
+    		<?php include("../menu-lateral-1.php"); ?>
 		</div>
 		<div class="col-md-9 pull-left" id="body-wrapper">
 			<h3 id="tituloPag">Listado de Productos</h3>
@@ -48,43 +48,35 @@
 			</div>
 			<table class="table table-hover">
 				<thead>
-					<th>Cod</th>
+					<th>ID</th>
 					<th>Nombre</th>
-					<th>Cliente</th>
-					<th>Estado</th>
+					<th>Marca</th>
+					<th>Modelo</th>
+					<th>Precio Costo</th>
+					<th>Tipo</th>
 					<th></th>
 				</thead>	
 				<tbody>
-					<tr>
-						<td>1</td>
-						<td class="nombreProyecto">Proyecto 1</td>
-						<td>Solsur</td>
-						<td><span class="label label-success">Terminado</span></td>
-						<td>
-							<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Editar</button>
-							<button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span> Eliminar</button>
-						</td>
-					</tr>
-					<tr>
-						<td>2</td>
-						<td class="nombreProyecto">Proyecto 2</td>
-						<td>Mas energía S.A.</td>
-						<td><span class="label label-primary">En Curso</span></td>
-						<td>
-							<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Editar</button>
-							<button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span> Eliminar</button>
-						</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td class="nombreProyecto">Proyecto 3</td>
-						<td>Clean Energy S.A.</td>
-						<td><span class="label label-danger">Eliminado</span></td>
-						<td>
-							<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Editar</button>
-							<button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span> Eliminar</button>
-						</td>
-					</tr>
+<?php 
+	$producto = new Producto ( null );
+	$listado = $producto->getListado( );
+	foreach ($listado as $row) { ?>
+		<tr>
+			<td><?php echo $row->PROD_ID;?></td>
+			<td class="nombre"><?php echo $row->PROD_NOMBRE;?></td>
+			<td><?php echo $row->PROD_MARCA;?></td>
+			<td><?php echo $row->PROD_MODELO;?></td>
+			<td align="right">$ <?php echo $row->PROD_PRECIOCOSTO;?></td>
+			<td class="subProducto"><?php echo $row->TIPO?><input name="id" value="<?php echo $row->SUB_ID;?>" class="hide"></td>
+			<td>
+				<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Editar</button>
+				<form action="../controller/productoController.php" method="POST" style="display:inline;"><input name="accion" value="delete" class="hide"><input name="id" value="<?php echo $row->SUB_ID;?>" class="hide"><button class="btn btn-xs btn-danger" onclick="preguntaEliminacion( event )"><span class="glyphicon glyphicon-remove"></span>Eliminar</button></form>
+			</td>
+		</tr>
+<?php
+	}
+?>
+					
 				</tbody>
 			</table>
 		</div>
@@ -114,7 +106,28 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="<?php echo RUTA;?>js/bootstrap.min.js"></script>
 	<script type="text/javascript">
+		$(document).ready(function(){
+			$(".btn-warning").click(
+				function(event){
+					var titulo = $(this).parent().parent().children("td.nombre").text();
+					var elemento = $(this).parent().parent().children("td.subProducto").text();
+					var subId = $(this).parent().parent().children("td.subProducto").find("input").val();
+						$.ajax({
+							url: "modificarProducto.php",
+							method: "POST",
+							data: { "id" : subId , "tipo" : elemento},
+							dataType: "html"
+						}).done(
+							function(html) {
+								$("#myModalLabel").text(titulo);
+								$(".modal-body").html( html );
+							}
+						);
+				}	
+				
+			);
 		
+		});
 	</script>
 </body>
 </html>

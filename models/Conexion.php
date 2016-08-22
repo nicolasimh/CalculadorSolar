@@ -37,8 +37,8 @@
 				$this->desconectar();
 				return true;
 			} else {
+				echo 'Error al ejecutar la consulta '.mysqli_error($this->link);
 			 	$this->desconectar();
-			 	echo 'Error al ejecutar la consulta '.mysqli_connect_error();
 				return false;
 			}
 		}
@@ -48,6 +48,7 @@
 			$this->conectar();
 			//Pregunto si la consulta tiene errores
 			if ( $result = $this->link->query($sql) ) {
+				$this->desconectar();
 				//pregunto si recibió varios resultados
 				if ($result->num_rows > 0) {
 					//guardo cada resultado en un campo del arreglo
@@ -60,6 +61,7 @@
 				}
 			} else {
 				echo 'Error al ejecutar la consulta '.mysqli_connect_error();
+				$this->desconectar();
 			}
 		}	
 
@@ -68,6 +70,7 @@
 			$this->conectar();
 			//Pregunto si la consulta tiene errores
 			if ( $result = $this->link->query($sql) ) {
+				$this->desconectar();
 				//pregunto si recibió varios resultados
 				if ($result->num_rows > 0) {
 					//guardo cada resultado en un campo del arreglo
@@ -80,6 +83,7 @@
 				}
 			} else {
 				echo 'Error al ejecutar la consulta '.mysqli_connect_error();
+				$this->desconectar();
 			}
 		}
 
@@ -88,6 +92,7 @@
 			$this->conectar();
 			//Pregunto si la consulta tiene errores
 			if ( $result = $this->link->query($sql) ) {
+				$this->desconectar();
 				//pregunto si recibió varios resultados
 				if ($result->num_rows > 0) {
 					//guardo cada resultado en un campo del arreglo
@@ -100,6 +105,7 @@
 				}
 			} else {
 				echo 'Error al ejecutar la consulta '.mysqli_connect_error();
+				$this->desconectar();
 			}
 		}		
 	}
