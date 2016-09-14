@@ -62,7 +62,7 @@
 	$listado = $producto->getListado( );
 	foreach ($listado as $row) { ?>
 		<tr>
-			<td><?php echo $row->PROD_ID;?></td>
+			<td class="idProducto"><?php echo $row->PROD_ID;?></td>
 			<td class="nombre"><?php echo $row->PROD_NOMBRE;?></td>
 			<td><?php echo $row->PROD_MARCA;?></td>
 			<td><?php echo $row->PROD_MODELO;?></td>
@@ -75,8 +75,7 @@
 		</tr>
 <?php
 	}
-?>
-					
+?>	
 				</tbody>
 			</table>
 		</div>
@@ -90,14 +89,10 @@
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<h4 class="modal-title" id="myModalLabel">Modal title</h4>
 	      		</div>
-	      		<form class="form-horizontal">
-	      		<div class="modal-body">
-	        
-	      		</div>
-	      		<div class="modal-footer">
-	        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        		<button type="button" class="btn btn-primary">Save changes</button>
-	      		</div>
+	      		<form class="form-horizontal" method="POST" action="../controller/productoController.php">
+		      		<div class="modal-body">
+		        
+		      		</div>
 	      		</form>
 	    	</div>
 	 	</div>
@@ -110,6 +105,7 @@
 			$(".btn-warning").click(
 				function(event){
 					var titulo = $(this).parent().parent().children("td.nombre").text();
+					var idProducto = $(this).parent().parent().children("td.idProducto").text();
 					var elemento = $(this).parent().parent().children("td.subProducto").text();
 					var subId = $(this).parent().parent().children("td.subProducto").find("input").val();
 						$.ajax({
@@ -119,7 +115,7 @@
 							dataType: "html"
 						}).done(
 							function(html) {
-								$("#myModalLabel").text(titulo);
+								$("#myModalLabel").text("#" + idProducto + " - " +titulo);
 								$(".modal-body").html( html );
 							}
 						);

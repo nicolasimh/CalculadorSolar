@@ -1,15 +1,15 @@
 <?php
 require_once("../config.php");
 require_once("../models/Producto.php");
+require_once("../models/Bateria.php");
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 session_start();
 
 
-
+print_r($_POST);
 switch ($_POST["event"]) {
 	case 'new':
-
 		$_SESSION["producto"]["nombre"] = $_POST["nombre"];
 		$_SESSION["producto"]["marca"] = $_POST["marca"];
 		$_SESSION["producto"]["modelo"] = $_POST["modelo"];
@@ -66,7 +66,16 @@ switch ($_POST["event"]) {
 			//header("location: ../productos/ingresarProducto.php?result=errorIngreso");
 		}
 		break;
-	
+	case "alter":
+
+		$producto = new Producto ( null );
+
+		if ( $producto->($_POST["idProducto"], $_POST["nombre"], $_POST["marca"], $_POST["modelo"], $_POST["descripcion"], $_POST["precioCompra"], $_POST["precioVenta"]) ) {
+			
+		}
+
+		$bateria = new Bateria ( null );
+		break;
 	default:
 		# code...
 		break;

@@ -143,7 +143,7 @@ Class PRODUCTO {
 		return $this->modelo;
 	}
 
-	public function getDescipcion( ) {
+	public function getDescripcion( ) {
 		return $this->descripcion;
 	}
 

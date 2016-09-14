@@ -69,7 +69,6 @@
   						<label id="inversor" class="btn btn-default"><input type="radio" > Inversor</label>
   						<label id="panel" class="btn btn-default"><input type="radio" > Panel</label>
 					</div>
-
 				</div>
 				<div id="formTipoProducto">
 					

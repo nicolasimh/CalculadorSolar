@@ -11,7 +11,6 @@
 				$link = new Conexion ( );
 				$sql = "SELECT BAT_ID , PROD_ID , BAT_VOLTAJE FROM BATERIA WHERE BAT_ID = $id";
 				$result = $link->getObj( $sql );
-				print_r($result);
 				$this->subId 			= $result[0]->BAT_ID;
 				$this->voltajeBateria 	= $result[0]->BAT_VOLTAJE;
 				parent::__construct( $result[0]->PROD_ID );
