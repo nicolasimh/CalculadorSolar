@@ -21,6 +21,20 @@
 			}
 		}
 
+		public function modificar ( $voltajeBateria ) {
+			$sql = "UPDATE BATERIA 
+			  		SET PROD_NOMBRE = '".parent::getNombre()."',
+			  			PROD_MARCA = '".parent::getMarca()."',
+			  			PROD_MODELO = '".parent::getModelo()."' ,
+			  			PROD_DESCRIPCION = '".parent::getDescripcion()."',
+			  			PROD_PRECIOCOSTO = ".parent::getPrecioCompra().",
+			  			PROD_PRECIOVENTA = ".parent::getPrecioVenta().",
+			  			BAT_VOLTAJE = $voltajeBateria
+			  		WHERE PROD_ID = ".parent::getId()." AND BAT_ID = $this->subId";
+			$link = new Conexion ( );
+			return $link->query( $sql );
+		}
+
 		public function getSubId( ) {
 			return $this->subId;
 		}

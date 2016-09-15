@@ -63,18 +63,21 @@ switch ($_POST["event"]) {
 			}
 			
 		} else {
-			//header("location: ../productos/ingresarProducto.php?result=errorIngreso");
+			header("location: ../productos/ingresarProducto.php?result=errorIngreso");
 		}
 		break;
 	case "alter":
-
+		print_r($_POST);
 		$producto = new Producto ( null );
-
-		if ( $producto->($_POST["idProducto"], $_POST["nombre"], $_POST["marca"], $_POST["modelo"], $_POST["descripcion"], $_POST["precioCompra"], $_POST["precioVenta"]) ) {
-			
+		
+		if ( $producto->modificar($_POST["idProducto"], $_POST["nombre"], $_POST["marca"], $_POST["modelo"], $_POST["descripcion"], $_POST["precioCompra"], $_POST["precioVenta"]) ) {
+			$bateria = new Bateria ( $_POST["subIdProducto"] );
+			if ( $bateria->modificar($_POST["voltajeBateria"]) ) {
+				header("location: ../productos/index.php?result=modSuccess&id=".$_POST["idProducto"]);
+			}
+		} else {
+			header("location: ../productos/ingresarProducto.php?result=errorModificar&id=".$_POST["idProducto"]);
 		}
-
-		$bateria = new Bateria ( null );
 		break;
 	default:
 		# code...

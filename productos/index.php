@@ -86,7 +86,7 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"></span></button>
 					<h4 class="modal-title" id="myModalLabel">Modal title</h4>
 	      		</div>
 	      		<form class="form-horizontal" method="POST" action="../controller/productoController.php">
@@ -111,7 +111,7 @@
 						$.ajax({
 							url: "modificarProducto.php",
 							method: "POST",
-							data: { "id" : subId , "tipo" : elemento},
+							data: { "id" : subId , "tipo" : elemento , "idProd" : idProducto},
 							dataType: "html"
 						}).done(
 							function(html) {

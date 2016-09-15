@@ -97,8 +97,10 @@ Class PRODUCTO {
 	}
 
 	public function modificar ( $id , $nombre , $marca , $modelo, $descripcion , $preciocompra, $precioventa ) {
-
-		$sql="UPDATE PRODUCTO SET PROD_NOMBRE = '$nombre' , PROD_MARCA = '$marca' , PROD_MODELO = '$modelo', PROD_DESCRIPCION = '$descripcion', PROD_PRECIOCOMPRA = '$preciocompra', PROD_PRECIOVENTA = '$precioventa' WHERE PROD_ID = '$id'";
+		$sql="UPDATE PRODUCTO 
+			  SET PROD_NOMBRE = '$nombre' , PROD_MARCA = '$marca' , PROD_MODELO = '$modelo', 
+			  PROD_DESCRIPCION = '$descripcion', PROD_PRECIOCOSTO = '$preciocompra', 
+			  PROD_PRECIOVENTA = '$precioventa' WHERE PROD_ID = $id";
 		$link = new Conexion ( );
 		return $link->query( $sql );
 	}
