@@ -22,6 +22,10 @@
 
 #option-wrapper ul li.tituloMenuLateral {margin-top: 30px;}
 
+#option-wrapper ul li.subtituloMenuLateral {
+	padding: 0px;
+	
+}
 @media only screen and (max-width: 992px) {
     #menu .container{width: 100%; }
 }
