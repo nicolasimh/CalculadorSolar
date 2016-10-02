@@ -35,6 +35,28 @@
 			return $link->query( $sql );
 		}
 
+		public function eliminarSub( ) {
+			$sql = "SELECT PROY_ID FROM PROY_TIENE_PROD WHERE PROD_ID = ".parent::getId();
+			$link = new Conexion();
+			$result = $link->getObj( $sql );
+			if ( empty($result) ) {
+				$sql = "DELETE FROM BATERIA WHERE BAT_ID = $this->subId";
+				echo $sql;
+				$link = new Conexion();
+				if ( $link->query($sql) ) {
+					if ( parent::eliminar() ) {
+						return 1;
+					} else {
+						return 0;
+					}
+				} else {
+					return 0;
+				}
+			} else {
+				return 2;
+			}
+		}
+
 		public function getSubId( ) {
 			return $this->subId;
 		}

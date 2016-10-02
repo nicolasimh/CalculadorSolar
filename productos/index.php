@@ -67,11 +67,19 @@
 			<td><?php echo $row->PROD_MARCA;?></td>
 			<td><?php echo $row->PROD_MODELO;?></td>
 			<td align="right">$ <?php echo $row->PROD_PRECIOCOSTO;?></td>
+			
 			<td class="subProducto"><?php echo $row->TIPO?><input name="id" value="<?php echo $row->SUB_ID;?>" class="hide"></td>
 			<td>
+				<button class="btn btn-xs btn-info" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-pushpin"></span> Ver</button>
 				<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Editar</button>
-				<form action="../controller/productoController.php" method="POST" style="display:inline;"><input name="accion" value="delete" class="hide"><input name="id" value="<?php echo $row->SUB_ID;?>" class="hide"><button class="btn btn-xs btn-danger" onclick="preguntaEliminacion( event )"><span class="glyphicon glyphicon-remove"></span>Eliminar</button></form>
+				<form action="../controller/productoController.php" method="POST" style="display:inline;">
+				<input name="event" value="delete" class="hide">
+				<input name="id" value="<?php echo $row->SUB_ID;?>" class="hide">
+				<input name="tipo" value="<?php echo $row->TIPO?>" class="hide">
+				<button class="btn btn-xs btn-danger" onclick="preguntaEliminacion( event )"><span class="glyphicon glyphicon-remove"></span>Eliminar</button>
+				</form>
 			</td>
+			
 		</tr>
 <?php
 	}

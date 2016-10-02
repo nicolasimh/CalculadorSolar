@@ -35,6 +35,46 @@
 			}
 		}
 
+		public function modificar ( $tipo, $potenciaCA, $voltajeEntrada, $corrienteEntrada, $rendimiento ) {
+			$sql = "UPDATE INVERSOR 
+			  		SET PROD_NOMBRE = '".parent::getNombre()."',
+			  			PROD_MARCA = '".parent::getMarca()."',
+			  			PROD_MODELO = '".parent::getModelo()."' ,
+			  			PROD_DESCRIPCION = '".parent::getDescripcion()."',
+			  			PROD_PRECIOCOSTO = ".parent::getPrecioCompra().",
+			  			PROD_PRECIOVENTA = ".parent::getPrecioVenta().",
+			  			INV_TIPO = '$tipo',
+			  			INV_POTENCIACA = $potenciaCA,
+			  			INV_VOLTAJEENTRADA = $voltajeEntrada,
+			  			INV_CORRIENTEENTRADA = $corrienteEntrada,
+			  			INV_RENDIMIENTO = $rendimiento
+			  		WHERE PROD_ID = ".parent::getId()." AND INV_ID = $this->subId";
+			$link = new Conexion ( );
+			return $link->query( $sql );
+		}
+
+		public function eliminarSub( ) {
+			$sql = "SELECT PROY_ID FROM PROY_TIENE_PROD WHERE PROD_ID = ".parent::getId();
+			$link = new Conexion();
+			$result = $link->getObj( $sql );
+			if ( empty($result) ) {
+				$sql = "DELETE FROM INVERSOR WHERE INV_ID = $this->subId";
+				echo $sql;
+				$link = new Conexion();
+				if ( $link->query($sql) ) {
+					if ( parent::eliminar() ) {
+						return 1;
+					} else {
+						return 0;
+					}
+				} else {
+					return 0;
+				}
+			} else {
+				return 2;
+			}
+		}
+
 		public function getSubId( ) {
 			return $this->subId;
 		}

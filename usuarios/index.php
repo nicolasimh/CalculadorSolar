@@ -77,6 +77,7 @@
 						<td><?php echo $row->USU_ESTADO; ?></td>	
 
 						<td>
+							<button class="btn btn-xs btn-info" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-pushpin"></span> Ver</button>
 							<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Editar</button>
 							<form action="../controller/usuarioController.php" method="POST" style="display:inline;"><input name="accion" value="delete" class="hide"><input name="rut" value="<?php echo $row->USU_RUT;?>" class="hide"><button class="btn btn-xs btn-danger" onclick="preguntaEliminacion( event )"><span class="glyphicon glyphicon-remove"></span>Eliminar</button></form>
 						</td>

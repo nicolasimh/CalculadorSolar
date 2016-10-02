@@ -19,7 +19,7 @@
         <li <?php if( $active == 'proyectos') echo 'class="active"';?>><a href="<?php echo RUTA;?>proyectos/"><span class="glyphicon glyphicon-globe"></span> Mis Proyectos</a></li>
     		<li <?php if( $active == 'calculadora') echo 'class="active"';?>><a href="<?php echo RUTA;?>calculadora/"><span class="glyphicon glyphicon-leaf"></span> Calculadora</a></li>
         <li <?php if( $active == 'cotizacion') echo 'class="active"';?>><a href="<?php echo RUTA;?>cotizacion/"><span class="glyphicon glyphicon-thumbs-up"></span> Cotización</a></li>
-        <li <?php if( $active == 'configuracion') echo 'class="active"';?>><a href="<?php echo RUTA;?>artefactos/"><span class="glyphicon glyphicon-grain"></span> Configuración</a></li>
+        <li <?php if( $active == 'configuracion') echo 'class="active"';?>><a href="<?php echo RUTA;?>menu-configuracion.php"><span class="glyphicon glyphicon-grain"></span> Configuración</a></li>
   		</ul>
 	</div>
 </div>

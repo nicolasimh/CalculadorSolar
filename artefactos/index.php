@@ -58,6 +58,7 @@
 						<td><?php echo $row->ART_NOMBRE; ?></td>
 						<td><?php echo $row->ART_CONSUMO; ?></td>
 						<td>
+							<button class="btn btn-xs btn-info" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-pushpin"></span> Ver</button>
 							<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Editar</button>
 							<form action="../controller/artefactoController.php" method="POST" style="display:inline;"><input name="accion" value="delete" class="hide"><input name="id" value="<?php echo $row->ART_ID;?>" class="hide"><button class="btn btn-xs btn-danger" onclick="preguntaEliminacion( event )"><span class="glyphicon glyphicon-remove"></span>Eliminar</button></form>
 							

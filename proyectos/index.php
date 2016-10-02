@@ -61,6 +61,7 @@
 						<td>Solsur</td>
 						<td><span class="label label-success">Terminado</span></td>
 						<td>
+							<button class="btn btn-xs btn-info" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-pushpin"></span> Ver</button>
 							<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Editar</button>
 							<button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span> Eliminar</button>
 						</td>
@@ -71,6 +72,7 @@
 						<td>Mas energía S.A.</td>
 						<td><span class="label label-primary">En Curso</span></td>
 						<td>
+							<button class="btn btn-xs btn-info" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-pushpin"></span> Ver</button>
 							<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Editar</button>
 							<button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span> Eliminar</button>
 						</td>
@@ -81,6 +83,7 @@
 						<td>Clean Energy S.A.</td>
 						<td><span class="label label-danger">Eliminado</span></td>
 						<td>
+							<button class="btn btn-xs btn-info" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-pushpin"></span> Ver</button>
 							<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Editar</button>
 							<button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span> Eliminar</button>
 						</td>
