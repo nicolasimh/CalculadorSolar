@@ -55,6 +55,10 @@
 					<th></th>
 				</thead>	
 				<tbody>
+<?php 
+	$proyecto = new Proyecto ( null );
+	$listado = $proyecto->getListado( );
+	foreach ($listado as $row) { }?>
 					<tr>
 						<td>1</td>
 						<td class="nombreProyecto">Proyecto 1</td>

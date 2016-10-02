@@ -15,17 +15,16 @@
 #wrapper{margin-top: 70px;padding-left:10px; padding-right: 10px}
 
 #body-wrapper {height: 100%;}
+
 #option-wrapper{padding: 0px;margin-bottom: 20px;padding-left: 10px}
+#option-wrapper ul li.tituloMenuLateral {margin-top: 30px;}
+#option-wrapper ul li.subtituloMenuLateral {padding: 0px;}
 
 #ordenForm {margin-bottom: 20px}
 #tituloPag {margin-bottom: 20px}
 
-#option-wrapper ul li.tituloMenuLateral {margin-top: 30px;}
+#map {height: 300px;margin-top: 10px;}
 
-#option-wrapper ul li.subtituloMenuLateral {
-	padding: 0px;
-	
-}
 @media only screen and (max-width: 992px) {
     #menu .container{width: 100%; }
 }
