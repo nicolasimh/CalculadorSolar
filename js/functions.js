@@ -8,7 +8,11 @@ function preguntaEliminacion( event ){
     if ( ! confirm('¿Estas seguro que deseas eliminar este registro?')){ 
        event.preventDefault();
     } 
-} 
+}
+
+function setNumberDecimal( latitud ) {
+    return parseFloat(latitud).toFixed(5);
+}
 
 function localizame() {
     if (navigator.geolocation) { /* Si el navegador tiene geolocalizacion */
@@ -23,7 +27,7 @@ function localizame() {
 function coordenadas(position) {
     latitud = position.coords.latitude; /*Guardamos nuestra latitud*/
     longitud = position.coords.longitude; /*Guardamos nuestra longitud*/
-    initMap();
+    initMapCoordenadas();
 }
 
 function errores(err) {
@@ -42,9 +46,9 @@ function errores(err) {
     }
 }
 
-function initMap() {
-	$("#latitud").val(latitud);
-    $("#longitud").val(longitud);
+function initMapCoordenadas() {
+	$("#latitud").val( setNumberDecimal (latitud) );
+  $("#longitud").val( setNumberDecimal(longitud) );
 	var latlon = new google.maps.LatLng(latitud,longitud);
 	var myOptions = {
                 zoom: 13,
@@ -62,15 +66,35 @@ function initMap() {
                 title: "Fijar Posición del proyecto" 
             });
     marcador.addListener( 'dragend', function (event) {
-    	$("#latitud").val(this.getPosition().lat());
-    	$("#longitud").val(this.getPosition().lng());
+    	$("#latitud").val(setNumberDecimal (this.getPosition().lat()));
+    	$("#longitud").val(setNumberDecimal(this.getPosition().lng()));
       });
 }
 
-function toggleBounce() {
-  if (marker.getAnimation() !== null) {
-    marker.setAnimation(null);
-  } else {
-    marker.setAnimation(google.maps.Animation.BOUNCE);
-  }
+function initMapDireccion( ) {
+  var geoCoder = new google.maps.Geocoder($("#ubicacion").val());
+  var request = {address:$("#ubicacion").val()};
+
+  geoCoder.geocode(request, function(result, status){
+    var coorMarcador = new google.maps.LatLng(result[0].geometry.location.lat(), 
+                                        result[0].geometry.location.lng()
+                                      );  
+    var myOptions = {
+      zoom: 15,
+      center: coorMarcador,
+    };
+ 
+    var map = new google.maps.Map(document.getElementById("map"),myOptions);
+    var marcador = new google.maps.Marker({
+        draggable: true,
+                position: coorMarcador, /*Lo situamos en nuestro punto */
+                animation: google.maps.Animation.DROP,
+                map: map, /* Lo vinculamos a nuestro mapa */
+                title: "Fijar Posición del proyecto" 
+            });
+    marcador.addListener( 'dragend', function (event) {
+      $("#latitud").val(setNumberDecimal (this.getPosition().lat()));
+      $("#longitud").val(setNumberDecimal(this.getPosition().lng()));
+      });
+  });
 }

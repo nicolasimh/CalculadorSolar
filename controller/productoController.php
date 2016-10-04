@@ -65,7 +65,7 @@ switch ($_POST["event"]) {
 			}
 			
 		} else {
-			header("location: ../productos/ingresarProducto.php?result=errorIngreso");
+			header("location: ../productos/nuevoProducto.php?result=errorIngreso");
 		}
 		break;
 
