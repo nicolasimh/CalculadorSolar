@@ -15,6 +15,7 @@ Class PROYECTO {
 	private $potenciadiaria;
 	private $valorkw;
 	private $estado;
+	private $ubicacion;
 
 	function __construct ( $id ) {
 
@@ -22,12 +23,14 @@ Class PROYECTO {
 			$link = new Conexion ( );
 			$sql = "SELECT * FROM PROYECTO WHERE PROY_ID = '$id'";
 			$result = $link->getObj( $sql );
+			print_r($result);
 			$this->id 				= $result[0]->PROY_ID;
 			$this->rut  			= $result[0]->CL_RUT;
 			$this->mantenimiento 	= $result[0]->MANT_ID;
 			$this->factork 			= $result[0]->FACK_ID;
 			$this->fecha  			= $result[0]->PROY_FECHA;
 			$this->nombre			= $result[0]->PROY_NOMBRE;
+			$this->ubicacion 		= $result[0]->PROY_UBICACION;
 			$this->latitud 			= $result[0]->PROY_LATITUD;
 			$this->longitud 		= $result[0]->PROY_LONGITUD;
 			$this->potenciadiaria	= $result[0]->PROY_POTENCIADIARIA;
@@ -41,6 +44,7 @@ Class PROYECTO {
 			$this->factork 			= null;
 			$this->fecha  			= null;
 			$this->nombre			= null;
+			$this->ubicacion 		= null;
 			$this->latitud 			= null;
 			$this->longitud 		= null;
 			$this->potenciadiaria	= null;
@@ -76,7 +80,7 @@ Class PROYECTO {
 	}
 
 	public function getListado ( ) {
-		$sql = "SELECT P.PROY_ID, P.PROY_NOMBRE, C.CL_RAZONSOCIAL, P.PROY_ESTADO, P.PROY_TIPOCALCULO 
+		$sql = "SELECT P.PROY_ID, P.PROY_NOMBRE, C.CL_RAZONSOCIAL, P.PROY_ESTADO, P.PROY_TIPOCALCULO, P.CL_RUT
 				FROM PROYECTO P INNER JOIN CLIENTE C ON C.CL_RUT = P.CL_RUT
 				ORDER BY PROY_ESTADO";
 		$link = new Conexion ( );
@@ -126,6 +130,10 @@ Class PROYECTO {
 
 	public function getLEstado( ) {
 		return $this->estado;
+	}
+
+	public function getUbicacion() {
+		return $this->ubicacion;
 	}
 
 }

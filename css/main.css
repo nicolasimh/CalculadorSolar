@@ -36,3 +36,7 @@
     #option-wrapper{width: 100%; padding-left: 0px}
 }
 
+#modalModificarProyecto {
+    width: 900px !important;
+}
+

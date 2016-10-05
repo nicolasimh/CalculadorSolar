@@ -106,7 +106,7 @@
 
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
+		<div id="modalModificarProyecto" class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -127,6 +127,8 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="<?php echo RUTA;?>js/bootstrap.min.js"></script>
+	<script src="<?php echo RUTA?>js/functions.js"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=<?php echo API_KEY_GOOGLE_MAPS;?>"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$(".btn-warning").click(
@@ -134,7 +136,7 @@
 					var elemento = $(this).parent().parent().children("td:first-child").text();
 					var titulo = $(this).parent().parent().children("td.nombreProyecto").text();
 					$.ajax({
-						url: "modificar.php",
+						url: "modificarProyecto.php",
 						method: "POST",
 						data: { "id" : elemento },
 						dataType: "html"
@@ -142,8 +144,15 @@
 						function(html) {
 							$("#myModalLabel").text(titulo);
 							$(".modal-body").html( html );
+							localizame();
 						}
 					)
+				}
+			);
+
+			$("#buscarDireccion").click(
+				function(){
+					initMapDireccion();
 				}
 			);
 		
