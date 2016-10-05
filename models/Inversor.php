@@ -98,5 +98,12 @@
 		public function getRendimiento( ) {
 			return $this->rendimiento;
 		}
+
+		public function getListadoInversor(){
+			$sql = "SELECT * FROM INVERSOR";
+			$link = new Conexion ( );
+			$array = $link->getObj( $sql );
+			return $array;
+		}
 	} 
 ?>

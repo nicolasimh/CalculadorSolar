@@ -106,4 +106,11 @@
 		public function getAncho( ) {
 			return $this->ancho;
 		}
+
+		public function getListadoPanel(){
+			$sql = "SELECT * FROM PANEL";
+		$link = new Conexion ( );
+		$array = $link->getObj( $sql );
+		return $array;
+		}
 	} 
