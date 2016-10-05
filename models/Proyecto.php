@@ -55,6 +55,13 @@ Class PROYECTO {
 		return $link->query( $sql );
 	}
 
+	public function registrarSimple ( $cliente , $nombre , $ubicacion , $latitud , $longitud , $tipo ) {
+		$sql="INSERT INTO PROYECTO ( CL_RUT , PROY_NOMBRE , PROY_UBICACION , PROY_LATITUD , PROY_LONGITUD , PROY_TIPOCALCULO , PROY_FECHA , PROY_ESTADO )
+				VALUES ( '$cliente' , '$nombre' , '$ubicacion' , $latitud , $longitud , $tipo , '".date("Y-m-d")."' , 0);";
+		$link = new Conexion ( );
+		return $link->query( $sql );
+	}
+
 	public function modificar ($id , $rut , $mantenimiento , $factork, $fecha , $nombre, $latitud, $longitud, $potenciadiaria, $valorkw, $estado){
 
 		$sql="UPDATE PROYECTO SET CL_RUT= '$rut', MANT_ID='$mantenimiento', FACK_ID='$factork', PROY_FECHA='$fecha', PROY_NOMBRE='$nombre', PROY_LATITUD='$latitud', PROY_LONGITUD='$longitud', PROY_POTENCIADIARIA='$potenciadiaria', PROY_VALORKW='$valorkw', PROY_ESTADO='$estado' WHERE PROY_ID = '$id'";
@@ -69,7 +76,9 @@ Class PROYECTO {
 	}
 
 	public function getListado ( ) {
-		$sql = "SELECT * FROM PROYECTO ORDER BY PROY_NOMBRE";
+		$sql = "SELECT P.PROY_ID, P.PROY_NOMBRE, C.CL_RAZONSOCIAL, P.PROY_ESTADO, P.PROY_TIPOCALCULO 
+				FROM PROYECTO P INNER JOIN CLIENTE C ON C.CL_RUT = P.CL_RUT
+				ORDER BY PROY_ESTADO";
 		$link = new Conexion ( );
 		$array = $link->getObj( $sql );
 		return $array;

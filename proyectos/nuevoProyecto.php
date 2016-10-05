@@ -1,5 +1,8 @@
 <?php
 	require_once ("../config.php");
+	require_once ("../models/Cliente.php");
+	$cliente = new Cliente ( null );
+	$listaClientes = $cliente->getListado();
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +28,20 @@
 			<h3 id="tituloPag">Nuevo Proyecto</h3>
 			<form class="form-horizontal" method="post" action="../controller/proyectoController.php">
 				<input type="text" name="event" value="new" class="hide">
+				<div class="form-group has-feedback">
+					<label class="col-sm-2 control-label" for="nombre">Cliente</label>
+					<div class="col-sm-8">
+						<select class="form-control" required="required" name ="cliente">
+							<option value="">Seleccione un Cliente</option>
+							<?php
+								foreach ($listaClientes as $row) { ?>
+									<option value="<?php echo $row->CL_RUT?>"><?php echo $row->CL_RUT.' | '.$row->CL_RAZONSOCIAL; ?> </option>
+							<?php 
+								}
+							?>
+						</select>
+					</div>
+				</div>
 				<div class="form-group has-feedback">
 					<label class="col-sm-2 control-label" for="nombre">Nombre</label>
 					<div class="col-sm-8">
@@ -59,17 +76,16 @@
 					<div class="col-sm-8">
 						<div class="btn-group" data-toggle="buttons">
   							<label class="btn btn-default">
-    							<input name="tipoProyecto" type="radio" value="red" required="required"> Sistema en Red
+    							<input name="tipoProyecto" type="radio" value="0" required="required"> Sistema en Red
 							</label>
 							<label class="btn btn-default">
-							    <input name="tipoProyecto" type="radio" value="aislado" required="required"> Sistema Aislado
+							    <input name="tipoProyecto" type="radio" value="1" required="required"> Sistema Aislado
 							</label>
 						</div>
 					</div>
 				</div>
 				<div class="form-group">
     				<div class="col-sm-offset-2 col-sm-10">
-      					<input class="hide" name="accion" value="new">
                 		<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
     				</div>
   				</div>

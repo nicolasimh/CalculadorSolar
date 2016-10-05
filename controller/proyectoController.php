@@ -1,13 +1,10 @@
-<?php 
+<?php
+ini_set ('error_reporting', E_ALL);
 require_once("../config.php");
 require_once("../models/Proyecto.php");
-error_reporting(E_ALL);
-ini_set('display_errors', '1');
 session_start();
 
-print_r($_POST);
-
-switch ($_POST["accion"]) {
+switch ($_POST["event"]) {
 	case 'new':
 		$_SESSION["proyecto"]["nombre"] 	= $_POST["nombre"];
 		$_SESSION["proyecto"]["ubicacion"] 	= $_POST["ubicacion"];
@@ -18,12 +15,14 @@ switch ($_POST["accion"]) {
 		$proyecto = new Proyecto ( null );
 
 		if ($proyecto->getId()== null) {
-			if ( $proyecto->registrar( $_POST["nombre"] , $_POST["ubicacion"] , $_POST["latitud"] , $_POST["longitud"] , $_POST["tipoProyecto"]) ){
-				header( 'location: ../proyecto/index.php?result=success');
+			if ( $proyecto->registrarSimple( $_POST["cliente"] , $_POST["nombre"] , $_POST["ubicacion"] , $_POST["latitud"] , $_POST["longitud"] , $_POST["tipoProyecto"]) ){
+				$_SESSION["proyecto"] = null;
+				header('location: ../proyectos/index.php?result=success');
 			} else {
-				
+				header('location: ../proyectos/nuevoProyecto.php?result=error');
 			}
 		}
+		
 		break;
 	
 	default:

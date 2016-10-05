@@ -1,5 +1,6 @@
 <?php
 	require_once ("../config.php");
+	require_once("../models/Proyecto.php");
 ?>
 
 <!DOCTYPE html>
@@ -52,46 +53,52 @@
 					<th>Nombre</th>
 					<th>Cliente</th>
 					<th>Estado</th>
+					<th>Tipo</th>
 					<th></th>
 				</thead>	
 				<tbody>
 <?php 
 	$proyecto = new Proyecto ( null );
 	$listado = $proyecto->getListado( );
-	foreach ($listado as $row) { }?>
+	foreach ($listado as $row) { ?>
 					<tr>
-						<td>1</td>
-						<td class="nombreProyecto">Proyecto 1</td>
-						<td>Solsur</td>
-						<td><span class="label label-success">Terminado</span></td>
+						<td><?php echo $row->PROY_ID ?></td>
+						<td class="nombreProyecto"><?php echo $row->PROY_NOMBRE?></td>
+						<td><?php echo $row->CL_RAZONSOCIAL?></td>
+						<td><?php
+							switch ($row->PROY_ESTADO) {
+							 	case 0:?>
+							 		<span class="label label-info">Creado</span>
+							 	<?php break;
+							 	case 1:?>
+							 		<span class="label label-warning">Calculado</span>
+							 	<?php break;
+							 	case 2:?>
+							 		<span class="label label-success">Terminado</span>
+							 	<?php break;
+							 	case 3:?>
+							 		<span class="label label-danger">Descartado</span>
+							 	<?php break;
+							 } 
+							?>
+						</td>
+						<td><?php
+							if ( $row->PROY_TIPOCALCULO == 0 ) {?>
+								EN RED
+							<?php 
+							} else { ?>
+								AISLADO
+							<?php 
+							}
+							?>	
+						</td>
 						<td>
 							<button class="btn btn-xs btn-info" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-pushpin"></span> Ver</button>
 							<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Editar</button>
 							<button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span> Eliminar</button>
 						</td>
 					</tr>
-					<tr>
-						<td>2</td>
-						<td class="nombreProyecto">Proyecto 2</td>
-						<td>Mas energía S.A.</td>
-						<td><span class="label label-primary">En Curso</span></td>
-						<td>
-							<button class="btn btn-xs btn-info" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-pushpin"></span> Ver</button>
-							<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Editar</button>
-							<button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span> Eliminar</button>
-						</td>
-					</tr>
-					<tr>
-						<td>3</td>
-						<td class="nombreProyecto">Proyecto 3</td>
-						<td>Clean Energy S.A.</td>
-						<td><span class="label label-danger">Eliminado</span></td>
-						<td>
-							<button class="btn btn-xs btn-info" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-pushpin"></span> Ver</button>
-							<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Editar</button>
-							<button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span> Eliminar</button>
-						</td>
-					</tr>
+<?php	}?>
 				</tbody>
 			</table>
 		</div>
