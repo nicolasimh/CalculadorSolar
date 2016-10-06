@@ -10,35 +10,28 @@ Class VALORESK {
 	private $valor;
 
 
-	function __construct ( $id ) {
+	function __construct ( $idFactor ) {
 
-		if ( $id != null ) {
 			$link = new Conexion ( );
-			$sql = "SELECT * FROM VALORESK WHERE VALK_ID = '$id'";
-			$result = $link->getObj( $sql );
+			$sql = "SELECT * FROM VALORESK WHERE FACK_ID = '$idFactor'";
+			$result = $link->getObj( $sql ); print_r($result);
 			$this->id 			= $result[0]->VALK_ID;
 			$this->idFactor 	= $result[0]->FACK_ID;
-			$this->nombre		= $result[0]->VALK_NOMBRE;
+			$this->nombre		= $result[0]->VALK_MES;
 			$this->valor		= $result[0]->VALK_VALOR;
 			
-		} else {
-			$this->id 			= null;
-			$this->idFactor		= null;
-			$this->nombre 		= null;
-			$this->valor		= null;
-
-		}
+		
 	}
 
 	public function registrar ( $id , $idFactor , $nombre , $valor) {
-		$sql="INSERT INTO VALORESK ( VALK_ID , FACK_ID , VALK_NOMBRE , VALK_VALOR) VALUES ('$id', '$idFactor','$nombre','$valor')";
+		$sql="INSERT INTO VALORESK ( VALK_ID , FACK_ID , VALK_MES , VALK_VALOR) VALUES ('$id', '$idFactor','$nombre','$valor')";
 		$link = new Conexion ( );
 		return $link->query( $sql );
 	}
 
 	public function modificar ( $id , $nombre , $valor ) {
 
-		$sql="UPDATE VALORESK SET VALK_NOMBRE = '$nombre' , VALK_VALOR = '$valor'  WHERE VALK_ID = '$id'";
+		$sql="UPDATE VALORESK SET VALK_MES = '$nombre' , VALK_VALOR = '$valor'  WHERE VALK_ID = '$id'";
 		$link = new Conexion ( );
 		return $link->query( $sql );
 	}
@@ -50,7 +43,7 @@ Class VALORESK {
 	}
 
 	public function getListado ( ) {
-		$sql = "SELECT * FROM VALORESK ORDER BY VALK_NOMBRE";
+		$sql = "SELECT * FROM VALORESK ORDER BY VALK_MES";
 		$link = new Conexion ( );
 		$array = $link->getObj( $sql );
 		return $array;

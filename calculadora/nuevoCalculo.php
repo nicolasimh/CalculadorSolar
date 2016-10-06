@@ -29,15 +29,15 @@
     <div class="clearfix" id="wrapper">
 		<div class="col-md-9 pull-left" id="body-wrapper">
 			<h3 id="tituloPag">Calcular Sistema Fotovoltaico</h3>
-			<form class="form-horizontal" action="../controller/usuarioController.php" method="post">
+			<form class="form-horizontal" action="../controller/calcularController.php" method="post">
   				<div class="form-group">
     				<label for="proyecto" class="col-sm-2 control-label">Proyecto</label>
     					<div class="col-sm-4">
-							<select class="form-control" required="required">
+							<select class="form-control" name="proyecto" required="required">
                     <option value="">Seleccione un Proyecto</option>
                     <?php 
                         foreach ($listaProyecto as $row) {
-                          echo '<option value="'.$row->PROY_ID.'">'.$row->proy_nombre.'</option>';
+                          echo '<option value="'.$row->PROY_ID.'">'.$row->PROY_NOMBRE.'</option>';
                         }?>
               </select>
     				</div>
@@ -45,7 +45,8 @@
   				<div class="form-group">
     				<label for="inclinacion" class="col-sm-2 control-label">Inclinación</label>º Grados
     					<div class="col-sm-1">
-							   <select multiple class="form-control" required="required"> 
+							   <select  class="form-control" name="inclinacion" required="required"> 
+                    <option value="">Seleccione</option>
                     <option value="0">0</option>
                     <option value="5">5</option>
                     <option value="10">10</option>
@@ -71,7 +72,7 @@
          <div class="form-group">
             <label for="paneles" class="col-sm-2 control-label">Panel</label>
               <div class="col-sm-3">
-              <select class="form-control" required="required">
+              <select class="form-control" name="panel" required="required">
                     <option value="">Seleccione un Panel</option>
                     <?php 
                         foreach ($listaPanel as $row) {
@@ -80,16 +81,16 @@
               </select>
             </div>
             <label for="npaneles" class="col-sm-2 control-label">Nº Paneles</label>
-              <div class="col-sm-1" required="required">
-              <input type="text" class="form-control" id="entero" name="entero">
+              <div class="col-sm-1">
+              <input type="text" class="form-control" id="entero" name="entero" required="required">
               </div>
           </div>
 
           <div class="form-group">
             <label for="inversor" class="col-sm-2 control-label">Inversor</label>
               <div class="col-sm-3">
-              <select class="form-control" required="required">
-                    <option value="">Seleccione un Inversor</option>
+              <select class="form-control" name="inversor" required="required">
+                    <option value="" >Seleccione un Inversor</option>
                     <?php 
                         foreach ($listaInversor as $row) {
                           echo '<option value="'.$row->PROD_ID.'">'.$row->PROD_NOMBRE.' (Rendimiento '.$row->INV_RENDIMIENTO.'% )'.'</option>';
@@ -99,15 +100,15 @@
           </div>
           <div class="form-group">
             <label for="mantenimiento" class="col-sm-2 control-label">Factor de Mantenimiento</label>
-              <div class="col-sm-10" required="required">
+              <div class="col-sm-10" name="mantenimiento" >
                   <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1"> Alto
+                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1" required="required"> Alto
                     </label>
                     <label class="radio-inline">
-                      <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="0.95"> Medio
+                      <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="0.95" required="required"> Medio
                     </label>
                     <label class="radio-inline">
-                      <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="0.9"> Bajo
+                      <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="0.9" required="required"> Bajo
                     </label>
               </div>
           </div>

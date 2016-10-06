@@ -16,6 +16,7 @@ Class PROYECTO {
 	private $valorkw;
 	private $estado;
 	private $ubicacion;
+	private $tipo;
 
 	function __construct ( $id ) {
 
@@ -23,7 +24,6 @@ Class PROYECTO {
 			$link = new Conexion ( );
 			$sql = "SELECT * FROM PROYECTO WHERE PROY_ID = '$id'";
 			$result = $link->getObj( $sql );
-			print_r($result);
 			$this->id 				= $result[0]->PROY_ID;
 			$this->rut  			= $result[0]->CL_RUT;
 			$this->mantenimiento 	= $result[0]->MANT_ID;
@@ -36,7 +36,7 @@ Class PROYECTO {
 			$this->potenciadiaria	= $result[0]->PROY_POTENCIADIARIA;
 			$this->valorkw 			= $result[0]->PROY_VALORKW;
 			$this->estado			= $result[0]->PROY_ESTADO;
-			
+			$this->tipo 			= $result[0]->PROY_TIPOCALCULO;
 		} else {
 			$this->id 				= null;
 			$this->rut  			= null;
@@ -50,6 +50,7 @@ Class PROYECTO {
 			$this->potenciadiaria	= null;
 			$this->valorkw 			= null;
 			$this->estado			= null;
+			$this->tipo 			= null;
 		}
 	}
 
@@ -134,6 +135,10 @@ Class PROYECTO {
 
 	public function getUbicacion() {
 		return $this->ubicacion;
+	}
+
+	public function getTipo() {
+		return $this->tipo;
 	}
 
 }

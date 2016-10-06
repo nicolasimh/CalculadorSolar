@@ -3,8 +3,9 @@
 	<label class="col-sm-2 control-label" for="tipoInversor">Tipo de Inversor</label>
 	<div class="col-sm-5">
 		<select id="tipoInversor" name="tipoInversor" class="form-control" required="required">
-			<option value="tipoA">Tipo A</option>
-			<option value="tipoB">Tipo B</option>
+			<option value="">Seleccione tipo de Inversor</option>
+			<option value="tipoA">Aislado</option>
+			<option value="tipoB">En Red</option>
 		</select>
 	</div>
 </div>

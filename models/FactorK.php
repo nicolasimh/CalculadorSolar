@@ -9,22 +9,15 @@ Class FACTORK {
 	private $grado;
 
 
-	function __construct ( $id ) {
+	function __construct ( $latitud, $grado ) {
 
-		if ( $id != null ) {
 			$link = new Conexion ( );
-			$sql = "SELECT * FROM FACTORK WHERE FACK_ID = '$id'";
+			$sql = "SELECT * FROM FACTORK WHERE FACK_LATITUD = '$latitud' AND FACK_GRADO = $grado ";
 			$result = $link->getObj( $sql );
 			$this->id 		= $result[0]->FACK_ID;
 			$this->latitud 	= $result[0]->FACK_LATITUD;
 			$this->grado	= $result[0]->FACK_GRADO;
-			
-		} else {
-			$this->id 		= null;
-			$this->latitud 	= null;
-			$this->grado	= null;
 
-		}
 	}
 
 	public function registrar ( $id , $latitud , $grado) {
@@ -48,6 +41,14 @@ Class FACTORK {
 
 	public function getListado ( ) {
 		$sql = "SELECT * FROM FACTORK ORDER BY FACK_LATITUD";
+		$link = new Conexion ( );
+		$array = $link->getObj( $sql );
+		return $array;
+	}
+
+	public function getValoresK ( ) {
+		$idFactor = $this->id;
+		$sql = "SELECT VALK_MES , VALK_VALOR FROM VALORESK WHERE FACK_ID = '$idFactor'";
 		$link = new Conexion ( );
 		$array = $link->getObj( $sql );
 		return $array;

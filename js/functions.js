@@ -11,7 +11,7 @@ function preguntaEliminacion( event ){
 }
 
 function setNumberDecimal( latitud ) {
-    return parseFloat(latitud).toFixed(5);
+    return parseFloat(latitud).toFixed(7);
 }
 
 function localizame() {
@@ -27,7 +27,7 @@ function localizame() {
 function coordenadas(position) {
     latitud = position.coords.latitude; /*Guardamos nuestra latitud*/
     longitud = position.coords.longitude; /*Guardamos nuestra longitud*/
-    initMapCoordenadas();
+    initMapCoordenadas( latitud , longitud );
 }
 
 function errores(err) {
@@ -46,12 +46,12 @@ function errores(err) {
     }
 }
 
-function initMapCoordenadas() {
+function initMapCoordenadas( latitud , longitud ) {
 	$("#latitud").val( setNumberDecimal (latitud) );
   $("#longitud").val( setNumberDecimal(longitud) );
 	var latlon = new google.maps.LatLng(latitud,longitud);
 	var myOptions = {
-                zoom: 13,
+                zoom: 15,
                 center: latlon
             };
     map = new google.maps.Map(document.getElementById('map'), myOptions);
@@ -83,8 +83,9 @@ function initMapDireccion( ) {
       zoom: 15,
       center: coorMarcador,
     };
- 
+
     var map = new google.maps.Map(document.getElementById("map"),myOptions);
+
     var marcador = new google.maps.Marker({
         draggable: true,
                 position: coorMarcador, /*Lo situamos en nuestro punto */
@@ -92,6 +93,8 @@ function initMapDireccion( ) {
                 map: map, /* Lo vinculamos a nuestro mapa */
                 title: "Fijar Posición del proyecto" 
             });
+    $("#latitud").val( setNumberDecimal (marcador.getPosition().lat()) );
+    $("#longitud").val( setNumberDecimal(marcador.getPosition().lng()) );
     marcador.addListener( 'dragend', function (event) {
       $("#latitud").val(setNumberDecimal (this.getPosition().lat()));
       $("#longitud").val(setNumberDecimal(this.getPosition().lng()));
