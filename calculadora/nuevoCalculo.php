@@ -33,14 +33,23 @@
   				<div class="form-group">
     				<label for="proyecto" class="col-sm-2 control-label">Proyecto</label>
     					<div class="col-sm-4">
-							<select class="form-control" name="proyecto" required="required">
+							<select class="form-control" name="proyecto" id="proyecto" required="required">
                     <option value="">Seleccione un Proyecto</option>
                     <?php 
                         foreach ($listaProyecto as $row) {
-                          echo '<option value="'.$row->PROY_ID.'">'.$row->PROY_NOMBRE.'</option>';
+                          if($row->PROY_TIPOCALCULO=="0")
+                            $tipo="Sistema en Red";
+                          else
+                            $tipo="Sistema Aislado";                         
+                          
+                          echo '<option value="'.$row->PROY_ID.'">'.$row->PROY_NOMBRE.' - '.$tipo.'</option>';
                         }?>
               </select>
     				</div>
+             <a id="tipoproyecto" value=""></a>
+            <div class="col-sm-offset-0 col-sm-3">
+                <a href="../proyectos/nuevoProyecto.php" class="btn btn-info btn-sm" role="button"><span class="glyphicon glyphicon-plus"></span> Crear nuevo Proyecto</a>
+            </div>
   				</div>
   				<div class="form-group">
     				<label for="inclinacion" class="col-sm-2 control-label">Inclinación</label>º Grados
@@ -112,12 +121,12 @@
                     </label>
               </div>
           </div>
-  				<div class="form-group">
-    				<div class="col-sm-offset-2 col-sm-10">
-      					<input class="hide" name="accion" value="new">
-                <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
-    				</div>
-  				</div>
+
+        <div id="formTipo">
+        </div>
+
+
+  				
 			</form>
 		</div>
 	</div>
@@ -129,10 +138,26 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
     $('#entero').numeric();
-     $('#decimal').numeric(","); 
-		
+    $('#decimal').numeric(","); 
+    $('#proyecto').change(function(){
+      var texto = $('#proyecto').val();
+      $.ajax({
+              url: "tipoProyecto.php",
+              method: "POST",
+              data: { "id" : texto },
+              dataType: "html"
+            }).done(
+              function(html) {
+                $("#formTipo").html( html );
+              }
+            );
+    })
+     
+
 		});
-	</script>
+
+  
+  </script>
 
 </body>
 </html>

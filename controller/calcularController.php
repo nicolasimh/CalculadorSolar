@@ -13,17 +13,16 @@ require_once("../models/ValoresRad.php");
 $proyecto = new Proyecto ($_POST['proyecto']);
 $panel = new Panel ($_POST['panel']);
 $rend = new Inversor ($_POST['inversor']);
-
+print_r($_POST);
 
 if (!empty($_POST['accion'])){
 	$radiacion = array(1,1,1,2,2,2,3,3,3,4,4,4);
-	$latitud = int ($proyecto->getLatitud());
 	$inclinacion = $_POST['inclinacion'];
 	if ($proyecto->getLongitud()<0){
 		$longitud = ' S';
 	}
 	if ($proyecto->getLatitud()<0){
-		$latitud = int(($proyecto->getLatitud())*-1);
+		$latitud = (int) ($proyecto->getLatitud()*-1);
 		if($latitud%2 != 0){
 			$latitud= $latitud +1;
 		}
@@ -35,6 +34,9 @@ if (!empty($_POST['accion'])){
 		echo $i.' -> '.$RH[$i].'<br>';
 	}	
 	$area= $panel->getAlto()*$panel->getAncho();
+	echo $area;
+	$area= $area * ($_POST['entero']);
+	echo $area;
 	$rend= $rend->getRendimiento()/100;
 	$mant = ($_POST['inlineRadioOptions']);
 
@@ -42,9 +44,8 @@ if (!empty($_POST['accion'])){
 		$PPM[$i]= $RH[$i]*$area*$rend*$mant;
 		$PPA= $PPA + $PPM[$i];
 		echo $i.' -> '.$PPM[$i].'<br>';
-		
 	}	
-	echo $PPA;
+	
 }
 else{
 	header( 'location: ../calculadora/nuevoCalculo.php');
