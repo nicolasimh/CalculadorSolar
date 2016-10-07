@@ -72,7 +72,9 @@ function initMapCoordenadas( latitud , longitud ) {
 }
 
 function initMapDireccion( ) {
-  var geoCoder = new google.maps.Geocoder($("#ubicacion").val());
+  //alert("direccion");
+  var geoCoder = new google.maps.Geocoder($("#ubicacion").val());0
+
   var request = {address:$("#ubicacion").val()};
 
   geoCoder.geocode(request, function(result, status){
@@ -101,3 +103,27 @@ function initMapDireccion( ) {
       });
   });
 }
+
+function initMapCoordenadasModificar( latitud , longitud ) {
+  var latlon = new google.maps.LatLng(latitud,longitud);
+  var myOptions = {
+                zoom: 15,
+                center: latlon
+            };
+    map = new google.maps.Map(document.getElementById('map'), myOptions);
+
+    coorMarcador = new google.maps.LatLng(latitud,longitud); /Un nuevo punto con nuestras coordenadas para el marcador (flecha) */
+                
+    var marcador = new google.maps.Marker({
+        draggable: true,
+                position: coorMarcador, /*Lo situamos en nuestro punto */
+                animation: google.maps.Animation.DROP,
+                map: map, /* Lo vinculamos a nuestro mapa */
+                title: "Fijar Posición del proyecto" 
+            });
+    marcador.addListener( 'dragend', function (event) {
+      $("#latitud").val(setNumberDecimal (this.getPosition().lat()));
+      $("#longitud").val(setNumberDecimal(this.getPosition().lng()));
+      });
+}
+

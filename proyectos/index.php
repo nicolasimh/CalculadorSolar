@@ -114,7 +114,7 @@
 	      		</div>
 	      		<form class="form-horizontal">
 	      		<div class="modal-body">
-	        
+					
 	      		</div>
 	      		<div class="modal-footer">
 	        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -126,13 +126,16 @@
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=<?php echo API_KEY_GOOGLE_MAPS;?>"></script>
 	<script src="<?php echo RUTA;?>js/bootstrap.min.js"></script>
 	<script src="<?php echo RUTA?>js/functions.js"></script>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=<?php echo API_KEY_GOOGLE_MAPS;?>"></script>
+	
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$(".btn-warning").click(
+
 				function(event){
+					$(".modal-body").html("");
 					var elemento = $(this).parent().parent().children("td:first-child").text();
 					var titulo = $(this).parent().parent().children("td.nombreProyecto").text();
 					$.ajax({
@@ -144,17 +147,13 @@
 						function(html) {
 							$("#myModalLabel").text(titulo);
 							$(".modal-body").html( html );
-							localizame();
 						}
-					)
+					);
+
 				}
 			);
 
-			$("#buscarDireccion").click(
-				function(){
-					initMapDireccion();
-				}
-			);
+
 		
 		});
 	</script>
