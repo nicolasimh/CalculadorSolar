@@ -67,15 +67,39 @@ Class PROYECTO {
 		return $link->query( $sql );
 	}
 
-	public function modificar ($id , $rut , $mantenimiento , $factork, $fecha , $nombre, $latitud, $longitud, $potenciadiaria, $valorkw, $estado){
-
-		$sql="UPDATE PROYECTO SET CL_RUT= '$rut', MANT_ID='$mantenimiento', FACK_ID='$factork', PROY_FECHA='$fecha', PROY_NOMBRE='$nombre', PROY_LATITUD='$latitud', PROY_LONGITUD='$longitud', PROY_POTENCIADIARIA='$potenciadiaria', PROY_VALORKW='$valorkw', PROY_ESTADO='$estado' WHERE PROY_ID = '$id'";
+	public function modificar ( $cliente , $nombre , $ubicacion , $latitud , $longitud , $tipoProyecto ){
+		$sql="DELETE FROM ART_PERTENECE_PROY WHERE PROY_ID = $this->id;";
 		$link = new Conexion ( );
-		return $link->query( $sql );
+		if ( $link->query( $sql ) ) {
+			$sql="DELETE FROM PROY_TIENE_PROD WHERE PROY_ID = $this->id;";
+			$link = new Conexion ( );
+			if ( $link->query( $sql ) ) {
+				$link = new Conexion ( );
+				$sql="UPDATE PROYECTO 
+						SET CL_RUT				= 	'$cliente',
+							PROY_NOMBRE			=	'$nombre',
+							PROY_UBICACION		=	'$ubicacion',
+							PROY_LATITUD		=	$latitud, 
+							PROY_LONGITUD		=	$longitud,
+							PROY_ESTADO			=	0,
+							PROY_TIPOCALCULO	=	$tipoProyecto,
+							PROY_FECHA			=	'".date("Y-m-d")."',
+							MANT_ID 			= 	null,
+							FACK_ID 			=	null,
+							PROY_POTENCIADIARIA	=	null,
+							PROY_VALORKW		=	null
+						WHERE PROY_ID = $this->id;";		
+				return $link->query( $sql );
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
 	}
 
 	public function eliminar( ) {
-		$sql="DELETE FROM PROYECTO WHERE PROY_ID = '$this->id'";
+		$sql="UPDATE PROYECTO SET PROY_ESTADO = 3 WHERE PROY_ID = '$this->id'";
 		$link = new Conexion ( );
 		return $link->query( $sql );
 	}
@@ -129,7 +153,7 @@ Class PROYECTO {
 		return $this->valorkw;
 	}
 
-	public function getLEstado( ) {
+	public function getEstado( ) {
 		return $this->estado;
 	}
 

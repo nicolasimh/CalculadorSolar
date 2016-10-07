@@ -93,9 +93,22 @@
 							?>	
 						</td>
 						<td>
-							<button class="btn btn-xs btn-info" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-pushpin"></span> Ver</button>
+							<?php 
+								if ( $row->PROY_ESTADO != 3 ) {?>
+									<a class="btn btn-xs btn-info" href="verProyecto.php?id=<?php echo $row->PROY_ID ?>"><span class="glyphicon glyphicon-pushpin"></span> Ver</a>
+							<?php	}
+							?>
+							
 							<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Editar</button>
-							<button class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span> Eliminar</button>
+							<?php 
+								if ( $row->PROY_ESTADO != 3 ) {?>
+									<form method="post" action="../controller/proyectoController.php" style="display:inline"> 
+										<input class="hide" name="id" value="<?php echo $row->PROY_ID ?>" />
+										<input class="hide" name="event" value="del" />
+										<button onclick="return confirm('¿Está seguro que desea descartar este proyecto?');" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span> Descartar</button>
+									</form>
+							<?php	}
+							?>
 						</td>
 					</tr>
 <?php	}?>
@@ -110,16 +123,12 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+					<h4 class="modal-title" id="myModalLabel"></h4>
 	      		</div>
-	      		<form class="form-horizontal">
+	      		<form class="form-horizontal" action="../controller/proyectoController.php" method="post">
 	      		<div class="modal-body">
 					
-	      		</div>
-	      		<div class="modal-footer">
-	        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        		<button type="button" class="btn btn-primary">Save changes</button>
-	      		</div>
+	      		</div> 
 	      		</form>
 	    	</div>
 	 	</div>
@@ -133,7 +142,6 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$(".btn-warning").click(
-
 				function(event){
 					$(".modal-body").html("");
 					var elemento = $(this).parent().parent().children("td:first-child").text();
@@ -152,8 +160,6 @@
 
 				}
 			);
-
-
 		
 		});
 	</script>

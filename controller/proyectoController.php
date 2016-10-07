@@ -24,7 +24,23 @@ switch ($_POST["event"]) {
 		}
 		
 		break;
-	
+	case 'alter':
+		$proyecto = new Proyecto ( $_POST["id"] );
+
+		if ( $proyecto->modificar( $_POST["cliente"] , $_POST["nombre"] , $_POST["ubicacion"] , $_POST["latitud"] , $_POST ["longitud"] , $_POST["tipoProyecto"] ) ) {
+			header('location: ../proyectos/index.php?result=success');
+		} else {
+			//header('location: ../proyectos/index.php?result=editError');
+		}
+		break;
+	case 'del':
+		$proyecto = new Proyecto ($_POST["id"]);
+		if ( $proyecto->eliminar( ) ) {
+			header('location: ../proyectos/index.php?result=delSuccess');
+		} else {
+			header('location: ../proyectos/index.php?result=delError');
+		}
+		break;
 	default:
 		# code...
 		break;

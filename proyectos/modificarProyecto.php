@@ -8,7 +8,8 @@ $listaClientes = $cliente->getListado();
 $proyecto = new Proyecto( $_POST["id"] );
 ?>
 
-	<input type="text" name="event" value="new" class="hide">
+	<input type="text" name="event" value="alter" class="hide">
+	<input type="text" name="id" value="<?php echo $proyecto->getId();?>" class="hide">
 	<div class="form-group has-feedback">
 		<label class="col-sm-2 control-label" for="nombre">Cliente</label>
 		<div class="col-sm-8">
@@ -56,31 +57,33 @@ $proyecto = new Proyecto( $_POST["id"] );
 		<label class="col-sm-2 control-label" for="nombre">Tipo de Proyecto</label>
 		<div class="col-sm-10">
 			<div class="btn-group" data-toggle="buttons">
-					<label class="btn btn-default <?php if($proyecto->getTipo() == 0) echo 'active'; ?>">
-					<input name="tipoProyecto" type="radio" value="0" required="required"> Sistema en Red
+					<label id="red" class="btn btn-default <?php if($proyecto->getTipo() == 0) echo 'active'; ?>">
+					<input name="tipoProyecto" type="radio" value="0" required="required" <?php if($proyecto->getTipo() == 0) echo 'checked'; ?> > Sistema en Red
 				</label>
-				<label class="btn btn-default <?php if($proyecto->getTipo() == 1) echo 'active'; ?>">
-				    <input name="tipoProyecto" type="radio" value="1" required="required"> Sistema Aislado
+				<label id="red" class="btn btn-default <?php if($proyecto->getTipo() == 1) echo 'active'; ?>">
+				    <input name="tipoProyecto" type="radio" value="1" required="required" <?php if($proyecto->getTipo() == 1) echo 'checked'; ?>> Sistema Aislado
 				</label>
 			</div>
 		</div>
 	</div>
 	<div class="form-group">
 		<div class="col-sm-offset-2 col-sm-10">
-    		<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
+    		<button onclick="return confirm('¿Está seguro que desea modificar el proyecto?\nEl estado cambiará a \”Creado\” y se eliminarán todos los cálculos');" type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Guardar</button>
 		</div>
 	</div>
 	<script type="text/javascript">
 	$(document).ready(function(){
-					var lat = $("#latitud").val();
-					var lon = $("#longitud").val();
-					initMapCoordenadasModificar(lat,lon);	
+		var lat = $("#latitud").val();
+		var lon = $("#longitud").val();
+		initMapCoordenadasModificar(lat,lon);	
 
-								$("#buscarDireccion").click(
-				function(){
-					initMapDireccion();
-				}
-			);	
+		$("#")
+
+		$("#buscarDireccion").click(
+			function(){
+				initMapDireccion();
+			}
+		);	
 				});
 
 	</script>
