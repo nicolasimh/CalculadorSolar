@@ -134,7 +134,7 @@
 	 	</div>
 	</div>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="<?php echo RUTA;?>js/jquery-1.11.3.js"></script>
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=<?php echo API_KEY_GOOGLE_MAPS;?>"></script>
 	<script src="<?php echo RUTA;?>js/bootstrap.min.js"></script>
 	<script src="<?php echo RUTA?>js/functions.js"></script>
