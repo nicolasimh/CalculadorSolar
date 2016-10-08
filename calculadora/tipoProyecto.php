@@ -20,7 +20,7 @@
 
   	<BR>
   	<div class="form-group">
-  		<div class="col-sm-offset-2 col-sm-2"><h3 style="margin:0;">Consumo</h3></div>
+  		<div class="col-sm-offset-2 col-sm-4"><h3 style="margin:0;">Consumo Promedio Diario</h3></div>
   		<div class="col-sm-offset-1 col-sm-3">
                 <a href="../artefactos/nuevoArtefacto.php" class="btn btn-info btn-sm" role="button"><span class="glyphicon glyphicon-plus"></span> Crear nuevo Artefacto</a>
         </div> 
@@ -33,7 +33,7 @@
 					<th>Artefactos</th>
 					<th>Consumo kWh</th>
 					<th>Horas Promedio diaria</th>
-					<th></th>
+					<th>Total Consumo Promedio día</th>
 				</thead>	
                 <?php 
                     foreach ($listadoArtefactos as $row) {?>
@@ -46,11 +46,12 @@
 						<td >
               				<input style="width:40px" type="text" class="entero" name="horas" required="required">
               			</td>
+              			<td>1</td>
 					</tr>	
 				<?php } ?>
 		
 		</table>
-		
+		<div class="col-sm-offset-2 col-sm-5"><h3>Factor de Correccion Consumo</h3></div>
 		<table class="table" style="margin-left:170px; width:65%;">
 			<thead>
 				<th>Mes</th>
@@ -70,40 +71,40 @@
 			<tr>
 				<td> Factor</td>
 				<td>
-					<input style="width:25px;" type="text" class="entero" name="enero" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="enero" required="required">
 				</td>
 				<td>
-					<input style="width:25px;" type="text" class="entero" name="febrero" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="febrero" required="required">
 				</td>
 				<td>
-					<input style="width:25px;" type="text" class="entero" name="marzo" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="marzo" required="required">
 				</td>
 				<td>
-					<input style="width:25px;" type="text" class="entero" name="abril" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="abril" required="required">
 				</td>
 				<td>
-					<input style="width:25px;" type="text" class="entero" name="mayo" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="mayo" required="required">
 				</td>
 				<td>
-					<input style="width:25px;" type="text" class="entero" name="junio" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="junio" required="required">
 				</td>
 				<td>
-					<input style="width:25px;" type="text" class="entero" name="julio" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="julio" required="required">
 				</td>
 				<td>
-					<input style="width:25px;" type="text" class="entero" name="agosto" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="agosto" required="required">
 				</td>
 				<td>
-					<input style="width:25px;" type="text" class="entero" name="septiembre" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="septiembre" required="required">
 				</td>
 				<td>
-					<input style="width:25px;" type="text" class="entero" name="octubre" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="octubre" required="required">
 				</td>
 				<td>
-					<input style="width:25px;" type="text" class="entero" name="noviembre" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="noviembre" required="required">
 				</td>
 				<td>
-					<input style="width:25px;" type="text" class="entero" name="diciembre" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="diciembre" required="required">
 				</td>
 			</tr>
 		</table><br><br>
