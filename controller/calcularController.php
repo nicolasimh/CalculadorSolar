@@ -15,6 +15,8 @@ $panel = new Panel ($_POST['panel']);
 $rend = new Inversor ($_POST['inversor']);
 print_r($_POST);
 
+$proyecto->clientWebServices();
+
 if (!empty($_POST['accion'])){
 	$radiacion = array(1,1,1,2,2,2,3,3,3,4,4,4);
 	$inclinacion = $_POST['inclinacion'];

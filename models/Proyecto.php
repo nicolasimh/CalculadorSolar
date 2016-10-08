@@ -113,6 +113,13 @@ Class PROYECTO {
 		return $array;
 	}
 
+	public function clientWebServices ( ) {
+		$param = "api_key=".API_KEYs_WS."&lat=".(int)($this->latitud*-1)."&lon=".(int)($this->longitud-40);
+
+		echo $param."<br>";
+		$array = array();
+	}
+
 	public function getId( ) {
 		return $this->id;
 	}
