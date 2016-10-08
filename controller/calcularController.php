@@ -37,7 +37,7 @@ if (!empty($_POST['accion'])){
 	}	
 	$area= $panel->getAlto()*$panel->getAncho();
 	echo $area;
-	$area= $area * ($_POST['entero']);
+	$area= $area * ($_POST['npanel']);
 	echo $area;
 	$rend= $rend->getRendimiento()/100;
 	$mant = ($_POST['inlineRadioOptions']);

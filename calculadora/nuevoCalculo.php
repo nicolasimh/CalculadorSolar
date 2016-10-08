@@ -46,8 +46,8 @@
                         }?>
               </select>
     				</div>
-             <a id="tipoproyecto" value=""></a>
-            <div class="col-sm-offset-0 col-sm-3">
+             <input class="hide" id="tipoproyecto" value="">
+            <div class="col-sm-offset-1 col-sm-3">
                 <a href="../proyectos/nuevoProyecto.php" class="btn btn-info btn-sm" role="button"><span class="glyphicon glyphicon-plus"></span> Crear nuevo Proyecto</a>
             </div>
   				</div>
@@ -91,7 +91,7 @@
             </div>
             <label for="npaneles" class="col-sm-2 control-label">Nº Paneles</label>
               <div class="col-sm-1">
-              <input type="text" class="form-control" id="entero" name="entero" required="required">
+              <input type="text" class="form-control entero" name="npanel" required="required">
               </div>
           </div>
 
@@ -124,8 +124,6 @@
 
         <div id="formTipo">
         </div>
-
-
   				
 			</form>
 		</div>
@@ -137,8 +135,8 @@
   <script src="<?php echo RUTA;?>js/functions.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-    $('#entero').numeric();
-    $('#decimal').numeric(","); 
+    $('.entero').numeric();
+    $('.decimal').numeric(","); 
     $('#proyecto').change(function(){
       var texto = $('#proyecto').val();
       $.ajax({

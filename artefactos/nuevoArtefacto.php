@@ -34,7 +34,7 @@
     					</div>
   				</div>
   				<div class="form-group">
-    				<label for="consumo" class="col-sm-2 control-label">Consumo Kw</label>
+    				<label for="consumo" class="col-sm-2 control-label">Consumo kWh </label>
     					<div class="col-sm-10">
 							<input type="float" class="form-control" id="consumo" name="consumo">
     					</div>
