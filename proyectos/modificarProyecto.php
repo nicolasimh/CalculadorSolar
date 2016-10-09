@@ -73,11 +73,13 @@ $proyecto = new Proyecto( $_POST["id"] );
 	</div>
 	<script type="text/javascript">
 	$(document).ready(function(){
+		/*
 		var lat = $("#latitud").val();
 		var lon = $("#longitud").val();
 		initMapCoordenadasModificar(lat,lon);	
+*/
+		initMapCoordenadasModificar();
 
-		$("#")
 
 		$("#buscarDireccion").click(
 			function(){

@@ -20,10 +20,11 @@ if (!empty($_POST['accion'])){
 
 	/**** Consumimos web Services para obtener el factor de Radiación Horizontal ****/
 	$radiacion = $proyecto->clientWebServices();
-	$_SESSION["calculo"]["RADIACION"] = $radiacion;
+	
 	if ( $radiacion != null ) {
 		/**** Obtenemos Factor K según latitud, longitud e inclinación ****/
 		$inclinacion = $_POST['inclinacion'];
+
 		if ($proyecto->getLongitud()<0){
 			$longitud = ' S';
 		}
@@ -43,17 +44,17 @@ if (!empty($_POST['accion'])){
 				$_SESSION["calculo"]["FACTORK"][$i] = $valoresK[$i]->VALK_VALOR;
 				$RH[$i]= $valoresK[$i]->VALK_VALOR*$radiacion[$i];
 			}
-			$_SESSION["calculo"]["RH"] = $RH;
+			
 
 			/**** Asociamos la cantidad de paneles al proyecto ****/
 			if ( $proyecto->asociarProducto($panel->getId() , $panel->getPrecioVenta() , $_POST['npanel']) ) {
 				$area= $panel->getAlto()*$panel->getAncho()*$_POST['npanel'];
-				$_SESSION["calculo"]["AREA"] = $area;
+				
 
 				/**** Asociamos el Inversor al Proyecto ****/
 				if ( $proyecto->asociarProducto($inversor->getId() , $inversor->getPrecioVenta() , 1 ) ) {
 					$rend= $inversor->getRendimiento()/100;
-					$_SESSION["calculo"]["RENDIMIENTO"] = $rend;
+					
 					if ( $proyecto->asociarFactorMantenimiento( $mantenimiento->getId() ))
 					$mant = $mantenimiento->getValor();
 					$_SESSION["calculo"]["MANTENCION"] = $mant;
@@ -62,6 +63,12 @@ if (!empty($_POST['accion'])){
 						$PPA= $PPA + $PPM[$i];
 					}
 
+					$_SESSION["calculo"]["PROY_ID"] = $_POST["proyecto"];
+					$_SESSION["calculo"]["RADIACION"] = $radiacion;
+					$_SESSION["calculo"]["INCLINACION"] = $inclinacion;
+					$_SESSION["calculo"]["AREA"] = $area;
+					$_SESSION["calculo"]["RH"] = $RH;
+					$_SESSION["calculo"]["RENDIMIENTO"] = $rend;
 					$_SESSION["calculo"]["PPM"] = $PPM;
 					$_SESSION["calculo"]["PPA"] = $PPA;
 

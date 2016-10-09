@@ -19,7 +19,6 @@ Class PROYECTO {
 	private $tipo;
 
 	function __construct ( $id ) {
-
 		if ( $id != null ) {
 			$link = new Conexion ( );
 			$sql = "SELECT * FROM PROYECTO WHERE PROY_ID = '$id'";
@@ -38,6 +37,7 @@ Class PROYECTO {
 			$this->estado			= $result[0]->PROY_ESTADO;
 			$this->tipo 			= $result[0]->PROY_TIPOCALCULO;
 		} else {
+			echo "<br><br>";
 			$this->id 				= null;
 			$this->rut  			= null;
 			$this->mantenimiento 	= null;
@@ -117,7 +117,7 @@ Class PROYECTO {
 
 	public function asociarProducto ( $idProducto , $valorVenta , $cantidad ) {
 		$sql = "INSERT INTO PROY_TIENE_PROD (PROY_ID , PROD_ID , PTP_CANTIDAD , PTP_COSTOVENTA) 
-				VALUES ($this->id, $idProducto , $valorVenta , $cantidad);";
+				VALUES ($this->id, $idProducto , $cantidad , $valorVenta);";
 		$link = new Conexion ( );
 		return $link->query( $sql );
 	}
@@ -136,6 +136,27 @@ Class PROYECTO {
 		$sql = "SELECT P.PROY_ID, P.PROY_NOMBRE, C.CL_RAZONSOCIAL, P.PROY_ESTADO, P.PROY_TIPOCALCULO, P.CL_RUT
 				FROM PROYECTO P INNER JOIN CLIENTE C ON C.CL_RUT = P.CL_RUT
 				ORDER BY PROY_ESTADO";
+		$link = new Conexion ( );
+		$array = $link->getObj( $sql );
+		return $array;
+	}
+
+	public function getProductos ( ) {
+		$sql = "SELECT  P.PROD_ID, P.PROD_NOMBRE , P.PROD_MARCA , P.PROD_MODELO, SUBP.TIPO, PTP.PTP_CANTIDAD
+				FROM (
+					SELECT PROD_ID, PROD_NOMBRE, PROD_MARCA, PROD_MODELO, 'Batería' as TIPO
+					FROM BATERIA
+					UNION
+					SELECT PROD_ID, PROD_NOMBRE, PROD_MARCA, PROD_MODELO, 'Inversor' as TIPO
+					FROM INVERSOR
+					UNION
+					SELECT PROD_ID, PROD_NOMBRE, PROD_MARCA, PROD_MODELO, 'Panel' as TIPO
+					FROM PANEL
+				) as SUBP 
+				INNER JOIN PRODUCTO P ON SUBP.PROD_ID = P.PROD_ID
+				INNER JOIN PROY_TIENE_PROD PTP ON PTP.PROD_ID = P.PROD_ID
+				INNER JOIN PROYECTO PY ON PY.PROY_ID = PTP.PROY_ID
+				ORDER BY TIPO DESC , PROD_NOMBRE , PROD_MARCA";
 		$link = new Conexion ( );
 		$array = $link->getObj( $sql );
 		return $array;
@@ -175,9 +196,10 @@ Class PROYECTO {
 	    			return null;
 				} else {
 					$decoded = json_decode($response);
-					$array = array();
-					$index = 0;
+					$array = array(0,0,0,0,0,0,0,0,0,0,0,0);
+					$index = 6;
 					foreach ($decoded->outputs->avg_ghi->monthly as $row) {
+						if ( $index == 12 ) $index = 0;
 						$valoresRad->registrar($this->id , $index+1 , $row);
 						$array[$index] = $row;
 						$index++;

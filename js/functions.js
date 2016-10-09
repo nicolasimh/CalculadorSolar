@@ -56,7 +56,7 @@ function initMapCoordenadas( latitud , longitud ) {
             };
     map = new google.maps.Map(document.getElementById('map'), myOptions);
 
-    coorMarcador = new google.maps.LatLng(latitud,longitud); /Un nuevo punto con nuestras coordenadas para el marcador (flecha) */
+    coorMarcador = new google.maps.LatLng(latitud,longitud); /*Un nuevo punto con nuestras coordenadas para el marcador (flecha) */
                 
     var marcador = new google.maps.Marker({
 				draggable: true,
@@ -104,7 +104,12 @@ function initMapDireccion( ) {
   });
 }
 
-function initMapCoordenadasModificar( latitud , longitud ) {
+function initMapCoordenadasModificar( ) {
+  var latitud = $("#latitud").val(  );
+  var longitud = $("#longitud").val(  );
+
+  var mapdiv = document.getElementById('map');
+  
   var latlon = new google.maps.LatLng(latitud,longitud);
   var myOptions = {
                 zoom: 15,
@@ -112,7 +117,7 @@ function initMapCoordenadasModificar( latitud , longitud ) {
             };
     map = new google.maps.Map(document.getElementById('map'), myOptions);
 
-    coorMarcador = new google.maps.LatLng(latitud,longitud); /Un nuevo punto con nuestras coordenadas para el marcador (flecha) */
+    coorMarcador = new google.maps.LatLng(latitud,longitud); /*Un nuevo punto con nuestras coordenadas para el marcador (flecha) */
                 
     var marcador = new google.maps.Marker({
         draggable: true,
