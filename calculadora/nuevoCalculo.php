@@ -6,7 +6,7 @@
   require_once ("../models/Mantenimiento.php");
   
   $proyecto = new Proyecto (null);
-  $listaProyecto = $proyecto->getListado();
+  $listaProyecto = $proyecto->getListadoCalculo();
   $prodpanel = new Panel (null);
   $listaPanel = $prodpanel->getListadoPanel();
   $prodinversor = new Inversor (null);

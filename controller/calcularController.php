@@ -14,12 +14,13 @@ $proyecto = new Proyecto ($_POST['proyecto']);
 $panel = new Panel ($_POST['panel']);
 $inversor = new Inversor ($_POST['inversor']);
 $mantenimiento = new Mantenimiento (($_POST['mantenimiento']));
+session_start();
 
 if (!empty($_POST['accion'])){
 
 	/**** Consumimos web Services para obtener el factor de Radiación Horizontal ****/
 	$radiacion = $proyecto->clientWebServices();
-
+	$_SESSION["calculo"]["RADIACION"] = $radiacion;
 	if ( $radiacion != null ) {
 		/**** Obtenemos Factor K según latitud, longitud e inclinación ****/
 		$inclinacion = $_POST['inclinacion'];
@@ -39,27 +40,40 @@ if (!empty($_POST['accion'])){
 		if ( $proyecto->asociarFactorK( $factorK->getId()) ) {
 			$valoresK = $factorK->getValoresK ( );
 			for ($i=0; $i < count($valoresK); $i++) {
+				$_SESSION["calculo"]["FACTORK"][$i] = $valoresK[$i]->VALK_VALOR;
 				$RH[$i]= $valoresK[$i]->VALK_VALOR*$radiacion[$i];
 			}
+			$_SESSION["calculo"]["RH"] = $RH;
 
 			/**** Asociamos la cantidad de paneles al proyecto ****/
 			if ( $proyecto->asociarProducto($panel->getId() , $panel->getPrecioVenta() , $_POST['npanel']) ) {
 				$area= $panel->getAlto()*$panel->getAncho()*$_POST['npanel'];
+				$_SESSION["calculo"]["AREA"] = $area;
 
 				/**** Asociamos el Inversor al Proyecto ****/
 				if ( $proyecto->asociarProducto($inversor->getId() , $inversor->getPrecioVenta() , 1 ) ) {
 					$rend= $inversor->getRendimiento()/100;
+					$_SESSION["calculo"]["RENDIMIENTO"] = $rend;
 					if ( $proyecto->asociarFactorMantenimiento( $mantenimiento->getId() ))
 					$mant = $mantenimiento->getValor();
-
+					$_SESSION["calculo"]["MANTENCION"] = $mant;
 					for ($i=0; $i < count($RH); $i++) {
 						$PPM[$i]= $RH[$i]*$area*$rend*$mant;
 						$PPA= $PPA + $PPM[$i];
 					}
 
+					$_SESSION["calculo"]["PPM"] = $PPM;
+					$_SESSION["calculo"]["PPA"] = $PPA;
+
 					if ( $proyecto->getTipo( ) == 0 ) {
 						/***** guardar calculo en red ****/
-
+						/**
+							RH = Radiación Horizontal
+							PPM = Producción Promerio Mensual
+							PPA = Producción Promedio Anual
+						*/
+						$proyecto->CalculoRealizado();
+						header("location: ../calculadora/verCalculo.php");
 
 
 

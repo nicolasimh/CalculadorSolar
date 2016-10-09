@@ -122,6 +122,16 @@ Class PROYECTO {
 		return $link->query( $sql );
 	}
 
+	public function getListadoCalculo ( ) {
+		$sql = "SELECT P.PROY_ID, P.PROY_NOMBRE, C.CL_RAZONSOCIAL, P.PROY_ESTADO, P.PROY_TIPOCALCULO, P.CL_RUT
+				FROM PROYECTO P INNER JOIN CLIENTE C ON C.CL_RUT = P.CL_RUT
+				WHERE PROY_ESTADO = 0
+				ORDER BY PROY_ESTADO";
+		$link = new Conexion ( );
+		$array = $link->getObj( $sql );
+		return $array;
+	}
+
 	public function getListado ( ) {
 		$sql = "SELECT P.PROY_ID, P.PROY_NOMBRE, C.CL_RAZONSOCIAL, P.PROY_ESTADO, P.PROY_TIPOCALCULO, P.CL_RUT
 				FROM PROYECTO P INNER JOIN CLIENTE C ON C.CL_RUT = P.CL_RUT
@@ -129,6 +139,18 @@ Class PROYECTO {
 		$link = new Conexion ( );
 		$array = $link->getObj( $sql );
 		return $array;
+	}
+
+	public function calculoRealizado( ) {
+		$sql = "UPDATE PROYECTO SET PROY_ESTADO = 1 WHERE PROY_ID=$this->id";
+		$link = new Conexion ( );
+		return $link->query( $sql );
+	}
+
+	public function eliminar( ) {
+		$sql = "UPDATE PROYECTO SET PROY_ESTADO = 3 WHERE PROY_ID=$this->id";
+		$link = new Conexion ( );
+		return $link->query( $sql );
 	}
 
 	public function clientWebServices ( ) {
@@ -163,12 +185,6 @@ Class PROYECTO {
 					return $array;
 				}
 			}
-	}
-
-	public function eliminar( ) {
-		$sql = "UPDATE SET PROY_ESTADO = 3 WHERE $this->id";
-		$link = new Conexion ( );
-		return $link->query( $sql );
 	}
 
 	public function getId( ) {
