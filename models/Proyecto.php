@@ -177,7 +177,7 @@ Class PROYECTO {
 	public function clientWebServices ( ) {
 		$valoresRad = new ValoresRad ( null );
 
-		$param = "api_key=".API_KEYs_WS."&lat=".(int)($this->latitud*-1)."&lon=".(int)($this->longitud-40);
+		$param = "api_key=".API_KEYs_WS."&lat=".(int)($this->latitud)."&lon=".(int)($this->longitud);
 		$url = URL_WS.$param;
 
 			$client = curl_init($url);
@@ -196,13 +196,28 @@ Class PROYECTO {
 	    			return null;
 				} else {
 					$decoded = json_decode($response);
-					$array = array(0,0,0,0,0,0,0,0,0,0,0,0);
-					$index = 6;
 					foreach ($decoded->outputs->avg_ghi->monthly as $row) {
-						if ( $index == 12 ) $index = 0;
 						$valoresRad->registrar($this->id , $index+1 , $row);
 						$array[$index] = $row;
 						$index++;
+					}
+					if ( empty($array) ) {
+						$sql = "SELECT * FROM RADIACION_HORIZONTAL WHERE RH_LATITUD = ".((int)($this->latitud) * -1);
+						echo $sql."<br>";
+						$link = new Conexion ( );
+						$rh = $link->getObj( $sql );
+						$array[0]	= $rh[0]->RH_ENERO;
+						$array[1]	= $rh[0]->RH_FEBRERO;
+						$array[2]	= $rh[0]->RH_MARZO;
+						$array[3]	= $rh[0]->RH_ABRIL;
+						$array[4]	= $rh[0]->RH_MAYO;
+						$array[5]	= $rh[0]->RH_JUNIO;
+						$array[6]	= $rh[0]->RH_JULIO;
+						$array[7]	= $rh[0]->RH_AGOSTO;
+						$array[8]	= $rh[0]->RH_SEPTIEMBRE;
+						$array[9]	= $rh[0]->RH_OCTUBRE;
+						$array[10]	= $rh[0]->RH_NOVIEMBRE;
+						$array[11]	= $rh[0]->RH_DICIEMBRE;
 					}
 					return $array;
 				}

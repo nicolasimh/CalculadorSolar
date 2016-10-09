@@ -78,8 +78,8 @@ $proyecto = new Proyecto( $_POST["id"] );
 		var lon = $("#longitud").val();
 		initMapCoordenadasModificar(lat,lon);	
 */
-		initMapCoordenadasModificar();
-
+		//initMapCoordenadasModificar();
+		initMapDireccion();
 
 		$("#buscarDireccion").click(
 			function(){
