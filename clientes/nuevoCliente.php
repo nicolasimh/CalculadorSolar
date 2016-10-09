@@ -25,45 +25,43 @@
 			<h3 id="tituloPag">Nuevo Cliente</h3>
 			<form class="form-horizontal" action="../controller/clienteController.php" method="post">
   				<div class="form-group">
-    				<label for="rut" class="col-sm-2 control-label">RUT</label>
-    					<div class="col-sm-4">
-							<input type="text" class="form-control" id="rut" placeholder="Ejemplo: 11.111.111-1" name="rut">
+    				<label for="rut" class="col-sm-2 control-label">* RUT</label>
+    					<div class="col-sm-3">
+							<input type="text" class="form-control rut_demo" id="rut" name="rut" required="required">
     					</div>
   				</div>
   				<div class="form-group">
-    				<label for="razonSocial" class="col-sm-2 control-label">Razón Social</label>
-    					<div class="col-sm-10">
-							<input type="text" class="form-control" id="razonSocial" maxlength="50" name="razonsocial">
+    				<label for="razonSocial" class="col-sm-2 control-label">* Nombre</label>
+    					<div class="col-sm-3">
+							<input type="text" class="form-control" id="razonSocial" maxlength="50" name="razonsocial" required="required">
     					</div>
-  				</div>
-  				<div class="form-group">
-    				<label for="nombre" class="col-sm-2 control-label">Nombre Corto</label>
-    					<div class="col-sm-10">
-							<input type="text" class="form-control" id="nombre" maxlength="40" name="nombrefantasia">
+    				<label for="nombre" class="col-sm-1 control-label">* Alias</label>
+    					<div class="col-sm-2">
+							<input type="text" class="form-control" id="nombre" maxlength="40" name="nombrefantasia" required="required">
     					</div>
   				</div>
   				<div class="form-group">
     				<label for="direccion" class="col-sm-2 control-label">Dirección</label>
-    					<div class="col-sm-10">
-							<input type="text" class="form-control" id="direccion" maxlength="100" name="direccion">
+    					<div class="col-sm-6">
+							<input type="text" class="form-control" id="direccion" maxlength="100" name="direccion" required="required">
     					</div>
   				</div>
   				<div class="form-group">
     				<label for="telefono" class="col-sm-2 control-label">Telefono</label>
-    					<div class="col-sm-4">
+    					<div class="col-sm-3">
 							<input type="text" class="form-control" id="telefono" maxlength="11" placeholder="Ejemplo: 56966256263" onKeypress="soloNumeros(event)" name="telefono">
     					</div>
   				</div>
   				<div class="form-group">
-    				<label for="contacto" class="col-sm-2 control-label">Contacto</label>
-    					<div class="col-sm-10">
+    				<label for="contacto" class="col-sm-2 control-label">Nombre de Contacto</label>
+    					<div class="col-sm-3">
 							<input type="text" class="form-control" id="contacto" maxlength="50" name="contacto">
     					</div>
   				</div>
   				<div class="form-group">
-    				<label for="email" class="col-sm-2 control-label">Email</label>
-    					<div class="col-sm-10">
-							<input type="email" class="form-control" id="email" maxlength="50" name="email">
+    				<label for="email" class="col-sm-2 control-label">* Email</label>
+    					<div class="col-sm-5">
+							<input type="email" class="form-control" id="email" maxlength="50" name="email" placeholder="Ejemplo: ejemplo@ejemplo.cl" required="required">
     					</div>
   				</div>
   				<div class="form-group">
@@ -77,13 +75,30 @@
 	</div>
 
 	<script src="<?php echo RUTA;?>js/jquery-1.11.3.js"></script>
-	<script src="<?php echo RUTA;?>js/bootstrap.min.js"></script>
+  <script src="<?php echo RUTA;?>js/bootstrap.min.js"></script>
   <script src="<?php echo RUTA;?>js/functions.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-		
-		});
-	</script>
+  <script src="<?php echo RUTA;?>js/jquery.Rut.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('.rut_demo').Rut({
+      on_error: function(){ 
+        $('.rut_demo').parent().find('span').remove();
+        $('.rut_demo').parent().append('<span id="helpBlock2" class="help-block">Rut Inválido, favor ingrese nuevamente.</span>');
+        $('.rut_demo').parent().parent().removeClass("has-success");
+        $('.rut_demo').parent().parent().addClass("has-error");
+        $('.rut_demo').val("");
+         },
+
+        on_success: function(){ 
+          $('.rut_demo').parent().find('span').remove(); 
+          $('.rut_demo').parent().append('<span id="helpBlock2" class="help-block">Rut válido.</span>');
+          $('.rut_demo').parent().parent().removeClass("has-error");
+          $('.rut_demo').parent().parent().addClass("has-success");
+        },
+      format_on: 'keyup'
+});
+    });
+  </script>
 
 </body>
 </html>

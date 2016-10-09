@@ -14,15 +14,15 @@ if ( !empty($_POST["id"]) ) {
               </div>
           </div>
           <div class="form-group">
-            <label for="nombre" class="col-sm-2 control-label">Nombre</label>
-              <div class="col-sm-10">
+            <label for="nombre" class="col-sm-2 control-label">*Nombre</label>
+              <div class="col-sm-3">
               <input type="text" class="form-control" id="nombre" maxlength="30" name="nombre" value="<?php echo $artefacto->getNombre();?>">
               </div>
           </div>
           <div class="form-group">
-            <label for="consumo" class="col-sm-2 control-label">Consumo</label>
-              <div class="col-sm-10">
-              <input type="float" class="form-control" id="consumo" name="consumo" value="<?php echo $artefacto->getConsumo();?>">
+            <label for="consumo" class="col-sm-2 control-label">*Consumo</label>
+              <div class="col-sm-3">
+              <input type="int" class="form-control entero" id="consumo" name="consumo" value="<?php echo $artefacto->getConsumo();?>">
               </div>
           </div>
           <div class="form-group">
@@ -34,3 +34,13 @@ if ( !empty($_POST["id"]) ) {
       </form>
 
 <?php } ?>
+  <script src="<?php echo RUTA;?>js/jquery-1.11.3.js"></script>
+  <script type="text/javascript" src="<?php echo RUTA;?>js/jquery.numeric.js"></script>
+  <script src="<?php echo RUTA;?>js/bootstrap.min.js"></script>
+  <script src="<?php echo RUTA;?>js/functions.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    $('.entero').numeric();
+    $('.decimal').numeric(","); 
+  });
+  </script>

@@ -23,7 +23,10 @@
 			<?php include("../menu-lateral-1.php"); ?>
 		</div>
 		<div class="col-md-9 pull-left" id="body-wrapper">
-			<h3 id="tituloPag">Listado de Usuario</h3>
+			<h3 id="tituloPag"><span class="glyphicon glyphicon-lock" style="color:#d9534f"></span>  	Listado de Usuario</h3>
+			<div class="col-sm-offset-10 col-sm-3">
+                <a href="../usuarios/nuevoUsuario.php" class="btn btn-danger btn-md" role="button"><span class="glyphicon glyphicon-plus"></span> Nuevo Usuario</a>
+            </div>	
 			<div class="collapse" id="collapseExample">
 				<form class="form-inline" id="ordenForm">
 					<div class="form-group">
@@ -73,8 +76,9 @@
 						<td><?php echo $row->USU_NOMBRE; ?></td>
 						<td><?php echo $row->USU_APELLIDO; ?></td>
 						<td><?php echo $row->USU_TIPO; ?></td>
-						<td><?php 	if($row->USU_ESTADO=='0') echo "Activo"; 
-									else echo "Inactivo" ?>
+						<td><?php 	if($row->USU_ESTADO==1) echo "Activo"; 
+									if($row->USU_ESTADO==0) echo "Inactivo"; 
+										?>
 						</td>	
 
 						<td>

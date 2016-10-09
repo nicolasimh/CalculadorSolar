@@ -1,7 +1,7 @@
 <div class="form-group">
-	<label class="col-sm-2 control-label" for="voltajeBateria">Voltaje Batería</label>
-	<div class="col-sm-5">
-		<input id="voltajeBateria" name="voltajeBateria" class="form-control" required="required" type="number" min="0" />
+	<label class="col-sm-2 control-label" for="voltajeBateria">* Voltaje Batería</label>
+	<div class="col-sm-2">
+		<input id="voltajeBateria" name="voltajeBateria" class="form-control entero" required="required" type="int" min="0" />
 	</div>
 </div>
 <div class="form-group">
@@ -10,3 +10,9 @@
 		<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk" ></span> Guardar</button>
 	</div>
 </div>
+<script type="text/javascript">
+		$(document).ready(function(){
+    $('.entero').numeric();
+    $('.decimal').numeric(","); 
+	});
+  </script>

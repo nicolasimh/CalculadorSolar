@@ -23,8 +23,10 @@
 			<?php include("../menu-lateral-1.php"); ?>
 		</div>
 		<div class="col-md-9 pull-left" id="body-wrapper">
-			<h3 id="tituloPag">Listado de Clientes</h3>
-			<a class="btn btn-default pull-right" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Búsqueda Avanzada</a>
+			<h3 id="tituloPag"><span class="glyphicon glyphicon-user" style="color:#5bc0de"></span>  Listado de Clientes</h3>
+			<div class="col-sm-offset-10 col-sm-3">
+                <a href="../clientes/nuevoCliente.php" class="btn btn-info btn-md" role="button"><span class="glyphicon glyphicon-plus"></span> Nuevo Cliente</a>
+            </div>
 			<div class="collapse" id="collapseExample">
 				<form class="form-inline" id="ordenForm">
 					<div class="form-group">
@@ -32,8 +34,8 @@
 						<select class="form-control input-sm" id="ordenarPor">
 							<option>Seleccione</option>
 							<option value="0">RUT</option>
-							<option value="1">Razón Social</option>
-							<option value="2">Nombre</option>
+							<option value="1">Nombre</option>
+							<option value="2">Alias</option>
 							<option value="3">Email</option>
 						</select>
 					</div>
@@ -52,8 +54,8 @@
 			<table class="table table-hover">
 				<thead>
 					<th>RUT</th>
-					<th>Razón Social</th>
-					<th>Nombre Corto</th>
+					<th>Nombre</th>
+					<th>Alias</th>
 					<th>Email</th>
 					<th></th>
 				</thead>	

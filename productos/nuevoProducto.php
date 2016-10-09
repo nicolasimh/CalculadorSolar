@@ -26,19 +26,19 @@
 				<input type="text" name="event" value="new" class="hide">
 				<div class="form-group has-feedback">
 					<label class="col-sm-2 control-label" for="nombre">* Nombre</label>
-					<div class="col-sm-8">
+					<div class="col-sm-3">
 						<input id="nombre" name="nombre" type="text" class="form-control" maxlength="30" required="required" />
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="marca">* Marca</label>
-					<div class="col-sm-8">
+					<div class="col-sm-3">
 						<input id="marca" name="marca" type="text" class="form-control" maxlength="30" required="required"/>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="modelo">Modelo</label>
-					<div class="col-sm-8">
+					<div class="col-sm-3">
 						<input id="modelo" name="modelo" type="text" class="form-control" maxlength="30" />
 					</div>
 				</div>
@@ -52,14 +52,14 @@
 					<label class="col-sm-2 control-label" for="precioCompra">* Precio Compra</label>
 					<div class="input-group col-sm-5">
 						<div class="input-group-addon">$</div>
-						<input id="precioCompra" name="precioCompra" min="0" class="form-control" required="required" type="number"/>
+						<input id="precioCompra" name="precioCompra" min="0" class="form-control entero" required="required" type="int"/>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label" for="precioVenta">* Precio Venta</label>
+					<label class="col-sm-2 control-label" for="precioVenta">Precio Venta</label>
 					<div class="input-group col-sm-5">
 						<div class="input-group-addon">$</div>
-						<input id="precioVenta" name="precioVenta" min="0" class="form-control" required="required" type="number"/>
+						<input id="precioVenta" name="precioVenta" min="0" class="form-control entero" required="required" type="int"/>
 					</div>
 				</div>
 				<div class="form-group">
@@ -78,9 +78,13 @@
 	</div>
 
 	<script src="<?php echo RUTA;?>js/jquery-1.11.3.js"></script>
-	<script src="<?php echo RUTA;?>js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="<?php echo RUTA;?>js/jquery.numeric.js"></script>
+  	<script src="<?php echo RUTA;?>js/bootstrap.min.js"></script>
+  	<script src="<?php echo RUTA;?>js/functions.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function ( ) {
+			$('.entero').numeric();
+    		$('.decimal').numeric(","); 
 			$("#bateria").click(function(){
 				$("#formTipoProducto").append().load("productoBateria.php");
 			})

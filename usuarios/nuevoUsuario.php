@@ -25,27 +25,27 @@
 			<h3 id="tituloPag">Nuevo Usuario</h3>
 			<form class="form-horizontal" action="../controller/usuarioController.php" method="post">
   				<div class="form-group">
-    				<label for="rut" class="col-sm-2 control-label">RUT</label>
+    				<label for="rut" class="col-sm-2 control-label">* RUT</label>
     					<div class="col-sm-3">
 							<input type="text" class="form-control rut_demo" name="rut" required="required">
     					</div>
   				</div>
   				<div class="form-group">
-    				<label for="nombre" class="col-sm-2 control-label">Nombre</label>
+    				<label for="nombre" class="col-sm-2 control-label">* Nombre</label>
     					<div class="col-sm-3">
 							<input type="text" class="form-control" id="nombre" maxlength="40" name="nombre" required="required">
     					</div>
-    				<label for="apellido" class="col-sm-1 control-label">Apellido</label>
+    				<label for="apellido" class="col-sm-1 control-label">*Apellido</label>
     					<div class="col-sm-3">
 							<input type="text" class="form-control" id="apellido" maxlength="40" name="apellido" required="required">
     					</div>
   				</div>
   				<div class="form-group">
-    				<label for="usuario" class="col-sm-2 control-label">Usuario</label>
+    				<label for="usuario" class="col-sm-2 control-label">* Usuario</label>
     					<div class="col-sm-3 ">
 							<input type="text" class="form-control" id="usuario" maxlength="20" name="usuario" required="required">
     					</div>
-            <label for="tipo" class="col-sm-1 control-label">Tipo</label>
+            <label for="tipo" class="col-sm-1 control-label">* Tipo</label>
               <div class="col-sm-3">
                 <select  class="form-control" name="tipo" required="required"> 
                     <option value="">Seleccione</option required="required">
@@ -55,19 +55,19 @@
               </div>
           </div>
   				<div class="form-group">
-    				<label for="email" class="col-sm-2 control-label">Email</label>
+    				<label for="email" class="col-sm-2 control-label">* Email</label>
     					<div class="col-sm-6">
 							<input type="email" class="form-control" id="email" maxlength="40" name="email" required="required">
     					</div>
   				</div>
           <div class="form-group">
-            <label for="clave" class="col-sm-2 control-label">Clave</label>
+            <label for="clave" class="col-sm-2 control-label">* Clave</label>
               <div class="col-sm-3">
               <input type="password" class="form-control" id="clave" maxlength="20" name="clave">
               </div>
           </div>
           <div class="form-group">
-            <label for="estado" class="col-sm-2 control-label">Estado</label>
+            <label for="estado" class="col-sm-2 control-label">* Estado</label>
               <div class="col-sm-3">
               <select  class="form-control" name="estado" required="required"> 
                     <option value="">Seleccione</option required="required">

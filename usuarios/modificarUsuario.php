@@ -8,27 +8,27 @@ if ( !empty($_POST["id"]) ) {
 ?>
 	<form class="form-horizontal" action="../controller/usuarioController.php" method="post">
           <div class="form-group">
-            <label for="rut" class="col-sm-2 control-label">RUT</label>
+            <label for="rut" class="col-sm-2 control-label">* RUT</label>
               <div class="col-sm-3">
               <input type="text" class="form-control" id="rut" name="rut" readonly="readonly" value="<?php echo $usuario->getRut();?>">
               </div>
           </div>
           <div class="form-group">
-            <label for="nombre" class="col-sm-2 control-label">Nombre</label>
+            <label for="nombre" class="col-sm-2 control-label">* Nombre</label>
               <div class="col-sm-3">
               <input type="text" class="form-control" id="nombre" maxlength="40" name="nombre" required="required" value="<?php echo $usuario->getNombre();?>">
               </div>  
-            <label for="apellido" class="col-sm-2 control-label">Apellido</label>
+            <label for="apellido" class="col-sm-2 control-label">* Apellido</label>
               <div class="col-sm-3">
               <input type="text" class="form-control" id="apellido" maxlength="40" name="apellido" required="required" value="<?php echo $usuario->getApellido();?>">
               </div>
           </div>
           <div class="form-group">
-            <label for="usuario" class="col-sm-2 control-label">Usuario</label>
+            <label for="usuario" class="col-sm-2 control-label">* Usuario</label>
               <div class="col-sm-3">
               <input type="text" class="form-control" id="usuario" maxlength="20" name="usuario" required="required" value="<?php echo $usuario->getUsuario();?>">
               </div>
-            <label for="tipo" class="col-sm-2 control-label">Tipo</label>
+            <label for="tipo" class="col-sm-2 control-label">* Tipo</label>
               <div class="col-sm-3">
                 <select class="form-control" required="required" name="tipo">
                   <option value="">Seleccione</option>
@@ -38,7 +38,7 @@ if ( !empty($_POST["id"]) ) {
               </div>
           </div>
           <div class="form-group">
-            <label for="email" class="col-sm-2 control-label">Email</label>
+            <label for="email" class="col-sm-2 control-label">* Email</label>
               <div class="col-sm-4">
               <input type="email" class="form-control" id="email" maxlength="40" name="email" required="required" value="<?php echo $usuario->getEmail();?>">
               </div>
@@ -50,7 +50,7 @@ if ( !empty($_POST["id"]) ) {
               <h6>*Ingresar sólo si desea modificar clave anterior<h6></div>
           </div>
           <div class="form-group">
-            <label for="estado" class="col-sm-2 control-label">Estado</label>
+            <label for="estado" class="col-sm-2 control-label">* Estado</label>
               <div class="col-sm-3">
               <select class="form-control" name="estado">
                   <option value="">Seleccione</option required="required">
