@@ -26,50 +26,54 @@
 			<form class="form-horizontal" action="../controller/usuarioController.php" method="post">
   				<div class="form-group">
     				<label for="rut" class="col-sm-2 control-label">RUT</label>
-    					<div class="col-sm-4">
-							<input type="text" class="form-control" id="rut" placeholder="Ejemplo: 11.111.111-1" name="rut">
+    					<div class="col-sm-3">
+							<input type="text" class="form-control rut_demo" name="rut" required="required">
     					</div>
   				</div>
   				<div class="form-group">
     				<label for="nombre" class="col-sm-2 control-label">Nombre</label>
-    					<div class="col-sm-10">
-							<input type="text" class="form-control" id="nombre" maxlength="40" name="nombre">
+    					<div class="col-sm-3">
+							<input type="text" class="form-control" id="nombre" maxlength="40" name="nombre" required="required">
     					</div>
-  				</div>
-  				<div class="form-group">
-    				<label for="apellido" class="col-sm-2 control-label">Apellido</label>
-    					<div class="col-sm-10">
-							<input type="text" class="form-control" id="apellido" maxlength="40" name="apellido">
+    				<label for="apellido" class="col-sm-1 control-label">Apellido</label>
+    					<div class="col-sm-3">
+							<input type="text" class="form-control" id="apellido" maxlength="40" name="apellido" required="required">
     					</div>
   				</div>
   				<div class="form-group">
     				<label for="usuario" class="col-sm-2 control-label">Usuario</label>
-    					<div class="col-sm-10">
-							<input type="text" class="form-control" id="usuario" maxlength="20" name="usuario">
+    					<div class="col-sm-3 ">
+							<input type="text" class="form-control" id="usuario" maxlength="20" name="usuario" required="required">
     					</div>
-  				</div>
+            <label for="tipo" class="col-sm-1 control-label">Tipo</label>
+              <div class="col-sm-3">
+                <select  class="form-control" name="tipo" required="required"> 
+                    <option value="">Seleccione</option required="required">
+                    <option value="Administrador" required="required">Administrador</option>
+                    <option value="Usuario" required="required">Usuario</option>
+                </select>
+              </div>
+          </div>
   				<div class="form-group">
     				<label for="email" class="col-sm-2 control-label">Email</label>
-    					<div class="col-sm-10">
-							<input type="email" class="form-control" id="email" maxlength="50" name="email">
+    					<div class="col-sm-6">
+							<input type="email" class="form-control" id="email" maxlength="40" name="email" required="required">
     					</div>
   				</div>
           <div class="form-group">
             <label for="clave" class="col-sm-2 control-label">Clave</label>
-              <div class="col-sm-10">
+              <div class="col-sm-3">
               <input type="password" class="form-control" id="clave" maxlength="20" name="clave">
               </div>
           </div>
           <div class="form-group">
-            <label for="tipo" class="col-sm-2 control-label">Tipo</label>
-              <div class="col-sm-10">
-              <input type="text" class="form-control" id="tipo" maxlength="35" name="tipo">
-              </div>
-          </div>
-          <div class="form-group">
             <label for="estado" class="col-sm-2 control-label">Estado</label>
-              <div class="col-sm-10">
-              <input type="int" class="form-control" id="estado" name="estado">
+              <div class="col-sm-3">
+              <select  class="form-control" name="estado" required="required"> 
+                    <option value="">Seleccione</option required="required">
+                    <option value="1" required="required">Activo</option>
+                    <option value="0" required="required">Inactivo</option>
+                </select>
               </div>
           </div>
   				<div class="form-group">
@@ -85,9 +89,26 @@
 	<script src="<?php echo RUTA;?>js/jquery-1.11.3.js"></script>
 	<script src="<?php echo RUTA;?>js/bootstrap.min.js"></script>
   <script src="<?php echo RUTA;?>js/functions.js"></script>
+  <script src="<?php echo RUTA;?>js/jquery.Rut.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){
-		
+		  $('.rut_demo').Rut({
+      on_error: function(){ 
+        $('.rut_demo').parent().find('span').remove();
+        $('.rut_demo').parent().append('<span id="helpBlock2" class="help-block">Rut Inválido, favor ingrese nuevamente.</span>');
+        $('.rut_demo').parent().parent().removeClass("has-success");
+        $('.rut_demo').parent().parent().addClass("has-error");
+        $('.rut_demo').val("");
+         },
+
+        on_success: function(){ 
+          $('.rut_demo').parent().find('span').remove(); 
+          $('.rut_demo').parent().append('<span id="helpBlock2" class="help-block">Rut válido.</span>');
+          $('.rut_demo').parent().parent().removeClass("has-error");
+          $('.rut_demo').parent().parent().addClass("has-success");
+        },
+      format_on: 'keyup'
+});
 		});
 	</script>
 

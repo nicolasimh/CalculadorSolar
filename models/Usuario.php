@@ -48,7 +48,7 @@ Class USUARIO {
 	public function modificar ( $rut , $nombre , $apellido , $usuario, $email , $clave, $tipo, $estado ) {
 
 		if ( empty($clave) ) $sql="UPDATE USUARIO SET USU_NOMBRE = '$nombre' , USU_APELLIDO = '$apellido' , USU_USUARIO = '$usuario', USU_EMAIL = '$email', USU_TIPO = '$tipo', USU_ESTADO = '$estado' WHERE USU_RUT = '$rut'";
-		else $sql="UPDATE USUARIO SET USU_NOMBRE = '$nombre' , USU_APELLIDO = '$apellido' , USU_USUARIO = '$usuario', USU_EMAIL = '$email' , USU_CLAVE = '$pass', USU_TIPO = '$tipo', USU_ESTADO = '$estado' WHERE USU_RUT = '$rut'";
+		else $sql="UPDATE USUARIO SET USU_NOMBRE = '$nombre' , USU_APELLIDO = '$apellido' , USU_USUARIO = '$usuario', USU_EMAIL = '$email' , USU_CLAVE = '$clave', USU_TIPO = '$tipo', USU_ESTADO = '$estado' WHERE USU_RUT = '$rut'";
 		$link = new Conexion ( );
 		return $link->query( $sql );
 	}

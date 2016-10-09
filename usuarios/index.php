@@ -24,7 +24,6 @@
 		</div>
 		<div class="col-md-9 pull-left" id="body-wrapper">
 			<h3 id="tituloPag">Listado de Usuario</h3>
-			<a class="btn btn-default pull-right" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Búsqueda Avanzada</a>
 			<div class="collapse" id="collapseExample">
 				<form class="form-inline" id="ordenForm">
 					<div class="form-group">
@@ -74,7 +73,9 @@
 						<td><?php echo $row->USU_NOMBRE; ?></td>
 						<td><?php echo $row->USU_APELLIDO; ?></td>
 						<td><?php echo $row->USU_TIPO; ?></td>
-						<td><?php echo $row->USU_ESTADO; ?></td>	
+						<td><?php 	if($row->USU_ESTADO=='0') echo "Activo"; 
+									else echo "Inactivo" ?>
+						</td>	
 
 						<td>
 							<button class="btn btn-xs btn-info" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-pushpin"></span> Ver</button>
