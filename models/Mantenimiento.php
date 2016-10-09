@@ -18,12 +18,10 @@ Class MANTENIMIENTO {
 			$this->id 		= $result[0]->MANT_ID;
 			$this->nombre	= $result[0]->MANT_NOMBRE;
 			$this->valor	= $result[0]->MANT_VALOR;
-			
 		} else {
 			$this->id 		= null;
 			$this->nombre 	= null;
 			$this->valor	= null;
-
 		}
 	}
 
@@ -47,7 +45,7 @@ Class MANTENIMIENTO {
 	}
 
 	public function getListado ( ) {
-		$sql = "SELECT * FROM MANTENIMIENTO ORDER BY MANT_NOMBRE";
+		$sql = "SELECT * FROM MANTENIMIENTO ORDER BY MANT_VALOR ASC";
 		$link = new Conexion ( );
 		$array = $link->getObj( $sql );
 		return $array;

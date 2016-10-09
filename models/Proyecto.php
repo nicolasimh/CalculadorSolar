@@ -1,6 +1,6 @@
 <?php
 require_once ('Conexion.php');
-
+require_once ("ValoresRad.php");
 
 Class PROYECTO {
 
@@ -72,24 +72,29 @@ Class PROYECTO {
 		$link = new Conexion ( );
 		if ( $link->query( $sql ) ) {
 			$sql="DELETE FROM PROY_TIENE_PROD WHERE PROY_ID = $this->id;";
-			$link = new Conexion ( );
 			if ( $link->query( $sql ) ) {
 				$link = new Conexion ( );
-				$sql="UPDATE PROYECTO 
-						SET CL_RUT				= 	'$cliente',
-							PROY_NOMBRE			=	'$nombre',
-							PROY_UBICACION		=	'$ubicacion',
-							PROY_LATITUD		=	$latitud, 
-							PROY_LONGITUD		=	$longitud,
-							PROY_ESTADO			=	0,
-							PROY_TIPOCALCULO	=	$tipoProyecto,
-							PROY_FECHA			=	'".date("Y-m-d")."',
-							MANT_ID 			= 	null,
-							FACK_ID 			=	null,
-							PROY_POTENCIADIARIA	=	null,
-							PROY_VALORKW		=	null
-						WHERE PROY_ID = $this->id;";		
-				return $link->query( $sql );
+				$sql="DELETE FROM VALORESRAD WHERE PROY_ID = $this->id;";
+				if ( $link->query( $sql ) ) {
+					$sql="UPDATE PROYECTO 
+							SET CL_RUT				= 	'$cliente',
+								PROY_NOMBRE			=	'$nombre',
+								PROY_UBICACION		=	'$ubicacion',
+								PROY_LATITUD		=	$latitud, 
+								PROY_LONGITUD		=	$longitud,
+								PROY_ESTADO			=	0,
+								PROY_TIPOCALCULO	=	$tipoProyecto,
+								PROY_FECHA			=	'".date("Y-m-d")."',
+								MANT_ID 			= 	null,
+								FACK_ID 			=	null,
+								PROY_POTENCIADIARIA	=	null,
+								PROY_VALORKW		=	null
+							WHERE PROY_ID = $this->id;";	
+					$link = new Conexion ( );	
+					return $link->query( $sql );
+				} else {
+					return false;
+				}
 			} else {
 				return false;
 			}
@@ -98,8 +103,21 @@ Class PROYECTO {
 		}
 	}
 
-	public function eliminar( ) {
-		$sql="UPDATE PROYECTO SET PROY_ESTADO = 3 WHERE PROY_ID = '$this->id'";
+	public function asociarFactorK ( $idFactorK ) {
+		$link = new Conexion ( );
+		$sql = "UPDATE PROYECTO SET FACK_ID = $idFactorK WHERE PROY_ID = $this->id;";
+		return $link->query( $sql );
+	}
+
+	public function asociarFactorMantenimiento ( $idMantenimiento ) {
+		$link = new Conexion ( );
+		$sql = "UPDATE PROYECTO SET MANT_ID = $idMantenimiento WHERE PROY_ID = $this->id;";
+		return $link->query( $sql );
+	}
+
+	public function asociarProducto ( $idProducto , $valorVenta , $cantidad ) {
+		$sql = "INSERT INTO PROY_TIENE_PROD (PROY_ID , PROD_ID , PTP_CANTIDAD , PTP_COSTOVENTA) 
+				VALUES ($this->id, $idProducto , $valorVenta , $cantidad);";
 		$link = new Conexion ( );
 		return $link->query( $sql );
 	}
@@ -114,10 +132,43 @@ Class PROYECTO {
 	}
 
 	public function clientWebServices ( ) {
-		$param = "api_key=".API_KEYs_WS."&lat=".(int)($this->latitud*-1)."&lon=".(int)($this->longitud-40);
+		$valoresRad = new ValoresRad ( null );
 
-		echo $param."<br>";
-		$array = array();
+		$param = "api_key=".API_KEYs_WS."&lat=".(int)($this->latitud*-1)."&lon=".(int)($this->longitud-40);
+		$url = URL_WS.$param;
+
+			$client = curl_init($url);
+			curl_setopt($client, CURLOPT_SSL_VERIFYPEER, false);
+			curl_setopt($client, CURLOPT_RETURNTRANSFER,true);
+
+			$response = curl_exec($client);
+			if ($response === false) {
+				$info = curl_getinfo($client);
+				curl_close($client);
+				echo 'error occured during client exec. Additioanl info: <br>' . var_export($info);
+				return null;
+			} else {
+				if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
+	    			echo 'error occured: ' . $decoded->response->errormessage;
+	    			return null;
+				} else {
+					$decoded = json_decode($response);
+					$array = array();
+					$index = 0;
+					foreach ($decoded->outputs->avg_ghi->monthly as $row) {
+						$valoresRad->registrar($this->id , $index+1 , $row);
+						$array[$index] = $row;
+						$index++;
+					}
+					return $array;
+				}
+			}
+	}
+
+	public function eliminar( ) {
+		$sql = "UPDATE SET PROY_ESTADO = 3 WHERE $this->id";
+		$link = new Conexion ( );
+		return $link->query( $sql );
 	}
 
 	public function getId( ) {

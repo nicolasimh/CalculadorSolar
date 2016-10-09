@@ -1,8 +1,9 @@
 <?php
-	require_once ("../config.php");
+  require_once ("../config.php");
   require_once ("../models/Proyecto.php");
   require_once ("../models/Panel.php");
   require_once ("../models/Inversor.php");
+  require_once ("../models/Mantenimiento.php");
   
   $proyecto = new Proyecto (null);
   $listaProyecto = $proyecto->getListado();
@@ -110,15 +111,15 @@
           <div class="form-group">
             <label for="mantenimiento" class="col-sm-2 control-label">Factor de Mantenimiento</label>
               <div class="col-sm-10" name="mantenimiento" >
-                  <label class="radio-inline">
-                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1" required="required"> Alto
-                    </label>
-                    <label class="radio-inline">
-                      <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="0.95" required="required"> Medio
-                    </label>
-                    <label class="radio-inline">
-                      <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="0.9" required="required"> Bajo
-                    </label>
+                  <?php 
+                    $mantenimiento = new Mantenimiento ( null );
+                    $listaMant = $mantenimiento->getListado( );
+                    foreach ($listaMant as $row ) { ?>
+                      <label class="radio-inline">
+                        <input type="radio" name="mantenimiento" value="<?php echo $row->MANT_ID;?>" required="required"> <?php echo $row->MANT_NOMBRE?>
+                      </label>
+                  <?php }
+                  ?>
               </div>
           </div>
 
