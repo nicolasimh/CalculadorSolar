@@ -52,7 +52,7 @@ if (!empty($_POST['accion'])){
 
 				/**** Asociamos el Inversor al Proyecto ****/
 				if ( $proyecto->asociarProducto($inversor->getId() , $inversor->getPrecioVenta() , 1 ) ) {
-					$rend= $inversor->getRendimiento()/100;
+					$rend= $inversor->getRendimiento();
 					
 					if ( $proyecto->asociarFactorMantenimiento( $mantenimiento->getId() ))
 					$mant = $mantenimiento->getValor();

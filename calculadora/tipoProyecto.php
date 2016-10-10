@@ -70,40 +70,40 @@
 			<tr>
 				<td> Factor</td>
 				<td>
-					<input style="width:35px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
+					<input style="width:45px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
 				</td>
 				<td>
-					<input style="width:35px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
+					<input style="width:45px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
 				</td>
 				<td>
-					<input style="width:35px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
+					<input style="width:45px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
 				</td>
 				<td>
-					<input style="width:35px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
+					<input style="width:45px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
 				</td>
 				<td>
-					<input style="width:35px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
+					<input style="width:45px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
 				</td>
 				<td>
-					<input style="width:35px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
+					<input style="width:45px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
 				</td>
 				<td>
-					<input style="width:35px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
+					<input style="width:45px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
 				</td>
 				<td>
-					<input style="width:35px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
+					<input style="width:45px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
 				</td>
 				<td>
-					<input style="width:35px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
+					<input style="width:45px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
 				</td>
 				<td>
-					<input style="width:35px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
+					<input style="width:45px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
 				</td>
 				<td>
-					<input style="width:35px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
+					<input style="width:45px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
 				</td>
 				<td>
-					<input style="width:35px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
+					<input style="width:45px;" type="number" step="0.1" class="decimal" name="factor[]" required="required">
 				</td>
 			</tr>
 		</table><br><br>
