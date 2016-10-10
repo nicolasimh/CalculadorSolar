@@ -4,7 +4,6 @@ require_once("../models/Usuario.php");
 
 if ( !empty($_POST["id"]) ) { 
   $usuario = new Usuario ( $_POST["id"] );
-
 ?>
 	<form class="form-horizontal" action="../controller/usuarioController.php" method="post">
           <div class="form-group">
