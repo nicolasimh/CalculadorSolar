@@ -1,7 +1,6 @@
 <?php
 require_once ('Conexion.php');
 
-
 Class PRODUCTO {
 
 	private $id;

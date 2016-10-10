@@ -31,7 +31,7 @@
 <body>
 	<nav class="navbar navbar-fixed-top navbar-inverse" id="menu">
      	<?php include("../_menu.php");?>
-    </nav>
+  </nav>
     <div class="clearfix" id="wrapper">
 		<div class="col-md-9 pull-left" id="body-wrapper">
 			<h3 id="tituloPag">Calcular Sistema Fotovoltaico</h3>
@@ -112,7 +112,7 @@
                     <option value="" >Seleccione un Inversor</option>
                     <?php 
                         foreach ($listaInversor as $row) {
-                          echo '<option value="'.$row->PROD_ID.'">'.$row->PROD_NOMBRE.' (Rendimiento '.$row->INV_RENDIMIENTO.'% )'.'</option>';
+                          echo '<option value="'.$row->INV_ID.'">'.$row->PROD_NOMBRE.' (Rendimiento '.$row->INV_RENDIMIENTO.'% )'.'</option>';
                         }?>
               </select>
             </div>

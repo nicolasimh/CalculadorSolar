@@ -37,7 +37,7 @@
 					<table id="datosProyecto">
 						<tbody>
 							<tr>
-								<td style="width: 160px"><strong> Nombre del Proyecto</strong></td>
+								<td style="width: 170px"><strong> Nombre del Proyecto</strong></td>
 								<td style="width: 10px"><strong>:</strong></td>
 								<td><?php echo $proyecto->getNombre();?></td>
 							</tr>
@@ -60,6 +60,11 @@
 								<td><strong>Inclinación</strong></td>
 								<td><strong>:</strong></td>
 								<td><?php echo $_SESSION["calculo"]["INCLINACION"];?> °</td>
+							</tr>
+							<tr>
+								<td><strong>Factor de Mant.</strong></td>
+								<td><strong>:</strong></td>
+								<td><?php echo $_SESSION["calculo"]["MANTENCION"];?></td>
 							</tr>
 												
 							<?php 
@@ -188,7 +193,7 @@
 						</tr>
 						<tr>
 							<td><strong>Σ Promedio Anual</strong></td>
-							<td colspan="12"><strong><?php echo $_SESSION["calculo"]["PPA"];?></strong></td>
+							<td colspan="12"><strong><?php echo number_format($_SESSION["calculo"]["PPA"],2,'.','');?></strong></td>
 						</tr>
 					</body>
 				</table>
