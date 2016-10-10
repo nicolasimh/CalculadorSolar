@@ -8,7 +8,7 @@
   session_start();
   $proyecto = new Proyecto ($_SESSION["calculo"]["PROY_ID"]);
   $cliente = new Cliente ($proyecto->getRut());
-
+  print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -209,24 +209,33 @@
 
 		function drawVisualization() {
 			var data = google.visualization.arrayToDataTable([
-				['Month', 'Kw'],<?php 
+				['Month', 'Producción'<?php 
+				if ( count($_SESSION["calculo"]["CONSUMO"]) > 0 ) {
+					echo ",'Consumo'";
+				}
+				echo '],';
+
 				for ( $i=0 ; $i < count($_SESSION["calculo"]["PPM"]) ; $i++) {
 					echo "[";
 					switch ($i) {
-						case 0:echo "'Ene'";break;
-						case 1:echo "'Feb'";break;
-						case 2:echo "'Mar'";break;
-						case 3:echo "'Abr'";break;
-						case 4:echo "'May'";break;
-						case 5:echo "'Jun'";break;
-						case 6:echo "'Jul'";break;
-						case 7:echo "'Ago'";break;
-						case 8:echo "'Sep'";break;
-						case 9:echo "'Oct'";break;
-						case 10:echo "'Nov'";break;
-						case 11:echo "'Dic'";break;
+						case 0:echo "'Ene',";break;
+						case 1:echo "'Feb',";break;
+						case 2:echo "'Mar',";break;
+						case 3:echo "'Abr',";break;
+						case 4:echo "'May',";break;
+						case 5:echo "'Jun',";break;
+						case 6:echo "'Jul',";break;
+						case 7:echo "'Ago',";break;
+						case 8:echo "'Sep',";break;
+						case 9:echo "'Oct',";break;
+						case 10:echo "'Nov',";break;
+						case 11:echo "'Dic',";break;
 					}
-					echo ",".number_format($_SESSION["calculo"]["PPM"][$i], 2, '.', '')."],";
+					echo number_format($_SESSION["calculo"]["PPM"][$i], 2, '.', '').",";
+					if ( count($_SESSION["calculo"]["CONSUMO"]) > 0 ) {
+						echo number_format($_SESSION["calculo"]["CONSUMO"][$i], 2 , '.', '').",";
+					}
+					echo "],";
 				}?>
 				]);
 
@@ -235,7 +244,7 @@
       			vAxis: {title: 'Kw'},
       			hAxis: {title: 'Mes'},
       			seriesType: 'bars',
-      			series: {2: {type: 'line'}}
+      			series: {1: {type: 'line'}}
     		};
 
     		var chart = new google.visualization.ComboChart(document.getElementById('grafResultado'));
@@ -245,7 +254,6 @@
   		function initialize(  ) {
   			var latitud = $("#latitud").val();
   			var longitud = $("#longitud").val();
-  			alert(latitud + " " + longitud);
 		  	var latlon = new google.maps.LatLng( latitud , longitud );
 		  	var myOptions = {
 		                zoom: 15,
@@ -264,6 +272,8 @@
 		            });
 		}
   </script>
-
+<?php 
+$_SESSION["calculo"] = null;
+?>
 </body>
 </html>

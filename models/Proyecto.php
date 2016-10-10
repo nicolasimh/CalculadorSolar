@@ -122,6 +122,36 @@ Class PROYECTO {
 		return $link->query( $sql );
 	}
 
+	public function asociarConsumoArtefacto( $artefacto , $cantidad , $horas , $factor ) {
+		$arrayMes = "";
+		$arrayValor = "";
+		for ($i=0; $i < count($factor); $i++) { 
+			$arrayMes.= ($i+1).";";
+			$arrayValor .= $factor[$i].";";
+		}
+		$arrayMes = substr($arrayMes, 0, -1);
+		$arrayValor = substr($arrayValor, 0, -1);
+		$sql="INSERT INTO CORRECCIONCONSUMO ( CORR_MES , CORR_VALOR ) VALUES ( '$arrayMes' , '$arrayValor');";
+		echo $sql;
+		$link = new Conexion ( );
+		if ( $link->query( $sql ) ) {
+			$sql="SELECT MAX(CORR_ID) as CORR_ID FROM CORRECCIONCONSUMO;";
+			$link = new Conexion( );
+			$lastId = $link->getObj( $sql );
+			for ($i=0; $i < count($artefacto); $i++) { 
+				if ( $cantidad[$i] > 0 && $horas[$i] > 0 ) {
+					$sql="INSERT INTO ART_PERTENECE_PROY ( ART_ID , PROY_ID  , CORR_ID , APY_CANTIDAD , APY_HORAS) VALUES
+							(".$artefacto[$i]." , ".$this->id." , ".$lastId[0]->CORR_ID." ,".$cantidad[$i]." , ".$horas[$i].");";
+					if (!$link->query( $sql )) echo '<br>No puedo asociar artefacto a proyecto';
+				}
+			}
+			return true;
+		} else {
+			echo '<br>Error al insertar CORRECCIONCONSUMO<br>';
+			return false;
+		}
+	}
+
 	public function getListadoCalculo ( ) {
 		$sql = "SELECT P.PROY_ID, P.PROY_NOMBRE, C.CL_RAZONSOCIAL, P.PROY_ESTADO, P.PROY_TIPOCALCULO, P.CL_RUT
 				FROM PROYECTO P INNER JOIN CLIENTE C ON C.CL_RUT = P.CL_RUT
@@ -156,6 +186,7 @@ Class PROYECTO {
 				INNER JOIN PRODUCTO P ON SUBP.PROD_ID = P.PROD_ID
 				INNER JOIN PROY_TIENE_PROD PTP ON PTP.PROD_ID = P.PROD_ID
 				INNER JOIN PROYECTO PY ON PY.PROY_ID = PTP.PROY_ID
+				WHERE PY.PROY_ID = ".$this->id."
 				ORDER BY TIPO DESC , PROD_NOMBRE , PROD_MARCA";
 		$link = new Conexion ( );
 		$array = $link->getObj( $sql );

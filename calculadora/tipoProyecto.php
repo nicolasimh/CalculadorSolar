@@ -38,6 +38,7 @@
                     foreach ($listadoArtefactos as $row) {?>
                     <tr>
                     	<td>
+                    		<input type="text" class="hide" name="artefacto[]" value="<?php echo $row->ART_ID?>" required="required">
               				<input style="width:40px;" type="text" class="entero cantidad" name="cantidad[]" value="0" required="required">
               			</td>
 						<td><?php echo $row->ART_NOMBRE; ?></td>

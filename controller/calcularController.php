@@ -92,7 +92,15 @@ if (!empty($_POST['accion'])){
 							$corregido[$i]=$totalmes*$_POST['factor'][$i];
 							$consumoanual= $consumoanual+$corregido[$i];
 						}
-						
+
+						$_SESSION["calculo"]["CONSUMO"]=$corregido;
+
+						if ( $proyecto->asociarConsumoArtefacto( $_POST["artefacto"] , $_POST["cantidad"] , $_POST["horas"] , $_POST['factor'] ) ){
+							$proyecto->CalculoRealizado();
+							header("location: ../calculadora/verCalculo.php");
+						} else {
+							echo 'No se pudieron asociar consumo de artefacto';
+						}	
 					}
 
 				} else {
