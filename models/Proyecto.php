@@ -193,7 +193,15 @@ Class PROYECTO {
 	}
 
 	public function getArtefactos( ) {
-		$sql="SELECT ";
+		$sql="SELECT A.ART_ID, A.ART_NOMBRE, A.ART_CONSUMO, APP.APY_CANTIDAD, APP.APY_HORAS, C.CORR_VALOR
+			  FROM 	PROYECTO P INNER JOIN 
+			  		ART_PERTENECE_PROY APP ON P.PROY_ID = APP.PROY_ID INNER JOIN
+			  		ARTEFACTO A ON A.ART_ID = APP.ART_ID INNER JOIN 
+			  		CORRECCIONCONSUMO C ON C.CORR_ID = APP.CORR_ID
+			  WHERE P.PROY_ID = $this->id;";
+		$link = new Conexion ( );
+		$array = $link->getObj( $sql );
+		return $array;
 	}
 
 	public function calculoRealizado( ) {

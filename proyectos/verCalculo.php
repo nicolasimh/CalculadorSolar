@@ -52,15 +52,24 @@ if ( $proyecto->getId() != null ){
 	}
 
 
-
+	$totaldia = 0;
 	if ( $proyecto->getTipo( ) != 0 ) {
 		$artefacto = $proyecto->getArtefactos();
-		for ($i=0; $i < count($_POST['cantidad']); $i++) { 
-			$consumo[$i]= $_POST['cantidad'][$i] * $_POST['horas'][$i];
+		for ($i=0; $i < count($artefacto); $i++) { 
+			$consumo[$i]= $artefacto[$i]->APY_CANTIDAD * $artefacto[$i]->APY_HORAS;
 			$totaldia= $totaldia + $consumo[$i];
 		}
 	}
-	/*
+
+	$factorMantenimiento = explode(";", $artefacto[0]->CORR_VALOR);
+	$totalmes = $totaldia * 30;
+	$consumoanual = 0;
+
+	for ($i=0; $i < 12; $i++) {
+		$corregido[$i] = $totalmes * $factorMantenimiento[$i];
+		$consumoanual = $consumoanual + $corregido[$i];
+	}
+/*
 	print_r($radiacion);
 	echo '<br>';echo '<br>';print_r($valoresK);
 	echo '<br>';echo '<br>';print_r($RH);
@@ -69,48 +78,8 @@ if ( $proyecto->getId() != null ){
 	echo '<br>';echo '<br>';print_r($rend);
 	echo '<br>';echo '<br>';print_r($mant);
 	echo '<br>';echo '<br>';print_r($consumo);
-	echo '<br>';echo '<br>';print_r($totaldia);
-
-	/*
-
-						for ($i=0; $i < count($_POST['cantidad']); $i++) { 
-							$consumo[$i]= $_POST['cantidad'][$i] * $_POST['horas'][$i];
-							$totaldia= $totaldia + $consumo[$i];
-							echo "<br>total día ".$i." = ".$_POST['cantidad'][$i]." * ".$_POST['horas'][$i]." = ".$totaldia;
-						}
-						echo "<br><br>";
-						$totalmes=$totaldia*30;
-						for ($i=0; $i < 12; $i++) {
-							$corregido[$i]=$totalmes*$_POST['factor'][$i];
-							$consumoanual= $consumoanual+$corregido[$i];
-							echo "<br>total día ".$i." = ".$totalmes." * ".$_POST['factor'][$i]." = ".$corregido[$i];
-						}
-
-						$_SESSION["calculo"]["CONSUMO"]=$corregido;
-
-						if ( $proyecto->asociarConsumoArtefacto( $_POST["artefacto"] , $_POST["cantidad"] , $_POST["horas"] , $_POST['factor'] ) ){
-							$proyecto->CalculoRealizado();
-							header("location: ../calculadora/verCalculo.php");
-						} else {
-							echo 'No se pudieron asociar consumo de artefacto';
-						}	
-					}
-
-				} else {
-					echo '<br>no se pueden asociar Inversor';
-				}
-				
-			} else {
-				echo '<br>no se pueden asociar paneles';
-			}
-			
-		} else {
-			echo '<br>no pude actualizar factor K';
-		}
-	} else {
-
-	}*/
-
+	echo '<br>';echo '<br>';print_r($corregido	);
+*/
 }?>
 <!DOCTYPE html>
 <html lang="es">
@@ -303,7 +272,6 @@ if ( $proyecto->getId() != null ){
 		</div>
 	</div>
 	<script type="text/javascript" src="<?php echo RUTA;?>js/jquery-1.11.3.js"></script>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=<?php echo API_KEY_GOOGLE_MAPS;?>&callback=initialize"></script>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="text/javascript" src="<?php echo RUTA;?>js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="<?php echo RUTA?>js/functions.js"></script>
@@ -340,7 +308,7 @@ if ( $proyecto->getId() != null ){
 					}
 					echo number_format($PPM[$i], 2, '.', '').",";
 					if ( count($consumo) > 0 ) {
-						echo number_format($consumo[$i], 2 , '.', '').",";
+						echo number_format($corregido[$i], 2 , '.', '').",";
 					}
 					echo "],";
 				}?>
@@ -357,27 +325,6 @@ if ( $proyecto->getId() != null ){
     		var chart = new google.visualization.ComboChart(document.getElementById('grafResultado'));
     		chart.draw(data, options);
   		}
-  		/*
-  		function initialize(  ) {
-  			var latitud = $("#latitud").val();
-  			var longitud = $("#longitud").val();
-		  	var latlon = new google.maps.LatLng( latitud , longitud );
-		  	var myOptions = {
-		                zoom: 15,
-		                center: latlon
-		            };
-		    map = new google.maps.Map(document.getElementById('map'), myOptions);
-
-		    coorMarcador = new google.maps.LatLng(latitud,longitud); 
-		                
-		    var marcador = new google.maps.Marker({
-		        draggable: false,
-		                position: coorMarcador, 
-		                animation: google.maps.Animation.DROP,
-		                map: map, 
-		                title: "Fijar Posición del proyecto" 
-		            });
-		}*/
   </script>
 </body>
 </html>
