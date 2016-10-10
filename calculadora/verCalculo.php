@@ -8,7 +8,9 @@
   session_start();
   $proyecto = new Proyecto ($_SESSION["calculo"]["PROY_ID"]);
   $cliente = new Cliente ($proyecto->getRut());
-  print_r($_SESSION);
+  if ($_SESSION["calculo"] == null ) {
+  	header("location: nuevoCalculo.php");
+  }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -36,11 +38,11 @@
 						<tbody>
 							<tr>
 								<td style="width: 160px"><strong> Nombre del Proyecto</strong></td>
-								<td><strong>:</strong></td>
+								<td style="width: 10px"><strong>:</strong></td>
 								<td><?php echo $proyecto->getNombre();?></td>
 							</tr>
 							<tr>
-								<td style="width: 10px"><strong>RUT Cliente</strong></td>
+								<td><strong>RUT Cliente</strong></td>
 								<td><strong>:</strong></td>
 								<td><?php echo $proyecto->getRut();?></td>
 							</tr>
@@ -57,7 +59,7 @@
 							<tr>
 								<td><strong>Inclinación</strong></td>
 								<td><strong>:</strong></td>
-								<td><?php echo $_SESSION["calculo"]["INCLINACION"];?></td>
+								<td><?php echo $_SESSION["calculo"]["INCLINACION"];?> °</td>
 							</tr>
 												
 							<?php 

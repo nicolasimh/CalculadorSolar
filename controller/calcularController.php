@@ -86,11 +86,14 @@ if (!empty($_POST['accion'])){
 						for ($i=0; $i < count($_POST['cantidad']); $i++) { 
 							$consumo[$i]= $_POST['cantidad'][$i] * $_POST['horas'][$i];
 							$totaldia= $totaldia + $consumo[$i];
+							echo "<br>total día ".$i." = ".$_POST['cantidad'][$i]." * ".$_POST['horas'][$i]." = ".$totaldia;
 						}
+						echo "<br><br>";
 						$totalmes=$totaldia*30;
-						for ($i=0; $i < 12; $i++) { 
+						for ($i=0; $i < 12; $i++) {
 							$corregido[$i]=$totalmes*$_POST['factor'][$i];
 							$consumoanual= $consumoanual+$corregido[$i];
+							echo "<br>total día ".$i." = ".$totalmes." * ".$_POST['factor'][$i]." = ".$corregido[$i];
 						}
 
 						$_SESSION["calculo"]["CONSUMO"]=$corregido;
