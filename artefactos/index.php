@@ -24,23 +24,41 @@
 		</div>
 		<div class="col-md-9 pull-left" id="body-wrapper">
 			<h3 id="tituloPag"><span class="glyphicon glyphicon-lamp" style="color:#f0ad4e"></span> Listado de Artefactos</h3>
+<?php 
+			switch ($_GET["result"]) {
+				case 'success':?>
+			<div class="alert alert-success alert-dismissible fade in" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4>Exito!</h4>
+				<p>La operación solicitada se ha realizado exitosamente</p>
+			</div>
+<?php				break;
+				case 'error': ?>
+			<div class="alert alert-danger alert-dismissible fade in" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4>Ups! Tenemos un problema</h4>
+				<p>Los cambio solicitados no se han podido realizar. Favor reintente la operación, si el problema persiste contácte al proveedor del sistema.</p>
+			</div>
+<?php			break;
+				case 'errorDelete'?>
+			<div class="alert alert-danger alert-dismissible fade in" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4>Ups! El registro está ocupado</h4>
+				<p>No hemos podido realizar la eliminación del registro, esto se debe a que se encuentra asociado a un proyecto.</p>
+			</div>
+<?php			
+				break;
+			}
+?>
 			<div class="col-sm-offset-10 col-sm-3">
                 <a href="../artefactos/nuevoArtefacto.php" class="btn btn-warning btn-md" role="button"><span class="glyphicon glyphicon-plus"></span> Nuevo Artefacto</a>
             </div>
-			<div class="collapse" id="collapseExample">
-				<form class="form-inline" id="ordenForm">
-					<div class="form-group">
-						<label for="ordenarPor">Ordenar por: </label>
-						<select class="form-control input-sm" id="ordenarPor">
-							<option>Seleccione</option>
-							<option value="0">Nombre</option>
-							<option value="1">Consumo Kw</option>
-						</select>
-					</div>
-				</form>
-			</div>
-
-
 			<table class="table table-hover">
 				<thead>
 					<th>ID</th>

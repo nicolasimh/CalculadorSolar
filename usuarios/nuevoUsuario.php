@@ -13,7 +13,7 @@
 	<link href="<?php echo RUTA;?>css/main.css" rel="stylesheet">
 </head>
 <body>
-	<nav class="navbar navbar-fixed-top navbar-inverse" id="menu">
+	 <nav class="navbar navbar-fixed-top navbar-inverse" id="menu">
      	<?php include("../_menu.php");?>
     </nav>
 
@@ -23,6 +23,48 @@
 		</div>
 		<div class="col-md-9 pull-left" id="body-wrapper">
 			<h3 id="tituloPag">Nuevo Usuario</h3>
+<?php 
+      switch ($_GET["result"]) {
+        case 'success':?>
+      <div class="alert alert-success alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4>Exito!</h4>
+        <p>La operación solicitada se ha realizado exitosamente</p>
+      </div>
+<?php       break;
+        case 'error': ?>
+      <div class="alert alert-danger alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4>Ups! Tenemos un problema</h4>
+        <p>Los cambio solicitados no se han podido realizar. Favor reintente la operación, si el problema persiste contácte al proveedor del sistema.</p>
+      </div>
+<?php     break;
+        case 'errorDelete'?>
+      <div class="alert alert-danger alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4>Ups! El registro está ocupado</h4>
+        <p>No hemos podido realizar la eliminación del registro, esto se debe a que se encuentra asociado a un proyecto.</p>
+      </div>
+<?php     
+        break;
+case 'old'?>
+      <div class="alert alert-warning alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4>Ups! Ya tenemos este registro</h4>
+        <p>No hemos ingresado el registro solicitado debido a que ya está en la base de datos. Verifique el estado en que este se encuentra.</p>
+      </div>
+<?php     
+        break;        
+      }
+?>      
 			<form class="form-horizontal" action="../controller/usuarioController.php" method="post">
   				<div class="form-group">
     				<label for="rut" class="col-sm-2 control-label">* RUT</label>

@@ -27,8 +27,8 @@ Class ARTEFACTO {
 		}
 	}
 
-	public function registrar ( $id , $nombre , $consumo) {
-		$sql="INSERT INTO ARTEFACTO ( ART_ID , ART_NOMBRE , ART_CONSUMO) VALUES ('$id','$nombre','$consumo')";
+	public function registrar (  $nombre , $consumo) {
+		$sql="INSERT INTO ARTEFACTO ( ART_NOMBRE , ART_CONSUMO) VALUES ('$nombre','$consumo')";
 		$link = new Conexion ( );
 		return $link->query( $sql );
 	}

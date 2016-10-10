@@ -23,11 +23,11 @@
 					header( 'location: ../clientes/index.php?result=success');
 				} else {
 					//Devuelvo una variable para mostrar el mensaje de error
-					header( 'location: ../clientes/nuevoCliente.php?result=error&rut='.$rut.'&razonsocial='.$razonsocial.'&nombrefantasia='.$nombrefantasia.'&direccion='.$direccion.'&telefono='.$telefono.'&contacto='.$contacto.'&email='.$email);
+					header( 'location: ../clientes/nuevoCliente.php?result=error');
 				}
 			//Devuelvo una variable para mostrar el mensaje de error
 			} else {
-				header( 'location: ../clientes/nuevoCliente.php?result=old&rut='.$rut.'&razonsocial='.$razonsocial.'&nombrefantasia='.$nombrefantasia.'&direccion='.$direccion.'&telefono='.$telefono.'&contacto='.$contacto.'&email='.$email);
+				header( 'location: ../clientes/nuevoCliente.php?result=old');
 			}
 			break;
 		case 'alter':
@@ -47,7 +47,7 @@
 			if ( $user->modificar ( $rut, $razonsocial, $nombrefantasia , $direccion, $telefono, $contacto, $email) ) {
 				header( 'location: ../clientes/index.php?result=success');
 			} else {
-				header( 'location: ../clientes/modificar.php?result=error&rut='.$rut.'&razonsocial='.$razonsocial.'&nombrefantasia='.$nombrefantasia.'&direccion='.$direccion.'&telefono='.$telefono.'&contacto='.$contacto.'&email='.$email);
+				header( 'location: ../clientes/modificar.php?result=error');
 			}
 		break;
 		case 'delete':
@@ -59,7 +59,7 @@
 			if ( $user->eliminar( ) ) {
 				header( 'location: ../clientes/index.php?result=success');
 			} else {
-				header( 'location: ../clientes/index.php?result=error');
+				header( 'location: ../clientes/index.php?result=errorDelete');
 			}
 		break;
 		default:

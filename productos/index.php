@@ -23,31 +23,51 @@
 		</div>
 		<div class="col-md-9 pull-left" id="body-wrapper">
 			<h3 id="tituloPag"><span class="glyphicon glyphicon-blackboard" style="color:#5cb85c"></span> Listado de Productos</h3>
+<?php 
+			switch ($_GET["result"]) {
+				case 'success':?>
+			<div class="alert alert-success alert-dismissible fade in" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4>Exito!</h4>
+				<p>La operación solicitada se ha realizado exitosamente</p>
+			</div>
+<?php				break;
+				case 'error': ?>
+			<div class="alert alert-danger alert-dismissible fade in" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4>Ups! Tenemos un problema</h4>
+				<p>Los cambio solicitados no se han podido realizar. Favor reintente la operación, si el problema persiste contácte al proveedor del sistema.</p>
+			</div>
+<?php			break;
+				case 'errorDelete'?>
+			<div class="alert alert-danger alert-dismissible fade in" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4>Ups! El registro está ocupado</h4>
+				<p>No hemos podido realizar la eliminación del registro, esto se debe a que se encuentra asociado a un proyecto.</p>
+			</div>
+<?php			
+				break;
+				case 'old'?>
+			<div class="alert alert-warning alert-dismissible fade in" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4>Ups! Ya tenemos este registro</h4>
+				<p>No hemos ingresado el registro solicitado debido a que ya se enceuntra en la base de datos. Verifique el estado en que este se encuentra</p>
+			</div>
+<?php			
+				break;				
+			}
+?>				
 			<div class="col-sm-offset-10 col-sm-3">
                 <a href="../productos/nuevoProducto.php" class="btn btn-success btn-md" role="button"><span class="glyphicon glyphicon-plus"></span> Nuevo Producto</a>
             </div>
-			<div class="collapse" id="collapseExample">
-				<form class="form-inline" id="ordenForm">
-					<div class="form-group">
-						<label for="ordenarPor">Ordenar por: </label>
-						<select class="form-control input-sm" id="ordenarPor">
-							<option>Seleccione</option>
-							<option value="0">Código</option>
-							<option value="1">Nombre</option>
-							<option value="2">Cliente</option>
-							<option value="3">Estado</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<label for="exampleInputName2">Tipo: </label>
-						<select class="form-control input-sm" id="ordenarPor">
-							<option>Seleccione</option>
-							<option value="0">Ascendente</option>
-							<option value="1">Descentente</option>
-						</select>
-					</div>
-				</form>
-			</div>
 			<table class="table table-hover">
 				<thead>
 					<th>ID</th>

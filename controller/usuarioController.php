@@ -24,11 +24,11 @@
 					header( 'location: ../usuarios/index.php?result=success');
 				} else {
 					//Devuelvo una variable para mostrar el mensaje de error
-					header( 'location: ../usuarios/nuevoUsuario.php?result=error&rut='.$rut.'&nombre='.$nombre.'&apellido='.$apellido);
+					header( 'location: ../usuarios/nuevoUsuario.php?result=error');
 				}
 			//Devuelvo una variable para mostrar el mensaje de error
 			} else {
-				header( 'location: ../usuarios/nuevoUsuario.php?result=old&rut='.$rut.'&nombre='.$nombre.'&apellido='.$apellido);
+				header( 'location: ../usuarios/nuevoUsuario.php?result=old');
 			}
 			break;
 		case 'alter':
@@ -49,7 +49,7 @@
 			if ( $user->modificar ( $rut, $nombre, $apellido , $usuario, $email, $clave, $tipo, $estado) ) {
 				header( 'location: ../Usuarios/index.php?result=success');
 			} else {
-				header( 'location: ../Usuarios/modificar.php?result=error&rut='.$rut.'&nombre='.$nombre.'&apellido='.$apellido);
+				header( 'location: ../Usuarios/modificar.php?result=error');
 			}
 		break;
 		case 'delete':
@@ -61,7 +61,7 @@
 			if ( $user->eliminar( ) ) {
 				header( 'location: ../usuarios/index.php?result=success');
 			} else {
-				header( 'location: ../usuarios/index.php?result=error');
+				header( 'location: ../usuarios/index.php?result=errorDelete');
 			}
 		break;
 		default:

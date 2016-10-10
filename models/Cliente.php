@@ -37,14 +37,14 @@ Class CLIENTE {
 	}
 
 	public function registrar ( $rut , $razonsocial , $nombrefantasia , $direccion, $telefono , $contacto, $email) {
-		$sql="INSERT INTO CLIENTE ( CL_RUT , CL_RAZONSOCIAL , CL_NOMBREFANTASIA , CL_DIRECCION, CL_TELEFONO , CL_CONTACTO, CL_EMAIL ) VALUES ('$rut','$razonsocial','$nombrefantasia','$direccion','$telefono','$contacto','$email')";
+		$sql="INSERT INTO CLIENTE ( CL_RUT , CL_RAZONSOCIAL , CL_NOMBREFANTASIA , CL_DIRECCION, CL_TELEFONO , CL_CONTACTO, CL_EMAIL ) VALUES ('$rut','$razonsocial','$nombrefantasia','$direccion',$telefono,'$contacto','$email')";
 		$link = new Conexion ( );
 		return $link->query( $sql );
 	}
 
 	public function modificar ( $rut , $razonsocial , $nombrefantasia , $direccion, $telefono , $contacto, $email ) {
 
-		$sql="UPDATE CLIENTE SET CL_RAZONSOCIAL = '$razonsocial' , CL_NOMBREFANTASIA = '$nombrefantasia' , CL_DIRECCION = '$direccion', CL_TELEFONO = '$telefono', CL_CONTACTO = '$contacto', CL_EMAIL = '$email' WHERE CL_RUT = '$rut'";
+		$sql="UPDATE CLIENTE SET CL_RAZONSOCIAL = '$razonsocial' , CL_NOMBREFANTASIA = '$nombrefantasia' , CL_DIRECCION = '$direccion', CL_TELEFONO = $telefono, CL_CONTACTO = '$contacto', CL_EMAIL = '$email' WHERE CL_RUT = '$rut'";
 		$link = new Conexion ( );
 		return $link->query( $sql );
 	}
