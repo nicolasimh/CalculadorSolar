@@ -20,14 +20,14 @@
     <div class="container" id="main">
     	<div>
     		<ul class="clearfix">
-    			<li><a class="btn btn-info" href=""><span class="glyphicon glyphicon-globe"></span><br><br> Mis proyectos</a></li>
-    			<li><a class="btn btn-danger" href=""><span class="glyphicon glyphicon-leaf"></span><br><br>Calculadora</a></li>
+    			<li><a class="btn btn-info" href="proyectos"><span class="glyphicon glyphicon-globe"></span><br><br> Mis proyectos</a></li>
+    			<li><a class="btn btn-danger" href="calculadora/nuevoCalculo.php"><span class="glyphicon glyphicon-leaf"></span><br><br>Calculadora</a></li>
     		</ul>
     	</div>
     	<div >
     		<ul class= "clearfix">
     			<li><a class="btn btn-warning"><span class="glyphicon glyphicon-thumbs-up"></span><br><br> Cotización</a></li>
-    			<li><a class="btn btn-success" href=""><span class="glyphicon glyphicon-grain"></span><br><br>Configuración</a></li>
+    			<li><a class="btn btn-success" href="menu-configuracion.php"><span class="glyphicon glyphicon-grain"></span><br><br>Configuración</a></li>
     		</ul>
     	</div>
     </div>

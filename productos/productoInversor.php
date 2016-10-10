@@ -4,30 +4,41 @@
 	<div class="col-sm-2">
 		<select id="tipoInversor" name="tipoInversor" class="form-control" required="required">
 			<option value="">Seleccione</option>
-			<option value="tipoA">Aislado</option>
-			<option value="tipoB">En Red</option>
+			<option value="Aislado">Aislado</option>
+			<option value="En Red">En Red</option>
+		</select>
+	</div>
+		<label class="col-sm-2 control-label" for="rendimiento">* Rendimiento</label>
+		<div class="col-sm-2">
+		<select id="rendimiento" name="rendimiento" required="required" class="form-control">
+			<option value="">Seleccione</option>
+			<option value="0.9">90%</option>
+			<option value="0.91">91%</option>
+			<option value="0.92">92%</option>
+			<option value="0.93">93%</option>
+			<option value="0.94">94%</option>
+			<option value="0.95">95%</option>
+			<option value="0.96">96%</option>
+			<option value="0.97">97%</option>
+			<option value="0.98">98%</option>
+			<option value="0.99">99%</option>
+			<option value="1">100%</option>
 		</select>
 	</div>
 </div>
 <div class="form-group">
-	<label class="col-sm-2 control-label" for="potenciaInversor">Potencia</label>
+	<label class="col-sm-2 control-label" for="potenciaInversor">* Potencia (W)</label>
 	<div class="col-sm-2">
 		<input id="potenciaInversor" name="potenciaInversor" class="form-control entero" required="required" type="int" step="0.01" min="0" />
 	</div>
-	<label class="col-sm-2 control-label" for="voltajeEntrada">Voltaje Entrada</label>
+	<label class="col-sm-2 control-label" for="voltajeEntrada">* Voltaje Entrada (V)</label>
 	<div class="col-sm-2">
 		<input id="voltajeEntrada" name="voltajeEntrada" class="form-control entero" required="required" type="int" min="0" />
 	</div>
 </div>
 <div class="form-group">
-	<label class="col-sm-2 control-label" for="corrienteEntrada">Corriente Entrada</label>
-	<div class="col-sm-2">
-		<input id="corrienteEntrada" name="corrienteEntrada" class="form-control entero" required="required" type="int" min="0" />
-	</div>
-	<label class="col-sm-2 control-label" for="rendimiento">Rendimiento</label>
-	<div class="col-sm-2">
-		<input id="rendimiento" name="rendimiento" class="form-control entero" required="required" type="int" min="0" />
-	</div>
+		<input id="corrienteEntrada" name="corrienteEntrada" class="hide" value="01" type="int" min="0" />
+	
 </div>
 <div class="form-group">
 	<div class="col-sm-offset-2 col-sm-10">

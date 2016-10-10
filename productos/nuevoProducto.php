@@ -98,7 +98,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-2 control-label" for="precioVenta">Precio Venta</label>
+					<label class="col-sm-2 control-label" for="precioVenta">* Precio Venta</label>
 					<div class="input-group col-sm-5">
 						<div class="input-group-addon">$</div>
 						<input id="precioVenta" name="precioVenta" min="0" class="form-control entero" required="required" type="int"/>

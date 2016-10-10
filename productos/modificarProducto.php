@@ -54,9 +54,14 @@ $producto = new Producto($_POST["idProd"]);
 ?>			
 			<div class="form-group">
 				<label class="col-sm-2 control-label" for="voltajeBateria">Voltaje Batería</label>
-				<div class="col-sm-5">
-					<input id="voltajeBateria" name="voltajeBateria" class="form-control" required="required" type="number" min="0" value="<?php echo $bateria->getVoltajeBateria();?>"/>
-				</div>
+				<div class="col-sm-3">
+					<select class="form-control" required="required" name="voltajeBateria">
+	                  <option value="">Seleccione</option>
+	                  <option value="2" <?php if ($bateria->getVoltajeBateria()=='2') echo 'selected="selected"';?> >2V</option>
+	                  <option value="6" <?php if ($bateria->getVoltajeBateria()=='6') echo 'selected="selected"';?> >6V</option>
+	                  <option value="12" <?php if ($bateria->getVoltajeBateria()=='12') echo 'selected="selected"';?> >12V</option>
+	                </select>
+				</div>				
 			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-3 col-sm-5">
@@ -76,8 +81,8 @@ $producto = new Producto($_POST["idProd"]);
 				<label class="col-sm-2 control-label" for="tipoInversor">Tipo de Inversor</label>
 				<div class="col-sm-5">
 					<select id="tipoInversor" name="tipoInversor" class="form-control" required="required">
-						<option value="tipoA">Tipo A</option>
-						<option value="tipoB">Tipo B</option>
+						<option value="Aislado">Aislado</option>
+						<option value="En Red">En Red</option>
 					</select>
 				</div>
 			</div>

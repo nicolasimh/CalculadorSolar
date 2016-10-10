@@ -23,8 +23,10 @@
 			<?php include("../menu-lateral-2.php"); ?>
 		</div>
 		<div class="col-md-9 pull-left" id="body-wrapper">
-			<h3 id="tituloPag">Listado de Proyectos</h3>
-			<a class="btn btn-default pull-right" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Búsqueda Avanzada</a>
+			<h3 id="tituloPag"><span class="glyphicon glyphicon-globe" style="color:#5bc0de"></span>  Listado de Proyectos</h3>
+			<div class="col-sm-offset-10 col-sm-3">
+                <a href="../proyectos/nuevoProyecto.php" class="btn btn-info btn-md" role="button"><span class="glyphicon glyphicon-plus"></span> Nuevo Proyecto</a>
+            </div>	
 			<div class="collapse" id="collapseExample">
 				<form class="form-inline" id="ordenForm">
 					<div class="form-group">
