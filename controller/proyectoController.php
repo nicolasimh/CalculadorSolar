@@ -17,7 +17,12 @@ switch ($_POST["event"]) {
 		if ($proyecto->getId()== null) {
 			if ( $proyecto->registrarSimple( $_POST["cliente"] , $_POST["nombre"] , $_POST["ubicacion"] , $_POST["latitud"] , $_POST["longitud"] , $_POST["tipoProyecto"]) ){
 				$_SESSION["proyecto"] = null;
-				header('location: ../proyectos/index.php?result=success');
+				if ( $_SESSION["proyectoParam"] == -1 ){
+					$_SESSION["proyectoParam"] = $proyecto->getUltimoProyecto();
+					header('location: ../calculadora/nuevoCalculo.php?action=new');
+				} else {
+					header('location: ../proyectos/index.php?result=success');
+				}
 			} else {
 				header('location: ../proyectos/nuevoProyecto.php?result=error');
 			}

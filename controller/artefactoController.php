@@ -1,6 +1,7 @@
 <?php
 	require_once('../config.php');
 	require_once('../models/Artefacto.php');
+	session_start();
 
 	switch ($_POST['accion']) {
 		case 'new':
@@ -16,7 +17,12 @@
 				//Intento registrar el usuario en la base de datos
 				if ( $user->registrar( $id, $nombre, $consumo) ) {
 					//Devuelvo una variable para mostrar el mensaje exitoso
-					header( 'location: ../artefactos/index.php?result=success');
+					if ( $_SESSION["artefactoParam"] == -1 ){
+						$_SESSION["artefactoParam"] = $user->getUltimoArtefacto();
+						header("location: ../calculadora/nuevoCalculo.php?action=new");
+					} else {
+						header( 'location: ../artefactos/index.php?result=success');
+					}
 				} else {
 					//Devuelvo una variable para mostrar el mensaje de error
 					header( 'location: ../artefactos/nuevoArtefacto.php?result=error&id='.$id.'&nombre='.$nombre.'&consumo='.$consumo);

@@ -4,13 +4,18 @@
   require_once ("../models/Panel.php");
   require_once ("../models/Inversor.php");
   require_once ("../models/Mantenimiento.php");
-  
+  session_start();
   $proyecto = new Proyecto (null);
   $listaProyecto = $proyecto->getListadoCalculo();
   $prodpanel = new Panel (null);
   $listaPanel = $prodpanel->getListadoPanel();
   $prodinversor = new Inversor (null);
   $listaInversor = $prodinversor->getListadoInversor();
+
+  if ($_GET["action"] != 'new') {
+    $_SESSION["proyectoParam"] = null;
+    $_SESSION["artefactoParam"] = null;
+  }
 ?>
 
 <!DOCTYPE html>
@@ -43,13 +48,17 @@
                           else
                             $tipo="Sistema Aislado";                         
                           
-                          echo '<option value="'.$row->PROY_ID.'">'.$row->PROY_NOMBRE.' - '.$tipo.'</option>';
+                          if ( $row->PROY_ID == $_SESSION["proyectoParam"] ) {
+                            echo '<option selected="selected" value="'.$row->PROY_ID.'">'.$row->PROY_NOMBRE.' - '.$tipo.'</option>';  
+                          } else {
+                            echo '<option value="'.$row->PROY_ID.'">'.$row->PROY_NOMBRE.' - '.$tipo.'</option>';  
+                          }
                         }?>
               </select>
     				</div>
              <input class="hide" id="tipoproyecto" value="">
             <div class="col-sm-offset-1 col-sm-3">
-                <a href="../proyectos/nuevoProyecto.php" class="btn btn-info btn-sm" role="button"><span class="glyphicon glyphicon-plus"></span> Crear nuevo Proyecto</a>
+                <a href="../proyectos/nuevoProyecto.php?action=new" class="btn btn-info btn-sm" role="button"><span class="glyphicon glyphicon-plus"></span> Crear nuevo Proyecto</a>
             </div>
   				</div>
   				<div class="form-group">

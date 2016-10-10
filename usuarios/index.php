@@ -72,7 +72,7 @@
 	foreach ($lsUsuario as $row ) { ?>
 	
 					<tr>
-						<td><?php echo $row->USU_RUT; ?></td>
+						<td class="nombreProyecto"><?php echo $row->USU_RUT; ?></td>
 						<td><?php echo $row->USU_NOMBRE; ?></td>
 						<td><?php echo $row->USU_APELLIDO; ?></td>
 						<td><?php echo $row->USU_TIPO; ?></td>
@@ -128,6 +128,24 @@
 							$(".modal-body").html( html );
 						}
 					)
+				}
+			);
+
+			$(".btn-info").click(
+				function(){
+					var elemento = $(this).parent().parent().children("td:first-child").text();
+					var titulo = $(this).parent().parent().children("td.nombreProyecto").text();
+					$.ajax({
+						url: "verUsuario.php",
+						method: "POST",
+						data: { "id" : elemento},
+						dataType: "html"
+					}).done(
+						function(html){
+							$("#myModalLabel").text(titulo);
+							$(".modal-body").html( html );
+						}
+					);
 				}
 			);
 		

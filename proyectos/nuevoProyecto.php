@@ -3,6 +3,11 @@
 	require_once ("../models/Cliente.php");
 	$cliente = new Cliente ( null );
 	$listaClientes = $cliente->getListado();
+	session_start();
+
+	if ($_GET["action"] == 'new') {
+		$_SESSION["proyectoParam"] = -1;
+	}
 ?>
 
 <!DOCTYPE html>

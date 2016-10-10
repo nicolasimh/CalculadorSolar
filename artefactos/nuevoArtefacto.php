@@ -1,5 +1,10 @@
 <?php
 	require_once ("../config.php");
+  session_start();
+
+  if ($_GET["action"] == 'new') {
+    $_SESSION["artefactoParam"] = -1;
+  }
 ?>
 
 <!DOCTYPE html>

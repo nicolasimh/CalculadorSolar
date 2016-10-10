@@ -9,13 +9,13 @@ if ( !empty($_POST["id"]) ) {
 	<form class="form-horizontal" action="../controller/artefactoController.php" method="post">
           <div class="form-group">
             <label for="id" class="col-sm-2 control-label">ID</label>
-              <div class="col-sm-4">
+              <div class="col-sm-2">
               <input type="text" class="form-control" id="id" name="id" readonly="readonly" value="<?php echo $artefacto->getID();?>">
               </div>
           </div>
           <div class="form-group">
             <label for="nombre" class="col-sm-2 control-label">*Nombre</label>
-              <div class="col-sm-3">
+              <div class="col-sm-5">
               <input type="text" class="form-control" id="nombre" maxlength="30" name="nombre" value="<?php echo $artefacto->getNombre();?>">
               </div>
           </div>

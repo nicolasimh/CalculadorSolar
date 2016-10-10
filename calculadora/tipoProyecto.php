@@ -22,7 +22,7 @@
   	<div class="form-group">
   		<div class="col-sm-offset-2 col-sm-4"><h3 style="margin:0;">Consumo Promedio Diario</h3></div>
   		<div class="col-sm-offset-1 col-sm-3">
-                <a href="../artefactos/nuevoArtefacto.php" class="btn btn-info btn-sm" role="button"><span class="glyphicon glyphicon-plus"></span> Crear nuevo Artefacto</a>
+                <a href="../artefactos/nuevoArtefacto.php?action=new" class="btn btn-info btn-sm" role="button"><span class="glyphicon glyphicon-plus"></span> Crear nuevo Artefacto</a>
         </div> 
   	</div>
 
@@ -33,20 +33,18 @@
 					<th>Artefactos</th>
 					<th>Consumo kWh</th>
 					<th>Horas Promedio diaria</th>
-					<th>Total Consumo Promedio día</th>
 				</thead>	
                 <?php 
                     foreach ($listadoArtefactos as $row) {?>
                     <tr>
                     	<td>
-              				<input style="width:40px;" type="text" class="entero" name="cantidad" required="required">
+              				<input style="width:40px;" type="text" class="entero cantidad" name="cantidad[]" required="required">
               			</td>
 						<td><?php echo $row->ART_NOMBRE; ?></td>
 						<td><?php echo $row->ART_CONSUMO; ?></td>
 						<td >
-              				<input style="width:40px" type="text" class="entero" name="horas" required="required">
+              				<input style="width:40px" type="text" class="entero horas" name="horas[]" required="required">
               			</td>
-              			<td>1</td>
 					</tr>	
 				<?php } ?>
 		
@@ -71,40 +69,40 @@
 			<tr>
 				<td> Factor</td>
 				<td>
-					<input style="width:35px;" type="text" class="decimal" name="enero" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="factor[]" required="required">
 				</td>
 				<td>
-					<input style="width:35px;" type="text" class="decimal" name="febrero" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="factor[]" required="required">
 				</td>
 				<td>
-					<input style="width:35px;" type="text" class="decimal" name="marzo" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="factor[]" required="required">
 				</td>
 				<td>
-					<input style="width:35px;" type="text" class="decimal" name="abril" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="factor[]" required="required">
 				</td>
 				<td>
-					<input style="width:35px;" type="text" class="decimal" name="mayo" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="factor[]" required="required">
 				</td>
 				<td>
-					<input style="width:35px;" type="text" class="decimal" name="junio" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="factor[]" required="required">
 				</td>
 				<td>
-					<input style="width:35px;" type="text" class="decimal" name="julio" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="factor[]" required="required">
 				</td>
 				<td>
-					<input style="width:35px;" type="text" class="decimal" name="agosto" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="factor[]" required="required">
 				</td>
 				<td>
-					<input style="width:35px;" type="text" class="decimal" name="septiembre" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="factor[]" required="required">
 				</td>
 				<td>
-					<input style="width:35px;" type="text" class="decimal" name="octubre" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="factor[]" required="required">
 				</td>
 				<td>
-					<input style="width:35px;" type="text" class="decimal" name="noviembre" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="factor[]" required="required">
 				</td>
 				<td>
-					<input style="width:35px;" type="text" class="decimal" name="diciembre" required="required">
+					<input style="width:35px;" type="text" class="decimal" name="factor[]" required="required">
 				</td>
 			</tr>
 		</table><br><br>
@@ -120,8 +118,31 @@
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-    $('.entero').numeric();
-    $('.decimal').numeric(","); 
-	});
+			var horas;
+			var cantidad;
+			var count = 0;
+    		$('.entero').numeric();
+    		$('.decimal').numeric(","); 
+
+    		/*
+    		$('.cantidad').change(function(){
+    			count = 0;
+    			$(this).parent().parent().children("td").each(function (){
+    				switch (count) {
+    					case 0:
+    						cantidad = $(this).find("input").val();
+    						break;
+    					case 3:
+    						break;
+    					case 4
+    						break;
+    				}
+    				count ++;
+    				
+    			});
+    			//$(this).parent().find("td:eq(0)").find("input").val("123");
+    			
+    		});*/
+		});
   </script>
 	

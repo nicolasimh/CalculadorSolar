@@ -53,6 +53,13 @@ Class ARTEFACTO {
 		return $array;
 	}
 
+	public function getUltimoArtefacto( ) {
+		$sql = "SELECT MAX(PROY_ID) as PROY_ID FROM PROYECTO";
+		$link = new Conexion ( );
+		$lastId = $link->getObj( $sql );
+		return $lastId[0]->PROY_ID;
+	}
+
 	public function getId( ) {
 		return $this->id;
 	}

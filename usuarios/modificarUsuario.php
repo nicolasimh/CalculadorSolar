@@ -52,8 +52,8 @@ if ( !empty($_POST["id"]) ) {
           <div class="form-group">
             <label for="estado" class="col-sm-2 control-label">* Estado</label>
               <div class="col-sm-3">
-              <select class="form-control" name="estado">
-                  <option value="">Seleccione</option required="required">
+              <select class="form-control" name="estado" required="required">
+                  <option value="">Seleccione</option>
                   <option value="1" <?php if ($usuario->getEstado()=='1')echo 'selected="selected"';?> >Activo</option>
                   <option value="0" <?php if ($usuario->getEstado()=='0')echo 'selected="selected"';?>>Inactivo</option>
                 </select>
