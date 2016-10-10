@@ -77,29 +77,27 @@
 					<div class="col-sm-3">
 						<input id="marca" name="marca" type="text" class="form-control" maxlength="30" required="required"/>
 					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-2 control-label" for="modelo">Modelo</label>
+					<label class="col-sm-1 control-label" for="modelo">Modelo</label>
 					<div class="col-sm-3">
 						<input id="modelo" name="modelo" type="text" class="form-control" maxlength="30" />
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="descripcion">Descripcion</label>
-					<div class="col-sm-8">
+					<div class="col-sm-7">
 						<textarea id="descripcion" name="descripcion" class="form-control" maxlength="100" ></textarea>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="precioCompra">* Precio Compra</label>
-					<div class="input-group col-sm-5">
+					<div class="input-group col-sm-3">
 						<div class="input-group-addon">$</div>
 						<input id="precioCompra" name="precioCompra" min="0" class="form-control entero" required="required" type="int"/>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label" for="precioVenta">* Precio Venta</label>
-					<div class="input-group col-sm-5">
+					<div class="input-group col-sm-3">
 						<div class="input-group-addon">$</div>
 						<input id="precioVenta" name="precioVenta" min="0" class="form-control entero" required="required" type="int"/>
 					</div>

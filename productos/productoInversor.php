@@ -33,7 +33,13 @@
 	</div>
 	<label class="col-sm-2 control-label" for="voltajeEntrada">* Voltaje Entrada (V)</label>
 	<div class="col-sm-2">
-		<input id="voltajeEntrada" name="voltajeEntrada" class="form-control entero" required="required" type="int" min="0" />
+		<select id="voltajeEntrada" name="voltajeEntrada" class="form-control" required="required">
+			<option value="">Seleccione</option>
+			<option value="12">12V</option>
+			<option value="24">24V</option>
+			<option value="48">48V</option>
+			<option value="72">72V</option>
+		</select>
 	</div>
 </div>
 <div class="form-group">

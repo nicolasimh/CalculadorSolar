@@ -15,7 +15,7 @@
 				$link = new Conexion ( );
 				$sql = "SELECT INV_ID , PROD_ID , INV_TIPO , INV_POTENCIACA , INV_VOLTAJEENTRADA ,
 							   INV_CORRIENTEENTRADA	, INV_RENDIMIENTO
-						FROM INVERSOR WHERE PROD_ID = $id";
+						FROM INVERSOR WHERE INV_ID = $id";
 				$result = $link->getObj( $sql );
 				$this->subId 			= $result[0]->INV_ID;
 				$this->tipo 			= $result[0]->INV_TIPO;
