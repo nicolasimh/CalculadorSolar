@@ -17,7 +17,6 @@ $mantenimiento = new Mantenimiento (($_POST['mantenimiento']));
 session_start();
 
 if (!empty($_POST['accion'])){
-
 	/**** Consumimos web Services para obtener el factor de Radiación Horizontal ****/
 	$radiacion = $proyecto->clientWebServices();
 	
@@ -81,15 +80,18 @@ if (!empty($_POST['accion'])){
 						*/
 						$proyecto->CalculoRealizado();
 						header("location: ../calculadora/verCalculo.php");
-
-
-
 					} else {
 						/***** continuar calculo aislado ****/
 
-
-
-
+						for ($i=0; $i < count($_POST['cantidad']); $i++) { 
+							$consumo[$i]= $_POST['cantidad'][$i] * $_POST['horas'][$i];
+							$totaldia= $totaldia + $consumo[$i];
+						}
+						$totalmes=$totaldia*30;
+						for ($i=0; $i < 12; $i++) { 
+							$corregido[$i]=$totalmes*$_POST['factor'][$i];
+							$consumoanual= $consumoanual+$corregido[$i];
+						}
 						
 					}
 

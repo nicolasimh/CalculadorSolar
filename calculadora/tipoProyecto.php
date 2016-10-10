@@ -38,12 +38,12 @@
                     foreach ($listadoArtefactos as $row) {?>
                     <tr>
                     	<td>
-              				<input style="width:40px;" type="text" class="entero cantidad" name="cantidad[]" required="required">
+              				<input style="width:40px;" type="text" class="entero cantidad" name="cantidad[]" value="0" required="required">
               			</td>
 						<td><?php echo $row->ART_NOMBRE; ?></td>
 						<td><?php echo $row->ART_CONSUMO; ?></td>
 						<td >
-              				<input style="width:40px" type="text" class="entero horas" name="horas[]" required="required">
+              				<input style="width:40px" type="text" class="entero horas" name="horas[]" value="0" required="required">
               			</td>
 					</tr>	
 				<?php } ?>
