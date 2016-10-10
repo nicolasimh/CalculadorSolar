@@ -76,13 +76,15 @@ $producto = new Producto($_POST["idProd"]);
 
 		case 'Inversor':
 			$inversor = new Inversor($_POST["id"]);
-?>
+			print_r($inversor->getTipo());
+?>	
 			<div class="form-group">
 				<label class="col-sm-2 control-label" for="tipoInversor">Tipo de Inversor</label>
-				<div class="col-sm-5">
+				<div class="col-sm-3">
 					<select id="tipoInversor" name="tipoInversor" class="form-control" required="required">
-						<option value="Aislado">Aislado</option>
-						<option value="En Red">En Red</option>
+						<option value="">Seleccione</option>
+						<option value="Aislado" <?php if ($inversor->getTipo()=='Aislado') echo 'selected="selected"';?> >Aislado</option>
+						<option value="En Red" <?php if($inversor->getTipo()=='En Red') echo 'selected="selected"';?> >En Red</option>
 					</select>
 				</div>
 			</div>

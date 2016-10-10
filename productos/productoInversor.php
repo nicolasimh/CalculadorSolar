@@ -37,7 +37,7 @@
 	</div>
 </div>
 <div class="form-group">
-		<input id="corrienteEntrada" name="corrienteEntrada" class="hide" value="01" type="int" min="0" />
+		<input id="corrienteEntrada" name="corrienteEntrada" class="hide" value="01" type="int"/>
 	
 </div>
 <div class="form-group">
