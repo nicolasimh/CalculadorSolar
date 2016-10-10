@@ -10,14 +10,20 @@ Class FACTORK {
 
 
 	function __construct ( $latitud, $grado ) {
-
-			$link = new Conexion ( );
+		$link = new Conexion ( );
+		if ( $grado == null ) {
+			$sql = "SELECT * FROM FACTORK WHERE FACK_ID=$latitud;";
+			$result = $link->getObj( $sql );
+			$this->id 		= $result[0]->FACK_ID;
+			$this->latitud 	= $result[0]->FACK_LATITUD;
+			$this->grado	= $result[0]->FACK_GRADO;
+		} else {
 			$sql = "SELECT * FROM FACTORK WHERE FACK_LATITUD = '$latitud' AND FACK_GRADO = $grado ";
 			$result = $link->getObj( $sql );
 			$this->id 		= $result[0]->FACK_ID;
 			$this->latitud 	= $result[0]->FACK_LATITUD;
 			$this->grado	= $result[0]->FACK_GRADO;
-
+		}
 	}
 
 	public function registrar ( $id , $latitud , $grado) {

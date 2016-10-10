@@ -37,7 +37,6 @@ Class PROYECTO {
 			$this->estado			= $result[0]->PROY_ESTADO;
 			$this->tipo 			= $result[0]->PROY_TIPOCALCULO;
 		} else {
-			echo "<br><br>";
 			$this->id 				= null;
 			$this->rut  			= null;
 			$this->mantenimiento 	= null;
@@ -118,6 +117,7 @@ Class PROYECTO {
 	public function asociarProducto ( $idProducto , $valorVenta , $cantidad ) {
 		$sql = "INSERT INTO PROY_TIENE_PROD (PROY_ID , PROD_ID , PTP_CANTIDAD , PTP_COSTOVENTA) 
 				VALUES ($this->id, $idProducto , $cantidad , $valorVenta);";
+		echo '<br><br>'.$sql;
 		$link = new Conexion ( );
 		return $link->query( $sql );
 	}
@@ -132,7 +132,6 @@ Class PROYECTO {
 		$arrayMes = substr($arrayMes, 0, -1);
 		$arrayValor = substr($arrayValor, 0, -1);
 		$sql="INSERT INTO CORRECCIONCONSUMO ( CORR_MES , CORR_VALOR ) VALUES ( '$arrayMes' , '$arrayValor');";
-		echo $sql;
 		$link = new Conexion ( );
 		if ( $link->query( $sql ) ) {
 			$sql="SELECT MAX(CORR_ID) as CORR_ID FROM CORRECCIONCONSUMO;";
@@ -172,15 +171,15 @@ Class PROYECTO {
 	}
 
 	public function getProductos ( ) {
-		$sql = "SELECT  P.PROD_ID, P.PROD_NOMBRE , P.PROD_MARCA , P.PROD_MODELO, SUBP.TIPO, PTP.PTP_CANTIDAD
+		$sql = "SELECT  P.PROD_ID, SUBP.SUB_ID, P.PROD_NOMBRE , P.PROD_MARCA , P.PROD_MODELO, SUBP.TIPO, PTP.PTP_CANTIDAD
 				FROM (
-					SELECT PROD_ID, PROD_NOMBRE, PROD_MARCA, PROD_MODELO, 'Batería' as TIPO
+					SELECT PROD_ID, BAT_ID as SUB_ID, PROD_NOMBRE, PROD_MARCA, PROD_MODELO, 'Batería' as TIPO
 					FROM BATERIA
 					UNION
-					SELECT PROD_ID, PROD_NOMBRE, PROD_MARCA, PROD_MODELO, 'Inversor' as TIPO
+					SELECT PROD_ID, INV_ID as SUB_ID, PROD_NOMBRE, PROD_MARCA, PROD_MODELO, 'Inversor' as TIPO
 					FROM INVERSOR
 					UNION
-					SELECT PROD_ID, PROD_NOMBRE, PROD_MARCA, PROD_MODELO, 'Panel' as TIPO
+					SELECT PROD_ID, PAN_ID as SUB_ID, PROD_NOMBRE, PROD_MARCA, PROD_MODELO, 'Panel' as TIPO
 					FROM PANEL
 				) as SUBP 
 				INNER JOIN PRODUCTO P ON SUBP.PROD_ID = P.PROD_ID
@@ -191,6 +190,10 @@ Class PROYECTO {
 		$link = new Conexion ( );
 		$array = $link->getObj( $sql );
 		return $array;
+	}
+
+	public function getArtefactos( ) {
+		$sql="SELECT ";
 	}
 
 	public function calculoRealizado( ) {
@@ -238,17 +241,29 @@ Class PROYECTO {
 						$link = new Conexion ( );
 						$rh = $link->getObj( $sql );
 						$array[0]	= $rh[0]->RH_ENERO;
+						$valoresRad->registrar($this->id , 1 , $rh[0]->RH_ENERO);
 						$array[1]	= $rh[0]->RH_FEBRERO;
+						$valoresRad->registrar($this->id , 2 , $rh[0]->RH_FEBRERO);
 						$array[2]	= $rh[0]->RH_MARZO;
+						$valoresRad->registrar($this->id , 3 , $rh[0]->RH_MARZO);
 						$array[3]	= $rh[0]->RH_ABRIL;
+						$valoresRad->registrar($this->id , 4 , $rh[0]->RH_ABRIL);
 						$array[4]	= $rh[0]->RH_MAYO;
+						$valoresRad->registrar($this->id , 5 , $rh[0]->RH_MAYO);
 						$array[5]	= $rh[0]->RH_JUNIO;
+						$valoresRad->registrar($this->id , 6 , $rh[0]->RH_JUNIO);
 						$array[6]	= $rh[0]->RH_JULIO;
+						$valoresRad->registrar($this->id , 7 , $rh[0]->RH_JULIO);
 						$array[7]	= $rh[0]->RH_AGOSTO;
+						$valoresRad->registrar($this->id , 8 , $rh[0]->RH_AGOSTO);
 						$array[8]	= $rh[0]->RH_SEPTIEMBRE;
+						$valoresRad->registrar($this->id , 9 , $rh[0]->RH_SEPTIEMBRE);
 						$array[9]	= $rh[0]->RH_OCTUBRE;
+						$valoresRad->registrar($this->id , 10 , $rh[0]->RH_OCTUBRE);
 						$array[10]	= $rh[0]->RH_NOVIEMBRE;
+						$valoresRad->registrar($this->id , 11 , $rh[0]->RH_NOVIEMBRE);
 						$array[11]	= $rh[0]->RH_DICIEMBRE;
+						$valoresRad->registrar($this->id , 12 , $rh[0]->RH_DICIEMBRE);
 					}
 					return $array;
 				}
@@ -260,6 +275,13 @@ Class PROYECTO {
 		$link = new Conexion ( );
 		$lastId = $link->getObj( $sql );
 		return $lastId[0]->PROY_ID;
+	}
+
+	public function getRadiacion() {
+		$sql = "SELECT * FROM VALORESRAD WHERE PROY_ID = $this->id ORDER BY VALR_MES;";
+		$link = new Conexion ( );
+		$array = $link->getObj( $sql );
+		return $array;
 	}
 
 	public function getId( ) {

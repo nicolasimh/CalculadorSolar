@@ -95,21 +95,33 @@
 							?>	
 						</td>
 						<td>
-							<?php 
-								if ( $row->PROY_ESTADO != 3 ) {?>
-									<a class="btn btn-xs btn-info" href="verProyecto.php?id=<?php echo $row->PROY_ID ?>"><span class="glyphicon glyphicon-pushpin"></span> Ver</a>
-							<?php	}
-							?>
-							
-							<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Editar</button>
-							<?php 
-								if ( $row->PROY_ESTADO != 3 ) {?>
-									<form method="post" action="../controller/proyectoController.php" style="display:inline"> 
-										<input class="hide" name="id" value="<?php echo $row->PROY_ID ?>" />
-										<input class="hide" name="event" value="del" />
-										<button onclick="return confirm('¿Está seguro que desea descartar este proyecto?');" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span> Descartar</button>
-									</form>
-							<?php	}
+							<?php
+								switch ($row->PROY_ESTADO) {
+									case 0:?>
+										<a class="btn btn-xs btn-info" href="verProyecto.php?id=<?php echo $row->PROY_ID ?>"><span class="glyphicon glyphicon-pushpin"></span> Ver</a>
+										<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Editar</button>
+										<form method="post" action="../controller/proyectoController.php" style="display:inline"> 
+											<input class="hide" name="id" value="<?php echo $row->PROY_ID ?>" />
+											<input class="hide" name="event" value="del" />
+											<button onclick="return confirm('¿Está seguro que desea descartar este proyecto?');" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span> Descartar</button>
+										</form>
+							<?php	
+									break;
+									case 1:?>
+										<a class="btn btn-xs btn-success" href="verCalculo.php?id=<?php echo $row->PROY_ID ?>"><span class="glyphicon glyphicon-leaf"></span> Ver</a>
+										<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Editar</button>
+										<form method="post" action="../controller/proyectoController.php" style="display:inline"> 
+											<input class="hide" name="id" value="<?php echo $row->PROY_ID ?>" />
+											<input class="hide" name="event" value="del" />
+											<button onclick="return confirm('¿Está seguro que desea descartar este proyecto?');" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-remove"></span> Descartar</button>
+										</form>
+							<?php 	break;
+									case 3: ?>
+										<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Editar</button>
+							<?php
+									break;
+								}
+
 							?>
 						</td>
 					</tr>
@@ -160,6 +172,9 @@
 
 				}
 			);
+			$('#myModal').on('hidden.bs.modal', function (e) {
+				javascript:location.reload();
+			})
 		
 		});
 	</script>
