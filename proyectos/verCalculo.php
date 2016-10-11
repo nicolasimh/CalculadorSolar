@@ -40,7 +40,7 @@ if ( $proyecto->getId() != null ){
 	$valoresK = $factorK->getValoresK ( );
 
 	for ($i=0; $i < count($valoresK); $i++) {
-		$RH[$i]= $valoresK[$i]->VALK_VALOR*$radiacion[$i];
+		$RH[$i]= $valoresK[$i]->VALK_VALOR*$radiacion[$i]->VALR_VALOR;
 	}
 
 	$rend= $inversor->getRendimiento();
@@ -69,8 +69,9 @@ if ( $proyecto->getId() != null ){
 		$corregido[$i] = $totalmes * $factorMantenimiento[$i];
 		$consumoanual = $consumoanual + $corregido[$i];
 	}
-/*
+
 	print_r($radiacion);
+	/*
 	echo '<br>';echo '<br>';print_r($valoresK);
 	echo '<br>';echo '<br>';print_r($RH);
 	echo '<br>';echo '<br>';print_r($inclinacion);
