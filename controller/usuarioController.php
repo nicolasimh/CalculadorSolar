@@ -69,14 +69,14 @@
 			$user = new Usuario ( null );
 			$usuario = $_POST["nombreUsuario"];
 			$clave = $_POST["contrasena"];
-			//print_r($_POST);
+			print_r($_POST);
 			if ( $user->login( $usuario , $clave ) == true ) {
 				$_SESSION["login"] = $user;
-
 				header('location: ../index.php');
 			} else {
-				//header('location: ../login.php?result=error');
+				header('location: ../login.php?result=error');
 			}
+			break;
 		case 'logout':
 			print_r($_POST);
 			session_destroy();
