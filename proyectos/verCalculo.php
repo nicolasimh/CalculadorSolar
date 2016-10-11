@@ -306,9 +306,9 @@ if ( $proyecto->getId() != null ){
 						case 10:echo "'Nov',";break;
 						case 11:echo "'Dic',";break;
 					}
-					echo number_format($PPM[$i], 2, '.', '').",";
+					echo number_format($PPM[$i], 2, '.', '')."";
 					if ( count($consumo) > 0 ) {
-						echo number_format($corregido[$i], 2 , '.', '').",";
+						echo ",".number_format($corregido[$i], 2 , '.', '')."";
 					}
 					echo "],";
 				}?>
