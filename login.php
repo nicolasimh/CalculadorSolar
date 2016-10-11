@@ -170,7 +170,7 @@ require_once("config.php");
                 <input type="text" name="accion" value="login" class="hide">
                 <input type="text" id="inputEmail" class="form-control" placeholder="Nombre de Usuario" required="required" autofocus name="nombreUsuario">
                 <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" required="required" name="contrasena">
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Ingresar</button>
             </form>
         </div>
     </div>
