@@ -70,8 +70,8 @@ if ( $proyecto->getId() != null ){
 		$consumoanual = $consumoanual + $corregido[$i];
 	}
 
+/*
 	print_r($radiacion);
-	/*
 	echo '<br>';echo '<br>';print_r($valoresK);
 	echo '<br>';echo '<br>';print_r($RH);
 	echo '<br>';echo '<br>';print_r($inclinacion);
