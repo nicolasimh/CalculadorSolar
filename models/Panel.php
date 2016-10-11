@@ -54,6 +54,7 @@
 			  			PAN_ANCHO = $ancho
 			  		WHERE PROD_ID = ".parent::getId()." AND PAN_ID = $this->subId";
 			$link = new Conexion ( );
+			print_r($sql);
 			return $link->query( $sql );
 		}
 

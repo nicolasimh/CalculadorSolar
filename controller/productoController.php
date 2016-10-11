@@ -9,7 +9,6 @@ ini_set('display_errors', '1');
 session_start();
 
 
-print_r($_POST);
 switch ($_POST["event"]) {
 	case 'new':
 		$_SESSION["producto"]["nombre"] = $_POST["nombre"];
@@ -54,12 +53,13 @@ switch ($_POST["event"]) {
 					$_SESSION["producto"]["rendimiento"] = $_POST["rendimiento"];
 					$_SESSION["producto"]["altoPanel"] = $_POST["altoPanel"];
 					$_SESSION["producto"]["altoAncho"] = $_POST["altoAncho"];
+					print_r($_POST);	
 					if ( $producto->registrarPanel ( $_POST["nombre"] , $_POST["marca"] , $_POST["modelo"] , $_POST["descripcion"] , $_POST["precioCompra"] , $_POST["precioVenta"] ,
 													 $_POST["potenciaPanel"] , $_POST["voltajeCorrienteAlterna"] , $_POST["nominal"] , $_POST["rendimiento"] , $_POST["altoPanel"] , $_POST["altoAncho"] )) {
 						$_SESSION["productos"] = null;
 						header("location: ../productos/index.php?result=exito");
 					} else {
-						header("location: ../productos/nuevoProducto.php?result=errorPanel");
+						//header("location: ../productos/nuevoProducto.php?result=errorPanel");
 					}
 					break;
 			}

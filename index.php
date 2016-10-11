@@ -25,8 +25,7 @@
     		</ul>
     	</div>
     	<div >
-    		<ul class= "clearfix">
-    			<li><a class="btn btn-warning"><span class="glyphicon glyphicon-thumbs-up"></span><br><br> Cotización</a></li>
+    		<ul class= "clearfix" style="margin-left:30%;">
     			<li><a class="btn btn-success" href="menu-configuracion.php"><span class="glyphicon glyphicon-grain"></span><br><br>Configuración</a></li>
     		</ul>
     	</div>

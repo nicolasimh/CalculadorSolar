@@ -108,7 +108,7 @@
 							<?php
 								switch ($row->PROY_ESTADO) {
 									case 0:?>
-										<a class="btn btn-xs btn-info" href="verProyecto.php?id=<?php echo $row->PROY_ID ?>"><span class="glyphicon glyphicon-pushpin"></span> Ver</a>
+										<a class="btn btn-xs btn-info" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-pushpin"></span> Ver</a>
 										<button class="btn btn-xs btn-warning" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-edit"></span> Editar</button>
 										<form method="post" action="../controller/proyectoController.php" style="display:inline"> 
 											<input class="hide" name="id" value="<?php echo $row->PROY_ID ?>" />
@@ -170,6 +170,25 @@
 					var titulo = $(this).parent().parent().children("td.nombreProyecto").text();
 					$.ajax({
 						url: "modificarProyecto.php",
+						method: "POST",
+						data: { "id" : elemento },
+						dataType: "html"
+					}).done(
+						function(html) {
+							$("#myModalLabel").text(titulo);
+							$(".modal-body").html( html );
+						}
+					);
+
+				}
+			);
+				$(".btn-info").click(
+				function(event){
+					$(".modal-body").html("");
+					var elemento = $(this).parent().parent().children("td:first-child").text();
+					var titulo = $(this).parent().parent().children("td.nombreProyecto").text();
+					$.ajax({
+						url: "verCreado.php",
 						method: "POST",
 						data: { "id" : elemento },
 						dataType: "html"

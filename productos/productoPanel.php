@@ -40,11 +40,11 @@
 <div class="form-group">
 	<label class="col-sm-2 control-label" for="nominal">Potencia Nominal(W)</label>
 	<div class="col-sm-2">
-		<input id="nominal" name="nominal" class="form-control entero" type="float" step="0.01" min="0" required="required"/>
+		<input id="nominal" name="nominal" class="form-control entero" required="required"/>
 	</div>
 	<label class="col-sm-2 control-label" for="voltajeCorrienteAlterna">Voltaje Circuito Abierto (V)</label>
 	<div class="col-sm-2">
-		<input id="voltajeCorrienteAlterna" name="voltajeCorrienteAlterna" class="form-control entero" type="int" step="0.01" min="0" required="required"/>
+		<input id="voltajeCorrienteAlterna" name="voltajeCorrienteAlterna" class="form-control entero" type="int" required="required"/>
 	</div>
 </div>
 	<input id="potenciaPanel" name="potenciaPanel" class="hide" value="0"/>
@@ -52,14 +52,14 @@
 	<label class="col-sm-2 control-label" for="altoPanel">* Alto</label>
 	<div class="col-sm-2">
 		<div class="input-group">
-			<input id="altoPanel" name="altoPanel" class="form-control decimal" type="float" min="0" required="required" />
+			<input id="altoPanel" name="altoPanel" class="form-control decimal" type="number" step="0.1" min="0"required="required" />
 			<span class="input-group-addon">Mts.</span>
 		</div>
 	</div>
 	<label class="col-sm-2 control-label" for="altoAncho">* Ancho</label>
 	<div class="col-sm-2">
 		<div class="input-group">
-			<input id="altoAncho" name="altoAncho" class="form-control decimal" type="float" min="0" required="required"/>
+			<input id="altoAncho" name="altoAncho" class="form-control decimal" type="number" step="0.1" min="0" required="required"/>
 			<span class="input-group-addon">Mts.</span>
 		</div>
 	</div>

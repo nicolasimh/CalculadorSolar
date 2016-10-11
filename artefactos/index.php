@@ -63,7 +63,7 @@
 				<thead>
 					<th>ID</th>
 					<th>Nombre</th>
-					<th>Consumo Kw</th>
+					<th>Consumo Wh</th>
 					<th></th>
 				</thead>	
 				<tbody>
@@ -74,7 +74,7 @@
 	foreach ($lsArtefacto as $row ) { ?>
 	
 					<tr>
-						<td><?php echo $row->ART_ID; ?></td>
+						<td class="nombreProyecto"><?php echo $row->ART_ID; ?></td>
 						<td><?php echo $row->ART_NOMBRE; ?></td>
 						<td><?php echo $row->ART_CONSUMO; ?></td>
 						<td>
@@ -125,6 +125,24 @@
 							$(".modal-body").html( html );
 						}
 					)
+				}
+			);
+
+			$(".btn-info").click(
+				function(){
+					var elemento = $(this).parent().parent().children("td:first-child").text();
+					var titulo = $(this).parent().parent().children("td.nombreProyecto").text();
+					$.ajax({
+						url: "verArtefacto.php",
+						method: "POST",
+						data: { "id" : elemento},
+						dataType: "html"
+					}).done(
+						function(html){
+							$("#myModalLabel").text(titulo);
+							$(".modal-body").html( html );
+						}
+					);
 				}
 			);
 		

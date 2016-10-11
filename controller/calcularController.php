@@ -89,7 +89,7 @@ if (!empty($_POST['accion'])){
 							echo "<br>total día ".$i." = ".$_POST['cantidad'][$i]." * ".$_POST['horas'][$i]." = ".$totaldia;
 						}
 						echo "<br><br>";
-						$totalmes=$totaldia*30;
+						$totalmes=($totaldia*30)/1000;
 						for ($i=0; $i < 12; $i++) {
 							$corregido[$i]=$totalmes*$_POST['factor'][$i];
 							$consumoanual= $consumoanual+$corregido[$i];

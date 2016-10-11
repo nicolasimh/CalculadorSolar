@@ -152,6 +152,26 @@
 				}	
 				
 			);
+			$(".btn-info").click(
+				function(event){
+					var titulo = $(this).parent().parent().children("td.nombre").text();
+					var idProducto = $(this).parent().parent().children("td.idProducto").text();
+					var elemento = $(this).parent().parent().children("td.subProducto").text();
+					var subId = $(this).parent().parent().children("td.subProducto").find("input").val();
+						$.ajax({
+							url: "verProducto.php",
+							method: "POST",
+							data: { "id" : subId , "tipo" : elemento , "idProd" : idProducto},
+							dataType: "html"
+						}).done(
+							function(html) {
+								$("#myModalLabel").text("#" + idProducto + " - " +titulo);
+								$(".modal-body").html( html );
+							}
+						);
+				}	
+				
+			);
 		
 		});
 	</script>

@@ -71,7 +71,7 @@
     					</div>
   				</div>
   				<div class="form-group">
-    				<label for="consumo" class="col-sm-2 control-label">* Consumo kWh </label>
+    				<label for="consumo" class="col-sm-2 control-label">* Consumo Wh </label>
     					<div class="col-sm-3">
 							<input type="int" class="form-control entero" id="consumo" name="consumo" required="required">
     					</div>
