@@ -20,14 +20,14 @@ if ( $proyecto->getId() != null ){
 	foreach ( $productos as $row ) {
 		switch ( $row->TIPO ) {
 		case 'Panel':
-			$panel = new Panel ( $row->PROD_ID );
+			$panel = new Panel ( $row->SUB_ID );
 			$area= $panel->getAlto()*$panel->getAncho()*$row->PTP_CANTIDAD;
 			break;
 		case 'Inversor':
 			$inversor = new Inversor ( $row->SUB_ID );
 			break;
 		case 'Batería':
-			$bateria = new Bateria ( $row->PROD_ID );
+			$bateria = new Bateria ( $row->SUB_ID );
 			break;
 		}
 	}

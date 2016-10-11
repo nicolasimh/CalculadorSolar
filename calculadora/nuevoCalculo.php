@@ -95,7 +95,7 @@
                     <option value="">Seleccione un Panel</option>
                     <?php 
                         foreach ($listaPanel as $row) {
-                          echo '<option value="'.$row->PROD_ID.'">'.$row->PROD_NOMBRE.'  ('.$row->PAN_ALTO.'mts. x'.$row->PAN_ANCHO.'mts. )'.'</option>';
+                          echo '<option value="'.$row->PAN_ID.'">'.$row->PROD_NOMBRE.'  ('.$row->PAN_ALTO.'mts. x'.$row->PAN_ANCHO.'mts. )'.'</option>';
                         }?>
               </select>
             </div>

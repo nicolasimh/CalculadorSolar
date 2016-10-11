@@ -16,7 +16,7 @@
 				$link = new Conexion ( );
 				$sql = "SELECT PAN_ID , PROD_ID , PAN_POTENCIA , PAN_VCA , PAN_NOMINAL ,
 							   PAN_RENDIMIENTO	, PAN_ALTO, PAN_ANCHO
-						FROM PANEL WHERE PROD_ID = $id";
+						FROM PANEL WHERE PAN_ID = $id";
 				$result = $link->getObj( $sql ); 
 				$this->subId 		= $result[0]->PAN_ID;
 				$this->potencia 	= $result[0]->PAN_POTENCIA;

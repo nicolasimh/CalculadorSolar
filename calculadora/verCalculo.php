@@ -72,7 +72,7 @@
 								foreach ($productos as $row) { 
 									switch ($row->TIPO) {
 										case 'Panel': 
-											$panel = new Panel ( $row->PROD_ID );
+											$panel = new Panel ( $row->PAN_ID );
 										?>
 										<tr>
 											<td><strong>Panel</strong></td>
