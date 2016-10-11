@@ -1,5 +1,4 @@
 <?php
-
 	class Conexion {
 
 		//Variable que contendrá la conexión a la base de datos

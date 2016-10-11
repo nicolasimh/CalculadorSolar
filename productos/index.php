@@ -98,7 +98,7 @@
 				<input name="event" value="delete" class="hide">
 				<input name="id" value="<?php echo $row->SUB_ID;?>" class="hide">
 				<input name="tipo" value="<?php echo $row->TIPO?>" class="hide">
-				<button class="btn btn-xs btn-danger" onclick="preguntaEliminacion( event )"><span class="glyphicon glyphicon-remove"></span>Eliminar</button>
+				<button class="btn btn-xs btn-danger" onclick="return confirm('¿Está seguro que desea eliminar este producto?');"><span class="glyphicon glyphicon-remove"></span>Eliminar</button>
 				</form>
 			</td>
 			

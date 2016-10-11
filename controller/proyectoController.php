@@ -35,15 +35,15 @@ switch ($_POST["event"]) {
 		if ( $proyecto->modificar( $_POST["cliente"] , $_POST["nombre"] , $_POST["ubicacion"] , $_POST["latitud"] , $_POST ["longitud"] , $_POST["tipoProyecto"] ) ) {
 			header('location: ../proyectos/index.php?result=success');
 		} else {
-			//header('location: ../proyectos/index.php?result=editError');
+			header('location: ../proyectos/index.php?result=error');
 		}
 		break;
 	case 'del':
 		$proyecto = new Proyecto ($_POST["id"]);
 		if ( $proyecto->eliminar( ) ) {
-			header('location: ../proyectos/index.php?result=delSuccess');
+			header('location: ../proyectos/index.php?result=success');
 		} else {
-			header('location: ../proyectos/index.php?result=delError');
+			header('location: ../proyectos/index.php?result=error');
 		}
 		break;
 	default:

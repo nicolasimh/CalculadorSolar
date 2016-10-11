@@ -66,6 +66,25 @@ Class USUARIO {
 		return $array;
 	}
 
+	public function login ( $nombreUser , $pass ) {
+		$sql = "SELECT * FROM USUARIO WHERE USU_USUARIO = '$nombreUser' AND USU_CLAVE = '$pass' AND USU_ESTADO = 1;";
+		$link = new Conexion ( );
+		$result = $link->getObj( $sql );
+		$this->rut 		= $result[0]->USU_RUT;
+		$this->nombre 	= $result[0]->USU_NOMBRE;
+		$this->apellido	= $result[0]->USU_APELLIDO;
+		$this->usuario	= $result[0]->USU_USUARIO;
+		$this->email 	= $result[0]->USU_EMAIL;
+		$this->clave 	= $result[0]->USU_CLAVE;
+		$this->tipo		= $result[0]->USU_TIPO;
+		$this->estado	= $result[0]->USU_ESTADO;
+		if ( $this->usuario == $nombreUser && $this->clave == $pass ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public function getRut( ) {
 		return $this->rut;
 	}

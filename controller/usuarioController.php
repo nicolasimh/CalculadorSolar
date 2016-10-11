@@ -64,6 +64,24 @@
 				header( 'location: ../usuarios/index.php?result=errorDelete');
 			}
 		break;
+		case 'login':
+			
+			$user = new Usuario ( null );
+			$usuario = $_POST["nombreUsuario"];
+			$clave = $_POST["contrasena"];
+			//print_r($_POST);
+			if ( $user->login( $usuario , $clave ) == true ) {
+				$_SESSION["login"] = $user;
+
+				header('location: ../index.php');
+			} else {
+				//header('location: ../login.php?result=error');
+			}
+		case 'logout':
+			print_r($_POST);
+			session_destroy();
+			header("location: ../login.php");
+			break;
 		default:
 			# code...
 			break;

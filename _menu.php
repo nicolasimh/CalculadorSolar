@@ -2,6 +2,11 @@
   $pagina = $_SERVER["REQUEST_URI"];   
   $explode = explode("/",$pagina);
   $active = $explode[(count($explode)-2)];
+  if ( !empty($_SESSION["login"]) ) {
+      
+  } else {
+      header("location: ".RUTA."login.php");
+  }
 ?>
 <div class="container">
 	<div class="navbar-header">
@@ -21,5 +26,12 @@
         <li <?php if( $active == 'cotizacion') echo 'class="active"';?>><a href="<?php echo RUTA;?>cotizacion/"><span class="glyphicon glyphicon-thumbs-up"></span> Cotización</a></li>
         <li <?php if( $active == 'configuracion') echo 'class="active"';?>><a href="<?php echo RUTA;?>menu-configuracion.php"><span class="glyphicon glyphicon-grain"></span> Configuración</a></li>
   		</ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form style="margin-top: 8px;margin-bottom: 0px;" action="<?php echo RUTA?>controller/usuarioController.php" method="POST">
+            <button class="btn btn-danger" name="accion" value="logout"><span class="glyphicon glyphicon-off"></span>Salir</button></li>
+          </form>
+      </ul>
 	</div>
+
 </div>
